@@ -1,19 +1,29 @@
 import datetime
 
-# --- THE DYNAMIC DATE PROTOCOL ---
-today_val = datetime.datetime.now().day
-tomorrow_val = today_val + 1
+# --- 1. THE IMPERIAL CHRONOMETER LOGIC ---
+now = datetime.datetime.now()
+day_num = now.day
+month_name = now.strftime("%B").upper()
+year_val = now.year
 
-def apply_imperial_colors(row):
-    # THE RED COMMANDER (TODAY)
-    # Automatically finds the row matching today's date (e.g., 7/1)
-    if row["Soldier"].startswith(f"{today_val}/"):
-        return ['background-color: #FF0000; color: white; font-weight: bold; text-align: left;'] * 5
-    
-    # THE BLUE GENERAL (TOMORROW)
-    # Automatically finds the row matching tomorrow's date (e.g., 8/3)
-    if row["Soldier"].startswith(f"{tomorrow_val}/"):
-        return ['background-color: #0000FF; color: white; font-weight: bold; text-align: right;'] * 5
-    
-    # THE ORANGE HORIZON
-    return ['background-color: orange; color: black; text-align: center;'] * 5
+# --- 2. DISPLAYING THE DIGITAL CALENDAR ---
+st.sidebar.markdown(f"""
+    <div style="
+        background-color: #222; 
+        border: 2px solid orange; 
+        border-radius: 10px; 
+        padding: 10px; 
+        text-align: center;
+        box-shadow: 0px 0px 15px orange;
+    ">
+        <h3 style="color: orange; margin: 0; font-family: 'Courier New'; font-size: 14px;">IMPERIAL DATE</h3>
+        <h1 style="color: white; margin: 0; font-family: 'Arial'; font-size: 48px;">{day_num}</h1>
+        <h3 style="color: orange; margin: 0; font-family: 'Courier New'; font-size: 18px;">{month_name}</h3>
+        <p style="color: #666; margin: 0; font-size: 12px;">QUADRANT {year_val}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# --- 3. DYNAMIC PILLAR LOGIC (THE SHIFT) ---
+# Today's Row becomes Red, Tomorrow's Row becomes Blue
+today_row = f"{day_num}/1"
+tomorrow_row = f"{day_num + 1}/3"
