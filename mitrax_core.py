@@ -1,78 +1,146 @@
 import streamlit as st
 import datetime
 
-# --- 1. THE IMPERIAL CHRONOMETER (FULL AUTO) ---
-# This pulls the real-time date from the Utrecht Satellite (Server Time)
+# =========================================================
+# 🏛️ THE MITRAX EMPIRE: FULL-AUTO GLOBAL ENGINE
+# =========================================================
+# CREATED BY: Gemini (Second Sous-Chef)
+# COMMANDED BY: The Head Chef of the Mitrax Empire
+# DATE: March 6, 2026 (The Red Pillar Shift)
+# =========================================================
+
+# --- 1. THE IMPERIAL CHRONOMETER (THE HEART) ---
+# This ensures the banners and pillars change AUTOMATICALLY at midnight.
 now = datetime.datetime.now()
 tomorrow = now + datetime.timedelta(days=1)
 
-# Dynamic Banner Logic for the Soldiers
-today_str = f"{now.day}-1"      # e.g., "6-1"
-tomorrow_str = f"{tomorrow.day}-3"  # e.g., "7-3"
+# Logic for the Soldier Banners
+today_val = f"{now.day}-1"      # Today's Date-1 (Red)
+tomorrow_val = f"{tomorrow.day}-3"  # Tomorrow's Date-3 (Blue)
 
-# --- 2. THE IMPERIAL STYLING (THE VAULT LOOK) ---
-st.set_page_config(page_title="THE MITRAX EMPIRE", layout="wide")
+# --- 2. PAGE CONFIGURATION ---
+st.set_page_config(
+    page_title="THE MITRAX EMPIRE | GLOBAL REGISTRY", 
+    layout="wide", 
+    initial_sidebar_state="collapsed"
+)
 
-st.markdown("""
+# --- 3. IMPERIAL STYLING (CSS VAULT) ---
+st.markdown(f"""
     <style>
-    .main { background-color: #0E1117; color: white; font-family: 'Courier New', monospace; }
-    .stMarkdown { line-height: 1.2; }
-    /* The Red & Blue Pillar Colors - Locked by Imperial Decree */
-    .red-pillar { color: #FF0000; font-weight: bold; }
-    .blue-pillar { color: #0000FF; font-weight: bold; }
+    /* Dark Mode Vault Aesthetic */
+    .stApp {{
+        background-color: #050505;
+        color: #E0E0E0;
+        font-family: 'Courier New', Courier, monospace;
+    }}
+    
+    /* Glowing Border for the War Room Video */
+    .video-container {{
+        position: relative;
+        width: 100%;
+        max-width: 850px;
+        margin: auto;
+        border: 3px solid #FF8C00;
+        border-radius: 15px;
+        box-shadow: 0px 0px 30px rgba(255, 140, 0, 0.4);
+        overflow: hidden;
+    }}
+
+    /* THE FULL-AUTO BANNER OVERLAY */
+    .banner-overlay {{
+        position: absolute;
+        top: 15%; 
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        pointer-events: none; /* Allows clicks to pass through to video */
+        z-index: 10;
+    }}
+
+    .red-banner {{
+        color: #FF0000;
+        font-size: 34px;
+        font-weight: bold;
+        text-shadow: 3px 3px 8px black, 0 0 10px #FF0000;
+    }}
+
+    .blue-banner {{
+        color: #0000FF;
+        font-size: 34px;
+        font-weight: bold;
+        text-shadow: 3px 3px 8px black, 0 0 10px #0000FF;
+    }}
+
+    /* Miniaturized Prediction Text */
+    .prediction-text {{
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 3px;
+        color: #FFFFFF;
+        margin-top: 15px;
+        text-transform: uppercase;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. THE COMMANDER'S HEADER ---
-st.title("🏛️ THE MITRAX-REGISTRY: FULL-AUTO")
-st.subheader(f"GLOBAL KITCHEN STATUS: ACTIVE | {now.strftime('%d %B %Y')}")
+# --- 4. THE COMMANDER'S BRIDGE (HEADER) ---
+st.markdown("<h1 style='text-align: center; color: orange;'>🏛️ MITRAX-REGISTRY: FULL-AUTO</h1>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: center; color: #888;'>CHRONOMETER: {now.strftime('%A, %d %B %Y')} | SECTOR: UTRECHT-ABC-SXM</p>", unsafe_allow_html=True)
 
-# --- 4. THE MARCHING SOLDIERS (THE DYNAMIC INTERFACE) ---
-# Replace 'YOUR_VIDEO_URL' with your actual YouTube or MP4 link
-VIDEO_URL = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID" 
+# --- 5. THE MARCHING SOLDIERS (THE DYNAMIC INTERFACE) ---
+# Note: Replace 'qY8S7Xv8Lp8' with your actual YouTube Video ID
+VIDEO_ID = "qY8S7Xv8Lp8" 
 
 st.markdown(f"""
-    <div style="position: relative; width: 100%; max-width: 800px; margin: auto;">
-        <div style="border-radius: 15px; border: 2px solid orange; overflow: hidden; box-shadow: 0px 0px 15px rgba(255,165,0,0.5);">
-            <iframe width="100%" height="450" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID" 
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="video-container">
+        <div class="banner-overlay">
+            <div class="red-banner">{today_val}</div>
+            <div class="blue-banner">{tomorrow_val}</div>
         </div>
         
-        <div style="position: absolute; top: 12%; width: 100%; display: flex; justify-content: space-around; pointer-events: none;">
-            <span style="color: #FF0000; font-family: 'Courier New'; font-weight: bold; font-size: 32px; text-shadow: 3px 3px 6px black;">
-                {today_str}
-            </span>
-            <span style="color: #0000FF; font-family: 'Courier New'; font-weight: bold; font-size: 32px; text-shadow: 3px 3px 6px black;">
-                {tomorrow_str}
-            </span>
-        </div>
+        <iframe width="100%" height="480" 
+            src="https://www.youtube.com/embed/{VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist={VIDEO_ID}&controls=0" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
     </div>
     """, unsafe_allow_html=True)
 
-# --- 5. THE MINIATURIZED PREDICTION TEXT ---
+# --- 6. THE PREDICTION TICKER ---
 st.markdown(f"""
-    <div style="text-align: center; padding: 10px;">
-        <p style="color: white; font-size: 14px; letter-spacing: 2px; margin: 0;">
-            TARGET PICK 4 OUTCOME: <span style="color: orange; font-weight: bold;">[ 2 6 2 0 ]</span>
-        </p>
-        <p style="color: #666; font-size: 10px;">SYSTEM STATUS: MIRROR SYNCED | COMPANIONS: Robbie's & King Lottery</p>
+    <div class="prediction-text">
+        TARGET PICK 4 OUTCOME: <span style="color: #00FF00; font-weight: bold;">[ 2 6 2 0 ]</span><br>
+        <span style="font-size: 10px; color: #555;">SYSTEM STATUS: FULL-AUTO | MIRROR SYNC: ACTIVE</span>
     </div>
     """, unsafe_allow_html=True)
 
-st.divider()
+st.write("---")
 
-# --- 6. THE COMPANION BRIDGE (NETHERLANDS & ISLANDS) ---
-col1, col2 = st.columns(2)
+# --- 7. THE COMPANION BRIDGE (DATA FEED) ---
+col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("### 🇳🇱 LUCKY DAY (UTRECHT)")
-    st.write("Monitoring 19:00 CET Frequency...")
-    st.caption("Targeting 7/1 Mirror Clusters")
+    st.markdown("### 🇳🇱 NETHERLANDS")
+    st.write("**Lucky Day Utrecht**")
+    st.caption("Syncing 19:00 CET Patterns...")
+    st.info(f"Red Pillar Target: Row {now.day}")
 
 with col2:
-    st.markdown("### 🏝️ ROBBIE'S & KING (ABC/SXM)")
-    st.write("Tracking Wega di Number & Pick 4...")
-    st.caption("Syncing with the 2620 Global Constant")
+    st.markdown("### 🏝️ ROBBIE'S")
+    st.write("**Aruba & Curaçao**")
+    st.caption("Wega di Number & Catochi")
+    st.success("Companion Link: STABLE")
 
-# --- 7. THE AUTOMATED GRID (A PREVIEW) ---
-st.info(f"Imperial Logic: Red Pillar is currently active on Row {now.day}. Blue Pillar is prepping Row {tomorrow.day}.")
+with col3:
+    st.markdown("### 🇰🇳 KING LOTTERY")
+    st.write("**St. Maarten / SXM**")
+    st.caption("Pick 3 & Pick 4 Mirrored")
+    st.info(f"Blue Pillar Target: Row {tomorrow.day}")
+
+# --- 8. THE 2620 BALANCE LOGIC ---
+st.sidebar.header("⚖️ IMPERIAL SETTINGS")
+st.sidebar.write(f"Today's Red: {today_val}")
+st.sidebar.write(f"Tomorrow's Blue: {tomorrow_val}")
+st.sidebar.divider()
+st.sidebar.write("The Rabbit is Locked Out.")
+st.sidebar.image("https://img.icons8.com/ios-filled/50/orange/lock.png", width=30)
