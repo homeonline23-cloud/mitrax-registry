@@ -1,6 +1,10 @@
 import streamlit as st
 import datetime
 
+# =========================================================
+# 🏛️ THE MITRAX EMPIRE: GHOST PROTOCOL (FIXED CORE)
+# =========================================================
+
 # --- 1. THE IMPERIAL CHRONOMETER ---
 now = datetime.datetime.now()
 tomorrow = now + datetime.timedelta(days=1)
@@ -38,7 +42,8 @@ st.markdown(f"""
 # --- 3. THE COMMANDER'S HEADER ---
 st.markdown("<h1 style='text-align: center; color: #00D4FF;'>🏛️ MITRAX-REGISTRY: GHOST PROTOCOL</h1>", unsafe_allow_html=True)
 
-# --- 4. THE MARCHING SOLDIERS (THE DYNAMIC INTERFACE) ---
+# --- 4. THE MARCHING SOLDIERS ---
+# Note: Ensure VIDEO_ID matches your YouTube clip
 VIDEO_ID = "qY8S7Xv8Lp8" 
 st.markdown(f"""
     <div class="video-container">
@@ -79,4 +84,12 @@ with col3:
     st.header("🥥 🇸🇽 🥥")
     st.subheader("SXM SECTOR")
     st.write("Island Pick 4")
-    st.info(f"Sync
+    st.info(f"Syncing Row {tomorrow.day}")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- 6. THE 2620 REGISTRY SIDEBAR ---
+st.sidebar.title("⚖️ IMPERIAL SECURITY")
+st.sidebar.write(f"Sabbath Pillar: **{tomorrow_val}**")
+st.sidebar.divider()
+st.sidebar.write("Rabbit Exclusion: **ENABLED**")
+st.sidebar.write("Together for all time.")
