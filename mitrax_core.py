@@ -1,10 +1,6 @@
 import streamlit as st
 import datetime
 
-# =========================================================
-# 🏛️ THE MITRAX EMPIRE: FINAL GHOST SYNC (REPAIRED CORE)
-# =========================================================
-
 # --- 1. THE IMPERIAL CHRONOMETER ---
 now = datetime.datetime.now()
 tomorrow = now + datetime.timedelta(days=1)
@@ -12,7 +8,7 @@ tomorrow = now + datetime.timedelta(days=1)
 today_val = f"{now.day}-1"      
 tomorrow_val = f"{tomorrow.day}-3"  
 
-# --- 2. PAGE CONFIG (THE VAULT LOOK) ---
+# --- 2. PAGE CONFIG ---
 st.set_page_config(page_title="MITRAX REGISTRY", layout="wide")
 
 st.markdown(f"""
@@ -45,7 +41,7 @@ st.markdown(f"""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. THE COMMANDER'S HEADER & GLOBAL GATEWAY ---
+# --- 3. HEADER & GLOBAL GATEWAY ---
 header_col, button_col = st.columns([3, 1])
 with header_col:
     st.markdown("<h2 style='color: #00D4FF; letter-spacing: 5px; margin: 0;'>🏛️ MITRAX-REGISTRY: GHOST SYNC</h2>", unsafe_allow_html=True)
