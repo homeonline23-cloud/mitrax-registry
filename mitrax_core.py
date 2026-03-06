@@ -1,21 +1,33 @@
-# --- THE MARCHING SOLDIERS VIDEO OVERLAY ---
-st.video("https://www.youtube.com/watch?v=YOUR_VIDEO_ID") # The Soldiers Marching
+import datetime
 
-# --- THE "SMALLER" PREDICTED OUTCOME TEXT ---
-st.markdown("""
-    <div style="
-        text-align: center; 
-        padding-top: 5px;
-    ">
-        <p style="
-            color: white; 
-            font-size: 14px;  /* SHRINKING THE SIZE HERE */
-            font-family: 'Courier New', monospace; 
-            letter-spacing: 2px;
-            margin-bottom: 0px;
+# --- CALCULATING THE DYNAMIC STANDARDS ---
+now = datetime.datetime.now()
+today_std = f"{now.day}-1"
+tomorrow_std = f"{now.day + 1}-3"
+
+# --- THE MARCHING SOLDIERS WITH DYNAMIC NUMBERS ---
+st.markdown(f"""
+    <div style="position: relative; width: 100%; text-align: center;">
+        <video width="100%" autoplay loop muted style="border-radius: 10px; border: 2px solid orange;">
+            <source src="YOUR_SOLDIER_MARCH_VIDEO_URL" type="video/mp4">
+        </video>
+        
+        <div style="
+            position: absolute; 
+            top: 10px; 
+            left: 50%; 
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px;
+            width: 100%;
+            justify-content: center;
         ">
-            TARGET PICK 4 OUTCOME: <span style="color: orange; font-weight: bold;">[ 2 6 2 0 ]</span>
-        </p>
-        <p style="color: #666; font-size: 10px;">SYSTEM STATUS: MIRROR SYNCED</p>
+            <span style="color: #FF0000; font-family: 'Courier New'; font-weight: bold; font-size: 24px; text-shadow: 2px 2px #000;">
+                {today_std}
+            </span>
+            <span style="color: #0000FF; font-family: 'Courier New'; font-weight: bold; font-size: 24px; text-shadow: 2px 2px #000;">
+                {tomorrow_std}
+            </span>
+        </div>
     </div>
     """, unsafe_allow_html=True)
