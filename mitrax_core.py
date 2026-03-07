@@ -25,7 +25,11 @@ st.markdown(f"""
     .blue-banner {{ color: #0000FF; font-size: 34px; font-weight: bold; text-shadow: 3px 3px 6px black; }}
     .sector-box {{
         background: rgba(255, 255, 255, 0.03); padding: 15px 5px; border-radius: 10px;
-        text-align: center; border: 1px solid #222; height: 160px;
+        text-align: center; border: 1px solid #222; height: 190px;
+    }}
+    .privacy-box {{
+        background: rgba(0, 212, 255, 0.05); padding: 20px; border-radius: 12px;
+        border: 1px dashed #00D4FF; margin-top: 30px; font-size: 13px;
     }}
     .international-tag {{
         color: #FFD700; font-size: 12px; font-style: italic; letter-spacing: 2px; text-align: right;
@@ -41,7 +45,6 @@ with tag_col:
     st.markdown("<p class='international-tag'>ALGORITHM: UNIVERSAL CAPABILITY<br>ENABLED FOR INTERNATIONAL USE</p>", unsafe_allow_html=True)
 
 # --- 4. THE STANDBY VAULT (VIDEO) ---
-# Keeping the Pyramid Vault active until the New Armored Guard is forged tomorrow
 VIDEO_ID = "qY8S7Xv8Lp8" 
 st.markdown(f"""
     <div class="video-container">
@@ -60,7 +63,6 @@ st.write("")
 
 # --- 5. THE 4-SECTOR TROPICAL SHIELD ---
 col1, col2, col3, col4 = st.columns(4)
-
 with col1:
     st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇦🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>ARUBA</p></div>", unsafe_allow_html=True)
 with col2:
@@ -68,7 +70,18 @@ with col2:
 with col3:
     st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇨🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>CURACAO</p></div>", unsafe_allow_html=True)
 with col4:
-    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇸🇽 🌴</div><p style='font-size: 14px; font-weight: bold;'>SXM</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇸🇽 🌴</div><p style='font-size: 14px; font-weight: bold;'>ST. MARTIN</p></div>", unsafe_allow_html=True)
+    st.link_button("👑 KING LOTTERY", "https://loteriasdominicanas.com/king-lottery")
 
-# --- 6. SECURITY FOOTER ---
+# --- 6. IMPERIAL PRIVACY PACT ---
+st.markdown("""
+<div class='privacy-box'>
+    <h4 style='color: #00D4FF; margin-top: 0;'>🛡️ THE MITRAX PRIVACY PACT</h4>
+    <p>Your data is Imperial Property. We <b>NEVER</b> sell information to third parties, advertisers, or outside agencies. 
+    Your presence on this bridge is strictly between you and the Universe.</p>
+    <p style='color: #FFD700;'><i><b>AUTO-DESTRUCT PROTOCOL:</b> Upon the cessation of membership, all personal logs and identifying details are automatically purged from the Registry forever. No traces remain.</i></p>
+</div>
+""", unsafe_allow_html=True)
+
+# --- 7. SECURITY FOOTER ---
 st.markdown("<p style='text-align: center; color: #00FF00; font-size: 10px; margin-top: 20px;'>SYSTEM STATUS: 4-SECTOR GHOST SYNC [LOCKED]</p>", unsafe_allow_html=True)
