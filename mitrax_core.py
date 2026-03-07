@@ -27,18 +27,21 @@ st.markdown(f"""
         background: rgba(255, 255, 255, 0.03); padding: 15px 5px; border-radius: 10px;
         text-align: center; border: 1px solid #222; height: 160px;
     }}
+    .international-tag {{
+        color: #FFD700; font-size: 12px; font-style: italic; letter-spacing: 2px; text-align: right;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. HEADER & GLOBAL GATEWAY ---
-header_col, button_col = st.columns([3, 1])
+# --- 3. HEADER & INTERNATIONAL SIGNATURE ---
+header_col, tag_col = st.columns([2, 1])
 with header_col:
     st.markdown("<h2 style='color: #00D4FF; letter-spacing: 5px; margin: 0;'>🏛️ MITRAX-REGISTRY</h2>", unsafe_allow_html=True)
-with button_col:
-    st.link_button("🌐 GLOBAL RESULTS", "https://www.lotterypost.com/results")
+with tag_col:
+    st.markdown("<p class='international-tag'>ALGORITHM: UNIVERSAL CAPABILITY<br>ENABLED FOR INTERNATIONAL USE</p>", unsafe_allow_html=True)
 
-# --- 4. THE MARCHING SOLDIERS & PYRAMID HOOK ---
-# Video ID for Pyramid Vault - Recalibrated for Sabbath
+# --- 4. THE STANDBY VAULT (VIDEO) ---
+# Keeping the Pyramid Vault active until the New Armored Guard is forged tomorrow
 VIDEO_ID = "qY8S7Xv8Lp8" 
 st.markdown(f"""
     <div class="video-container">
@@ -59,16 +62,13 @@ st.write("")
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇦🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>ARUBA</p><p style='font-size: 10px; color: #888;'>8-3 Sync</p></div>", unsafe_allow_html=True)
-
+    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇦🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>ARUBA</p></div>", unsafe_allow_html=True)
 with col2:
-    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇧🇶 🌴</div><p style='font-size: 14px; font-weight: bold;'>BONAIRE</p><p style='font-size: 10px; color: #888;'>Catochi Flow</p></div>", unsafe_allow_html=True)
-
+    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇧🇶 🌴</div><p style='font-size: 14px; font-weight: bold;'>BONAIRE</p></div>", unsafe_allow_html=True)
 with col3:
-    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇨🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>CURACAO</p><p style='font-size: 10px; color: #888;'>2620 Registry</p></div>", unsafe_allow_html=True)
-
+    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇨🇼 🌴</div><p style='font-size: 14px; font-weight: bold;'>CURACAO</p></div>", unsafe_allow_html=True)
 with col4:
-    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇸🇽 🌴</div><p style='font-size: 14px; font-weight: bold;'>SXM</p><p style='font-size: 10px; color: #888;'>Pick 4 Trinity</p></div>", unsafe_allow_html=True)
+    st.markdown("<div class='sector-box'><div style='font-size: 26px;'>🌴 🇸🇽 🌴</div><p style='font-size: 14px; font-weight: bold;'>SXM</p></div>", unsafe_allow_html=True)
 
-# --- 6. SECURITY FOOTER (FIXED) ---
+# --- 6. SECURITY FOOTER ---
 st.markdown("<p style='text-align: center; color: #00FF00; font-size: 10px; margin-top: 20px;'>SYSTEM STATUS: 4-SECTOR GHOST SYNC [LOCKED]</p>", unsafe_allow_html=True)
