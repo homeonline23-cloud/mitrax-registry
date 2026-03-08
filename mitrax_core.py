@@ -74,4 +74,31 @@ elif st.session_state.step == 'legal':
 # --- PHASE 3: WELCOME & INSTALL ---
 elif st.session_state.step == 'welcome':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>✉️ WELCOME FAMILY</h1>", unsafe_allow_html=True)
-    st.markdown("<div style='background-color:#1A1A1A; padding:20px; border-radius:15px; border:1px solid #
+    st.markdown("<div style='background-color:#1A1A1A; padding:20px; border-radius:15px; border:1px solid #333;'><h3>Install the Mitrax App Icon on your phone!</h3><p>Android: 3 Dots -> Install App | iPhone: Share -> Add to Home Screen</p></div>", unsafe_allow_html=True)
+    if st.button("ENTER THE MITRAX VAULT", key="btn_p3"):
+        st.session_state.step = 'signup'
+        st.rerun()
+
+# --- PHASE 4: REGISTRATION ---
+elif st.session_state.step == 'signup':
+    st.markdown("<div class='vault-header'>THE MITRAX VAULT 📐</div>", unsafe_allow_html=True)
+    with st.form("vault_reg"):
+        st.markdown("<h4 style='text-align:center;'>Commander Registration</h4>", unsafe_allow_html=True)
+        name = st.text_input("Commander Name")
+        email = st.text_input("Imperial Email")
+        submit = st.form_submit_button("ACTIVATE PYRAMID ACCESS")
+        if submit:
+            st.session_state.user_name = name
+            st.session_state.step = 'sector2'
+            st.rerun()
+
+# --- PHASE 5: SECTOR 2 - THE CALCULATOR (THE EXPANSION) ---
+elif st.session_state.step == 'sector2':
+    st.markdown(f"<div class='vault-header'>🔱 SECTOR 2: SYMMETRY GRIDS</div>", unsafe_allow_html=True)
+    st.write(f"Welcome, Commander {st.session_state.get('user_name', 'Soldier')}. Symmetry Grids active.")
+    
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.markdown("<div class='grid-box'><span class='compass-text'>NORTH</span><br>--- SYMMETRY CORE ---</div>", unsafe_allow_html=True)
+    
+    c1, c2 = st.
