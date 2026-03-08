@@ -3,7 +3,7 @@ import streamlit as st
 # --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="Mitrax Command Center", layout="wide")
 
-# --- 2. IMPERIAL STYLING ---
+# --- 2. IMPERIAL STYLING (THE GOLDEN FAULT) ---
 st.markdown("""
     <style>
     .stApp { background-color: #0E1117; color: #FFFFFF; }
@@ -29,7 +29,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. THE MASTER CREST ---
+# --- 3. THE MASTER SYMBOL (SINGLE SHIELD & PYRAMID) ---
 st.markdown("""
     <div style='text-align: center;'>
         <div style='font-size: 80px; filter: drop-shadow(0 0 15px #FFD700);'>🛡️</div>
@@ -43,7 +43,7 @@ if 'step' not in st.session_state:
 # --- PHASE 1: SOLDIER DISPLAY ---
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>THE MITRAX COMMAND CENTER</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='grid-box'>The 4-digit Prediction Calculator used Globally. 95% Chance of Success.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='grid-box'>Predictor Outcome Tool. Analyzing 4-digit Global Symmetry Patterns. 95% Chance.</div>", unsafe_allow_html=True)
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True) 
     if st.button("PROCEED TO MISSION BRIEFING", key="btn_p1"):
         st.session_state.step = 'legal'
@@ -52,7 +52,7 @@ if st.session_state.step == 'video':
 # --- PHASE 2: TERMS ---
 elif st.session_state.step == 'legal':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>📜 TERMS & POLICY</h1>", unsafe_allow_html=True)
-    st.info("95% probability protocol active. Data remains secured within the Mitrax Vault.")
+    st.info("95% probability protocol active. Data secured within the Mitrax Vault.")
     if st.button("I ACCEPT THE TERMS", key="btn_p2"):
         st.session_state.step = 'welcome'
         st.rerun()
