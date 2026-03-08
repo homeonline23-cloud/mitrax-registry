@@ -3,21 +3,63 @@ import streamlit as st
 # --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="Mitrax Command Center", layout="wide")
 
-# --- 2. IMPERIAL STYLING (THE GOLDEN FAULT) ---
+# --- 2. IMPERIAL STYLING (THE GOLDEN FAULT & CREST) ---
 st.markdown("""
     <style>
     .stApp { background-color: #0E1117; color: #FFFFFF; }
+    
+    /* Pulsing Golden Mitrax Title & Crest */
     @keyframes goldPulse {
-        0% { text-shadow: 0 0 10px #FFD700; }
-        50% { text-shadow: 0 0 30px #FFD700; }
-        100% { text-shadow: 0 0 10px #FFD700; }
+        0% { text-shadow: 0 0 10px #FFD700; filter: drop-shadow(0 0 5px #FFD700); }
+        50% { text-shadow: 0 0 30px #FFD700; filter: drop-shadow(0 0 20px #FFD700); }
+        100% { text-shadow: 0 0 10px #FFD700; filter: drop-shadow(0 0 5px #FFD700); }
     }
-    .vault-header { text-align: center; color: #FFD700; font-size: 38px; font-weight: bold; animation: goldPulse 2s infinite; }
-    .stButton>button { background-color: #FFD700 !important; color: #0E1117 !important; font-weight: bold !important; border-radius: 12px !important; width: 100%; border: 2px solid #FFD700; }
-    .grid-box { border: 2px solid #FFD700; padding: 15px; border-radius: 10px; background-color: #1A1A1A; text-align: center; }
+    
+    .imperial-crest {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        animation: goldPulse 3s infinite;
+    }
+
+    .vault-header { 
+        text-align: center; 
+        color: #FFD700; 
+        font-size: 38px; 
+        font-weight: bold; 
+        animation: goldPulse 2s infinite; 
+    }
+    
+    .stButton>button { 
+        background-color: #FFD700 !important; 
+        color: #0E1117 !important; 
+        font-weight: bold !important; 
+        border-radius: 12px !important; 
+        width: 100%; 
+        border: 2px solid #FFD700; 
+    }
+    
+    .grid-box { 
+        border: 2px solid #FFD700; 
+        padding: 15px; 
+        border-radius: 10px; 
+        background-color: #1A1A1A; 
+        text-align: center; 
+    }
+    
     .compass-text { color: #FFD700; font-weight: bold; font-size: 20px; }
     </style>
     """, unsafe_allow_html=True)
+
+# --- 3. THE IMPERIAL SYMBOL INJECTOR ---
+# This replaces the placeholder with the Golden Compass & Pyramid Symbol
+st.markdown("""
+    <div style='text-align: center;'>
+        <span style='font-size: 80px; filter: drop-shadow(0 0 10px #FFD700);'>🧭</span>
+        <div style='margin-top: -40px; font-size: 40px;'>📐</div>
+    </div>
+""", unsafe_allow_html=True)
 
 if 'step' not in st.session_state: st.session_state.step = 'video'
 
@@ -33,7 +75,7 @@ if st.session_state.step == 'video':
 # --- PHASE 2: TERMS ---
 elif st.session_state.step == 'legal':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>📜 TERMS & POLICY</h1>", unsafe_allow_html=True)
-    st.info("95% probability protocol active. Data remains in the Mitrax Vault.")
+    st.info("95% probability protocol active. Symmetry data remains secured within the Mitrax Vault.")
     if st.button("I ACCEPT THE TERMS"):
         st.session_state.step = 'welcome'
         st.rerun()
@@ -41,8 +83,12 @@ elif st.session_state.step == 'legal':
 # --- PHASE 3: WELCOME & INSTALL ---
 elif st.session_state.step == 'welcome':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>✉️ WELCOME FAMILY</h1>", unsafe_allow_html=True)
-    st.write("### Install the Mitrax App Icon on your phone home screen now!")
-    st.markdown("Android: 3 Dots -> Install App | iPhone: Share -> Add to Home Screen")
+    st.markdown("""
+    <div style='background-color:#1A1A1A; padding:20px; border-radius:15px; border:1px solid #333;'>
+    <h3>Install the Mitrax App Icon on your phone!</h3>
+    <p>Android: 3 Dots -> Install App | iPhone: Share -> Add to Home Screen</p>
+    </div>
+    """, unsafe_allow_html=True)
     if st.button("ENTER THE MITRAX VAULT"):
         st.session_state.step = 'signup'
         st.rerun()
@@ -58,12 +104,11 @@ elif st.session_state.step == 'signup':
             st.session_state.step = 'sector2'
             st.rerun()
 
-# --- PHASE 5: SECTOR 2 - THE CALCULATOR (THE EXPANSION) ---
+# --- PHASE 5: SECTOR 2 - THE CALCULATOR ---
 elif st.session_state.step == 'sector2':
     st.markdown(f"<div class='vault-header'>🔱 SECTOR 2: SYMMETRY GRIDS</div>", unsafe_allow_html=True)
-    st.write(f"Welcome, Commander {st.session_state.get('user_name', 'Soldier')}. Grids Online.")
+    st.write(f"Welcome, Commander {st.session_state.get('user_name', 'Soldier')}. Compass alignment complete.")
     
-    # NORTH, SOUTH, EAST, WEST COMPASS
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
         st.markdown("<div class='grid-box'><span class='compass-text'>NORTH</span><br>--- SYMMETRY CORE ---</div>", unsafe_allow_html=True)
@@ -76,7 +121,7 @@ elif st.session_state.step == 'sector2':
         st.markdown("<div class='grid-box'><span class='compass-text'>SOUTH</span></div>", unsafe_allow_html=True)
 
     st.markdown("---")
-    st.write("### 🧮 4-Digit Symmetry Input")
+    st.write("### 🧮 4-Digit Input")
     n1 = st.number_input("Winning Number 1", 0, 9)
     n2 = st.number_input("Winning Number 2", 0, 9)
     n3 = st.number_input("Winning Number 3", 0, 9)
