@@ -9,7 +9,6 @@ st.markdown("""
     <style>
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    /* Pulsing Golden Mitrax Title */
     @keyframes goldPulse {
         0% { text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; }
         50% { text-shadow: 0 0 25px #FFD700, 0 0 50px #FFA500; }
@@ -31,11 +30,6 @@ st.markdown("""
         font-weight: bold !important; 
         border-radius: 12px !important;
         border: 2px solid #FFD700 !important;
-        transition: 0.3s;
-    }
-    .stButton>button:hover {
-        box-shadow: 0px 0px 15px #FFD700 !important;
-        transform: scale(1.02);
     }
     
     .pyramid-frame {
@@ -48,16 +42,14 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-if 'step' not in st.session_state: st.session_state.step = 'video'
+if 'step' not in st.session_state: 
+    st.session_state.step = 'video'
 
 # --- 3. FLOW CONTROL ---
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>🛡️ THE MITRAX COMMAND CENTER</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align:center; color:#FFD700;'>Pick 4 Worldwide🌏</h3>", unsafe_allow_html=True)
-    
-    # Soldier Display Video (Autoplay)
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True) 
-    
     if st.button("PROCEED TO MISSION BRIEFING", use_container_width=True):
         st.session_state.step = 'legal'
         st.rerun()
@@ -73,3 +65,21 @@ elif st.session_state.step == 'welcome':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>✉️ WELCOME FAMILY</h1>", unsafe_allow_html=True)
     st.markdown("<div style='background-color:#1A1A1A; padding:20px; border-radius:15px; border:1px solid #333;'><h3>Welcome to The Mitrax Command Center!</h3><p>Wake up the 14 Soldiers anytime!</p></div>", unsafe_allow_html=True)
     if st.button("ENTER THE MITRAX VAULT", use_container_width=True):
+        st.session_state.step = 'signup'
+        st.rerun()
+
+elif st.session_state.step == 'signup':
+    st.markdown("<div class='vault-header'>📐 GOLDEN MITRAX VAULT</div>", unsafe_allow_html=True)
+    st.markdown("<div class='pyramid-frame'>", unsafe_allow_html=True)
+    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    with st.form("vault_reg"):
+        st.text_input("Commander Name")
+        st.text_input("Imperial Email")
+        if st.form_submit_button("ACTIVATE PYRAMID ACCESS"):
+            st.success("Accessing Symmetry Grids...")
+    st.markdown("<br><hr>", unsafe_allow_html=True)
+    with st.expander("🛠️"):
+        if st.text_input("CHEF CODE", type="password") == "Mitrax-Chef":
+            st.info("Vault Overridden. Grids Online.")
