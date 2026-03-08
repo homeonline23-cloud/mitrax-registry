@@ -1,66 +1,431 @@
-import streamlit as st
+otFoundError: No module named 'bs4'
 
-# --- 1. ENGINE CONFIG ---
-st.set_page_config(page_title="Mitrax Registry", layout="wide")
+2026-03-08 14:57:01.729 503 GET /script-health-check (127.0.0.1) 252.85ms
 
-# --- 2. THE ALIGNMENT SHIELD (CSS) ---
-st.markdown("""
-    <style>
-    /* Force everything into a tight center container */
-    .block-container {
-        padding-top: 2rem;
-        max-width: 800px;
-    }
-    /* Style the input boxes to be large and centered */
-    input {
-        text-align: center !important;
-        font-size: 28px !important;
-        font-weight: bold !important;
-        border: 2px solid #4A4A4A !important;
-    }
-    /* Remove extra spacing */
-    div.stColumn {
-        padding: 0px 5px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+2026-03-08 14:57:06.489 Uncaught app execution
 
-# --- 3. THE REGISTRY HEADER ---
-st.title("🌌 Mitrax Imperial Registry")
-st.write("Manual Coordinate Entry Mode Active | Secure & De-branded")
+Traceback (most recent call last):
 
-# Initializing digits
-if 'd1' not in st.session_state:
-    st.session_state.update({'d1': '0', 'd2': '0', 'd3': '0', 'd4': '0'})
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
 
-st.markdown("---")
+    result = func()
 
-# --- 4. THE UNIFIED HORIZONTAL GRID (One Line) ---
-# This creates 4 equal sectors side-by-side
-col1, col2, col3, col4 = st.columns(4)
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
 
-with col1:
-    st.markdown("<h3 style='color: red; text-align: center;'>7/1 (RED)</h3>", unsafe_allow_html=True)
-    n1 = st.text_input("S1", value=st.session_state.d1, key="digit1", label_visibility="collapsed")
+    exec(code, module.__dict__)  # noqa: S102
 
-with col2:
-    st.markdown("<h3 style='text-align: center;'>SECTOR 2</h3>", unsafe_allow_html=True)
-    n2 = st.text_input("S2", value=st.session_state.d2, key="digit2", label_visibility="collapsed")
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
 
-with col3:
-    st.markdown("<h3 style='color: blue; text-align: center;'>8/3 (BLUE)</h3>", unsafe_allow_html=True)
-    n3 = st.text_input("S3", value=st.session_state.d3, key="digit3", label_visibility="collapsed")
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
 
-with col4:
-    st.markdown("<h3 style='text-align: center;'>SECTOR 4</h3>", unsafe_allow_html=True)
-    n4 = st.text_input("S4", value=st.session_state.d4, key="digit4", label_visibility="collapsed")
+    from bs4 import BeautifulSoup
 
-st.markdown("<br>", unsafe_allow_html=True)
+ModuleNotFoundError: No module named 'bs4'
 
-# --- 5. THE LOCK BUTTON ---
-if st.button("🚀 LOCK COORDINATES", use_container_width=True):
-    st.session_state.d1 = n1
-    st.session_state.d2 = n2
-    st.session_state.d3 = n3
-    st.session_state.d4 = n4
-    st.success("Universal Coordinates Locked.")
+2026-03-08 14:57:06.733 503 GET /script-health-check (127.0.0.1) 247.64ms
+
+2026-03-08 14:57:11.484 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:11.728 503 GET /script-health-check (127.0.0.1) 246.67ms
+
+2026-03-08 14:57:16.477 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:16.729 503 GET /script-health-check (127.0.0.1) 254.88ms
+
+2026-03-08 14:57:21.499 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:21.817 503 GET /script-health-check (127.0.0.1) 321.14ms
+
+2026-03-08 14:57:26.485 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:26.760 503 GET /script-health-check (127.0.0.1) 277.81ms
+
+2026-03-08 14:57:31.479 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:31.754 503 GET /script-health-check (127.0.0.1) 276.63ms
+
+2026-03-08 14:57:36.494 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:36.717 503 GET /script-health-check (127.0.0.1) 224.80ms
+
+2026-03-08 14:57:41.480 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:41.722 503 GET /script-health-check (127.0.0.1) 244.96ms
+
+2026-03-08 14:57:46.498 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:46.761 503 GET /script-health-check (127.0.0.1) 265.42ms
+
+2026-03-08 14:57:51.474 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:51.694 503 GET /script-health-check (127.0.0.1) 222.56ms
+
+2026-03-08 14:57:56.467 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:57:56.708 503 GET /script-health-check (127.0.0.1) 242.34ms
+
+2026-03-08 14:58:01.473 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:01.710 503 GET /script-health-check (127.0.0.1) 240.07ms
+
+2026-03-08 14:58:06.477 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:06.737 503 GET /script-health-check (127.0.0.1) 262.83ms
+
+2026-03-08 14:58:11.480 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:11.719 503 GET /script-health-check (127.0.0.1) 241.64ms
+
+2026-03-08 14:58:16.489 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:16.703 503 GET /script-health-check (127.0.0.1) 215.94ms
+
+2026-03-08 14:58:21.468 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:21.693 503 GET /script-health-check (127.0.0.1) 226.46ms
+
+2026-03-08 14:58:26.485 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:26.732 503 GET /script-health-check (127.0.0.1) 250.08ms
+
+2026-03-08 14:58:31.509 Uncaught app execution
+
+Traceback (most recent call last):
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+
+    result = func()
+
+  File "/home/adminuser/venv/lib/python3.13/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+
+    exec(code, module.__dict__)  # noqa: S102
+
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/mount/src/mitrax-registry/mitrax_core.py", line 3, in <module>
+
+    from bs4 import BeautifulSoup
+
+ModuleNotFoundError: No module named 'bs4'
+
+2026-03-08 14:58:31.804 503 GET /script-health-check (127.0.0.1) 297.62ms
+
+[14:58:35] 🐙 Pulling code changes from Github...
+
+[14:58:36] 📦 Processing dependencies...
+
+[14:58:36] 📦 Processed dependencies!
+
+[14:58:38] 🔄 Updated app!
+
+[15:03:41] 🐙 Pulling code changes from Github...
+
+[15:03:42] 📦 Processing dependencies...
+
+[15:03:42] 📦 Processed dependencies!
+
+[15:03:44] 🔄 Updated app!
+
+[15:08:09] 🐙 Pulling code changes from Github...
+
+[15:08:09] 📦 Processing dependencies...
+
+[15:08:09] 📦 Processed dependencies!
+
+[15:08:12] 🔄 Updated app!
+
+[15:11:31] 🐙 Pulling code changes from Github...
+
+[15:11:32] 📦 Processing dependencies...
+
+[15:11:32] 📦 Processed dependencies!
+
+[15:11:33] 🔄 Updated app!
