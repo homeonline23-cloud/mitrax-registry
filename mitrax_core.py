@@ -6,24 +6,21 @@ st.set_page_config(page_title="Mitrax Registry", layout="wide")
 # --- 2. THE ALIGNMENT SHIELD (CSS) ---
 st.markdown("""
     <style>
-    /* Pulls everything into a tight, professional horizontal line */
     .block-container {
-        padding-top: 2rem;
-        max-width: 1000px;
+        padding-top: 1rem;
+        max-width: 1100px;
         margin: auto;
     }
     input {
         text-align: center !important;
-        font-size: 28px !important;
+        font-size: 30px !important;
         font-weight: bold !important;
-        border: 2px solid #4A4A4A !important;
-        border-radius: 8px !important;
     }
-    /* This forces the 4 columns to stay side-by-side even on smaller screens */
+    /* Force 4 columns to stay in one row even on smaller screens */
     [data-testid="column"] {
         width: 25% !important;
         flex: 1 1 25% !important;
-        min-width: 100px !important;
+        min-width: 120px !important;
     }
     div.stTextInput > label {
         display: none;
@@ -33,31 +30,28 @@ st.markdown("""
 
 # --- 3. THE REGISTRY HEADER ---
 st.title("🌌 Mitrax Imperial Registry")
-st.write("Manual Entry Mode | Secure & De-branded")
 
 # Initializing digits
 if 'd1' not in st.session_state:
     st.session_state.update({'d1': '0', 'd2': '0', 'd3': '0', 'd4': '0'})
 
-st.markdown("---")
-
 # --- 4. THE UNIFIED HORIZONTAL GRID ---
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.markdown("<h3 style='color: #FF0000; text-align: center;'>7/1 (RED)</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #FF0000; text-align: center; margin-bottom:0;'>7/1 (RED)</h3>", unsafe_allow_html=True)
     n1 = st.text_input("S1", value=st.session_state.d1, key="digit1")
 
 with col2:
-    st.markdown("<h3 style='text-align: center; color: white;'>SECTOR 2</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: white; margin-bottom:0;'>SECTOR 2</h3>", unsafe_allow_html=True)
     n2 = st.text_input("S2", value=st.session_state.d2, key="digit2")
 
 with col3:
-    st.markdown("<h3 style='color: #0000FF; text-align: center;'>8/3 (BLUE)</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: #0000FF; text-align: center; margin-bottom:0;'>8/3 (BLUE)</h3>", unsafe_allow_html=True)
     n3 = st.text_input("S3", value=st.session_state.d3, key="digit3")
 
 with col4:
-    st.markdown("<h3 style='text-align: center; color: white;'>SECTOR 4</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: white; margin-bottom:0;'>SECTOR 4</h3>", unsafe_allow_html=True)
     n4 = st.text_input("S4", value=st.session_state.d4, key="digit4")
 
 st.markdown("<br>", unsafe_allow_html=True)
