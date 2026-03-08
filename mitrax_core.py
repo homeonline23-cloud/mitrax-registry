@@ -6,26 +6,41 @@ from collections import Counter
 # --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="Mitrax Master Computer", layout="wide")
 
-# --- 2. IMPERIAL STYLING (GHOST ANALYSIS MODE) ---
+# --- 2. IMPERIAL STYLING (ALERTS & TREASURY) ---
 st.markdown("""
     <style>
     .stApp { background-color: #0E1117; color: #FFFFFF; }
+    
     @keyframes goldPulse {
         0% { text-shadow: 0 0 10px #FFD700; filter: drop-shadow(0 0 5px #FFD700); }
         50% { text-shadow: 0 0 30px #FFD700; filter: drop-shadow(0 0 20px #FFD700); }
         100% { text-shadow: 0 0 10px #FFD700; filter: drop-shadow(0 0 5px #FFD700); }
     }
-    @keyframes ghostGlow {
-        0% { color: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
-        50% { color: #FFFFFF; text-shadow: 0 0 20px #00FFFF; }
-        100% { color: #00FFFF; text-shadow: 0 0 5px #00FFFF; }
+    
+    @keyframes alertRed {
+        0% { background-color: #1A0000; border: 2px solid #FF0000; box-shadow: 0 0 5px #FF0000; }
+        50% { background-color: #4D0000; border: 2px solid #FF4444; box-shadow: 0 0 25px #FF0000; }
+        100% { background-color: #1A0000; border: 2px solid #FF0000; box-shadow: 0 0 5px #FF0000; }
     }
+
     .vault-header { text-align: center; color: #FFD700; font-size: 38px; font-weight: bold; animation: goldPulse 2s infinite; }
-    .ghost-text { text-align: center; font-size: 24px; font-weight: bold; animation: ghostGlow 1.5s infinite; }
-    .stButton>button { background-color: #FFD700 !important; color: #0E1117 !important; font-weight: bold !important; border-radius: 12px !important; width: 100%; border: 2px solid #FFD700; }
+    
+    .stButton>button { 
+        background-color: #FFD700 !important; color: #0E1117 !important; 
+        font-weight: bold !important; border-radius: 12px !important; 
+        width: 100%; border: 2px solid #FFD700; transition: 0.3s;
+    }
+    
+    .stButton>button:hover { transform: scale(1.02); box-shadow: 0 0 15px #FFD700; }
+
+    .imperial-alert {
+        padding: 20px; border-radius: 15px; text-align: center;
+        animation: alertRed 1.5s infinite; color: #FFFFFF; font-weight: bold; font-size: 22px;
+        margin: 20px 0;
+    }
+
     .grid-box { border: 2px solid #FFD700; padding: 15px; border-radius: 10px; background-color: #1A1A1A; text-align: center; }
     .brain-box { border: 2px solid #00FFFF; padding: 15px; border-radius: 10px; background-color: #000B14; text-align: center; }
-    .compass-text { color: #FFD700; font-weight: bold; font-size: 20px; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -54,7 +69,16 @@ elif st.session_state.step == 'legal':
 
 elif st.session_state.step == 'welcome':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>✉️ WELCOME FAMILY</h1>", unsafe_allow_html=True)
-    if st.button("ENTER THE MITRAX VAULT"):
+    
+    # --- TREASURY MODULE (PAYMENT GATEWAY) ---
+    st.markdown("<div class='grid-box'><h3>💎 UPGRADE TO FULL IMPERIAL ACCESS</h3><p>Unlock 24/7 Ghost Analysis & Prediction History</p></div>", unsafe_allow_html=True)
+    if st.button("⚜️ ACTIVATE GOLDEN MEMBERSHIP (PAYPAL)"):
+        # Placeholder link until tomorrow's update
+        st.warning("TREASURY LINK INITIALIZING... PAYPAL GATEWAY OPENING TOMORROW.")
+        # When you have the link, we replace the line below:
+        # st.markdown("[Click here to pay](https://www.paypal.com/...)")
+
+    if st.button("CONTINUE TO VAULT REGISTRATION"):
         st.session_state.step = 'signup'; st.rerun()
 
 elif st.session_state.step == 'signup':
@@ -65,9 +89,9 @@ elif st.session_state.step == 'signup':
         if st.form_submit_button("ACTIVATE MASTER COMPUTER"):
             st.session_state.user_name = name; st.session_state.step = 'sector3'; st.rerun()
 
-# --- SECTOR 3: GHOST ANALYSIS ENGINE ---
+# --- SECTOR 3: GHOST ANALYSIS & IMPERIAL ALERT ---
 elif st.session_state.step == 'sector3':
-    st.markdown(f"<div class='vault-header'>🔱 SECTOR 3: GHOST ANALYSIS MODE</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='vault-header'>🔱 SECTOR 3: MASTER COMPUTER</div>", unsafe_allow_html=True)
     
     tabs = st.tabs(["🧮 Symmetry Input", "👻 Ghost Analysis Brain"])
     
@@ -82,27 +106,24 @@ elif st.session_state.step == 'sector3':
         if st.button("UPLOAD TO GHOST BRAIN"):
             pred = f"{n1}{n2}{n3}{n4}"
             st.session_state.history.append(pred)
-            st.success(f"Pattern {pred} synchronized with Master Computer.")
+            st.success(f"Pattern {pred} synchronized.")
 
     with tabs[1]:
-        st.markdown("<div class='brain-box'><span class='ghost-text'>GHOST FREQUENCY TRACKER</span></div>", unsafe_allow_html=True)
-        
         if st.session_state.history:
-            # GHOST ANALYSIS LOGIC
             counts = Counter(st.session_state.history)
-            most_common = counts.most_common(3)
+            most_common = counts.most_common(1)
             
-            st.write("### 🔥 Hot Frequencies (Top Ghosts)")
-            for val, count in most_common:
-                st.markdown(f"<div style='color:#00FFFF; font-size:20px;'>Pattern <b>{val}</b> detected <b>{count}</b> times in the Grid.</div>", unsafe_allow_html=True)
-            
-            st.markdown("---")
-            st.write("### 📜 Full Brain History")
-            st.write(st.session_state.history)
-        else:
-            st.info("Ghost Brain is currently empty. Input data to see future winnings.")
+            # --- THE IMPERIAL ALERT ---
+            if most_common[0][1] >= 2:
+                st.markdown(f"""
+                <div class='imperial-alert'>
+                    🚨 IMPERIAL ALERT: 100% SYMMETRY MATCH DETECTED! 🚨<br>
+                    PATTERN {most_common[0][0]} IS MANIFESTING IN THE GRID!
+                </div>
+                """, unsafe_allow_html=True)
 
-    # COMPASS REMAINS FOR ALIGNMENT
-    st.markdown("---")
-    c1, c2, c3 = st.columns([1,2,1])
-    with c2: st.markdown("<div class='grid-box'><span class='compass-text'>NORTH, SOUTH, EAST, WEST ALIGNMENT</span></div>", unsafe_allow_html=True)
+            st.write("### 🔥 Ghost Frequencies")
+            for val, count in counts.most_common(3):
+                st.write(f"Pattern {val} - Strength: {count}x")
+        else:
+            st.info("Ghost Brain scanning for evening frequencies...")
