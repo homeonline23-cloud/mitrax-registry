@@ -53,9 +53,7 @@ if 'history' not in st.session_state:
 # --- PHASE 1: THE ORACLE ENTRANCE ---
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>THE MITRAX ORACLE VISION</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='grid-box'>Pick 4 Worldwide "The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning."
-
-</div>", unsafe_allow_html=True)
+    st.markdown("<div class='grid-box'>Predictor Outcome Tool. Analyzing 4-digit Global Symmetry Patterns. 95% Chance.</div>", unsafe_allow_html=True)
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True) 
     if st.button("PROCEED TO MISSION BRIEFING", key="btn_p1"):
         st.session_state.step = 'legal'; st.rerun()
