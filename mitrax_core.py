@@ -12,61 +12,58 @@ st.markdown("""
     .stButton>button { background-color: #FFD700 !important; color: #0E1117 !important; font-weight: bold !important; border-radius: 10px !important; }
     .legal-box { background-color: #1E1E1E; padding: 20px; border-radius: 10px; border: 1px solid #FFD700; height: 300px; overflow-y: scroll; font-size: 14px; }
     .client-header { text-align: center; color: #FFD700; }
+    input { background-color: #262730 !important; color: white !important; text-align: center !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. SESSION STATE TRACKING ---
 if 'step' not in st.session_state: st.session_state.step = 'video'
 
-# --- 4. PHASE 1: VIDEO INTRODUCTION (SOLDIERS DISPLAY) ---
+# --- 3. MISSION FLOW ---
 if st.session_state.step == 'video':
     st.markdown("<h1 class='client-header'>🛡️ THE MITRAX COMMAND CENTER</h1>", unsafe_allow_html=True)
-    # Placeholder for your soldier display video
-    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") # Replace with your actual Soldiers Display URL
+    st.markdown("<h4 style='text-align:center;'>Pick 4 Worldwide🌏</h4>", unsafe_allow_html=True)
     
-    st.write("Initializing Imperial Systems...")
-    time.sleep(2) # Simulated 20-second threshold progress
-    if st.button("PROCEED TO MISSION BRIEFING"):
+    # Soldiers Display Placeholder
+    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ") 
+    
+    if st.button("PROCEED TO MISSION BRIEFING", use_container_width=True):
         st.session_state.step = 'legal'
         st.rerun()
 
-# --- 5. PHASE 2: TERMS & PRIVATE POLICY ---
 elif st.session_state.step == 'legal':
-    st.markdown("<h2 class='client-header'>📜 READ FIRST: TERMS & POLICY</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='client-header'>📜 TERMS & PRIVATE POLICY</h2>", unsafe_allow_html=True)
     st.markdown("""
     <div class='legal-box'>
-    <b>TERMS AND CONDITIONS:</b><br>
-    The Mitrax Command Center is a 4-digit Prediction Calculator intended for global use...
-    By using this symmetry pattern analyzer, you acknowledge that predictions are based on 
-    mathematical symmetry. We provide a 95% probability increase based on global data...
-    <br><br><b>PRIVACY POLICY:</b><br>
-    Your tactical data and coordinate entries remain encrypted within the Mitrax Empire...
+    <b>THE MITRAX COMMAND CENTER - GLOBAL PROTOCOL</b><br>
+    The 4-digit Prediction Calculator that can be used Globally... 
+    Analyzing symmetry patterns identifies potential winning numbers in the GRID’s. 
+    There’s now a 95% chance of increasing your chances of winning...
     </div>
     """, unsafe_allow_html=True)
     
-    if st.button("I ACCEPT THE IMPERIAL TERMS"):
+    if st.button("I ACCEPT THE IMPERIAL TERMS", use_container_width=True):
         st.session_state.step = 'welcome'
         st.rerun()
 
-# --- 6. PHASE 3: WELCOME & INSTALLATION ---
 elif st.session_state.step == 'welcome':
-    st.markdown("<h2 class='client-header'>✉️ WELCOME, COMMANDER</h2>", unsafe_allow_html=True)
-    st.write("""
-    ### Installation Instructions:
-    1. **On Mobile:** Click the browser menu (three dots) and select 'Add to Home Screen'.
-    2. **On Desktop:** Click the 'Install' icon in the URL bar.
-    3. **Registry:** Secure your login to access the worldwide symmetry grids.
-    """)
-    if st.button("CONTINUE TO SIGN-UP"):
+    st.markdown("<h2 class='client-header'>✉️ WELCOME LETTER & INSTALLATION</h2>", unsafe_allow_html=True)
+    st.write("### How to install Mitrax on your device:")
+    st.info("Mobile: Tap 'Add to Home Screen' | Desktop: Click Install in URL bar.")
+    if st.button("GO TO SIGN-UP", use_container_width=True):
         st.session_state.step = 'signup'
         st.rerun()
 
-# --- 7. PHASE 4: SIGN-UP & ACCESS ---
 elif st.session_state.step == 'signup':
-    st.markdown("<h2 class='client-header'>👤 SIGN UP TO CONTINUE</h2>", unsafe_allow_html=True)
-    with st.form("signup_form"):
-        st.text_input("Imperial ID / Email")
-        st.text_input("Access Code Request", type="password")
-        if st.form_submit_button("ACTIVATE COMMANDER ACCESS"):
-            st.success("Registration Sent. Accessing Global Symmetry Grids...")
-            # Here we would link back to your main Calculator code
+    st.markdown("<h2 class='client-header'>👤 COMMANDER SIGN-UP</h2>", unsafe_allow_html=True)
+    with st.form("reg"):
+        st.text_input("Player Name")
+        st.text_input("Imperial Email")
+        if st.form_submit_button("REGISTER FOR ACCESS"):
+            st.success("Data Sent to Command. Awaiting Authorization.")
+            
+    # THE HIDDEN OVERRIDE FOR THE HEAD CHEF
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
+    with st.expander("🛠️ COMMANDER OVERRIDE"):
+        if st.text_input("CHEF CODE", type="password") == "Mitrax-Chef":
+            st.session_state.step = 'calculator' # This would trigger your main grid
+            st.info("Access Granted. Redirecting to Symmetry Grids...")
