@@ -2,7 +2,18 @@ import streamlit as st
 
 # --- 1. THE IMPERIAL BACK DOOR ---
 if 'step' not in st.session_state:
-    st.session_state.step = 'sector3'
+# --- 5. THE ORACLE VAULT (THE TARGET SECTOR) ---
+if st.session_state.step == 'sector3':
+    # This tells the computer to show the Title
+    st.markdown("<h1 style='text-align: center; color: #FFD700;'>THE MITRAX ORACLE VAULT</h1>", unsafe_allow_html=True)
+    
+    # This brings back the Imperial Compass!
+    st.markdown("<div style='text-align: center; font-size: 60px;'>✧🌍✧</div>", unsafe_allow_html=True)
+    
+    st.success("WELCOME BACK, HEAD CHEF. THE GRID IS ACTIVE.")
+    
+    # This is where your 6x Grids and Red 7/1 / Blue 8/3 must live!
+    st.write("Imperial Forecasting: 95% Probability Shield Engaged.")
 # --- 2. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
 
