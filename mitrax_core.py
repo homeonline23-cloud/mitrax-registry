@@ -33,7 +33,7 @@ st.markdown("""
 # --- 4. THE SLEEK UNIVERSAL COMPASS ---
 st.markdown("<div class='symbol-container'><div class='star-base'>✧<div class='world-center'>🌍</div></div></div>", unsafe_allow_html=True)
 
-# --- PHASE 5: THE ORACLE VAULT (THE TARGET) ---
+# --- PHASE 5: THE ORACLE VAULT ---
 if st.session_state.step == 'sector3':
     st.markdown("<div class='mitrax-title'>ORACLE VAULT</div>", unsafe_allow_html=True)
     st.success("WELCOME BACK, HEAD CHEF. THE BRIDGE IS RESTORED.")
