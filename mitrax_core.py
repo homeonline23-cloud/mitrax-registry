@@ -12,6 +12,7 @@ st.markdown("""
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
+    /* SLOWED DOWN GOLDEN GLOBE PULSE */
     @keyframes slowGoldPulse {
         0% { transform: scale(1); filter: drop-shadow(0 0 10px #FFD700); }
         50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #FFD700); }
@@ -35,22 +36,21 @@ st.markdown("""
     }
     
     .grid-box { border: 2px solid #FFD700; padding: 25px; border-radius: 15px; background-color: #1A1A1A; margin-bottom: 20px; }
-    .globe-container { text-align: center; margin-bottom: 20px; }
+    .globe-container { text-align: center; margin-bottom: 20px; position: relative; }
     .globe-pulse { font-size: 80px; display: inline-block; animation: slowGoldPulse 6s infinite; }
-    .compass-labels { color: #FFD700; font-family: 'Impact'; font-size: 22px; letter-spacing: 5px; line-height: 1.2; }
+    
+    /* CUSTOM COMPASS LABELS REMOVED PER CHEF'S COMMAND */
+    .compass-labels { display: none; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. THE UNIVERSAL COMPASS SEAL ---
+# --- 3. THE UNIVERSAL COMPASS SEAL (CUSTOM COMPASS DESIGN) ---
 st.markdown("""
     <div class='globe-container'>
-        <div class='compass-labels'>NORTH</div>
-        <div style='display: flex; justify-content: center; align-items: center; gap: 20px;'>
-            <span class='compass-labels'>WEST</span>
-            <span class='globe-pulse'>🌍</span>
-            <span class='compass-labels'>EAST</span>
+        <div style='display: flex; justify-content: center; align-items: center; position: relative;'>
+            <div style='font-size: 200px; color: #FFD700; filter: drop-shadow(0 0 10px #FFD700);'>🧭</div>
+            <div style='position: absolute;' class='globe-pulse'>🌍</div>
         </div>
-        <div class='compass-labels'>SOUTH</div>
     </div>
 """, unsafe_allow_html=True)
 
