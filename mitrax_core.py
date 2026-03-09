@@ -6,7 +6,7 @@ from collections import Counter
 # --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
 
-# --- 2. IMPERIAL STYLING (ORACLE GLOW) ---
+# --- 2. IMPERIAL STYLING (GOLDEN TREASURY) ---
 st.markdown("""
     <style>
     .stApp { background-color: #0E1117; color: #FFFFFF; }
@@ -15,23 +15,22 @@ st.markdown("""
         50% { text-shadow: 0 0 30px #FFD700; filter: drop-shadow(0 0 20px #FFD700); }
         100% { text-shadow: 0 0 10px #FFD700; filter: drop-shadow(0 0 5px #FFD700); }
     }
-    @keyframes alertRed {
-        0% { background-color: #1A0000; border: 2px solid #FF0000; box-shadow: 0 0 5px #FF0000; }
-        50% { background-color: #4D0000; border: 2px solid #FF4444; box-shadow: 0 0 25px #FF0000; }
-        100% { background-color: #1A0000; border: 2px solid #FF0000; box-shadow: 0 0 5px #FF0000; }
-    }
     .vault-header { text-align: center; color: #FFD700; font-size: 38px; font-weight: bold; animation: goldPulse 2s infinite; }
+    
     .stButton>button { 
         background-color: #FFD700 !important; color: #0E1117 !important; 
         font-weight: bold !important; border-radius: 12px !important; 
         width: 100%; border: 2px solid #FFD700; transition: 0.3s;
     }
-    .stButton>button:hover { transform: scale(1.02); box-shadow: 0 0 15px #FFD700; }
-    .imperial-alert {
-        padding: 20px; border-radius: 15px; text-align: center;
-        animation: alertRed 1.5s infinite; color: #FFFFFF; font-weight: bold; font-size: 22px;
-        margin: 20px 0;
+    .stButton>button:hover { transform: scale(1.02); box-shadow: 0 0 25px #FFD700; }
+    
+    .pay-link {
+        display: block; text-align: center; background-color: #FFD700; color: #0E1117 !important;
+        padding: 15px; border-radius: 12px; font-weight: bold; text-decoration: none;
+        font-size: 20px; border: 2px solid #FFD700; transition: 0.3s; margin: 10px 0;
     }
+    .pay-link:hover { box-shadow: 0 0 30px #FFD700; transform: scale(1.01); }
+
     .grid-box { border: 2px solid #FFD700; padding: 15px; border-radius: 10px; background-color: #1A1A1A; text-align: center; }
     .brain-box { border: 2px solid #00FFFF; padding: 15px; border-radius: 10px; background-color: #000B14; text-align: center; }
     </style>
@@ -45,16 +44,12 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-if 'step' not in st.session_state: 
-    st.session_state.step = 'video'
-if 'history' not in st.session_state: 
-    st.session_state.history = []
+if 'step' not in st.session_state: st.session_state.step = 'video'
+if 'history' not in st.session_state: st.session_state.history = []
 
-# --- PHASE 1: THE ORACLE ENTRANCE ---
+# --- PHASE 1: THE 4K ORACLE ENTRANCE ---
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>THE MITRAX ORACLE VISION</h1>", unsafe_allow_html=True)
-    
-    # --- FIXED MANTRA BOX (LINE 56 REPAIR) ---
     st.markdown("""
     <div class='grid-box'>
         <b>Pick 4 Worldwide🌏</b><br><br>
@@ -64,30 +59,41 @@ if st.session_state.step == 'video':
     </div>
     """, unsafe_allow_html=True)
     
-    # --- VIDEO FRAME ---
-    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True) 
+    # --- UPDATED 4K HEART ---
+    st.video("https://youtu.be/Hhj7UPfmB6U", autoplay=True, muted=True) 
     
-    if st.button("PROCEED TO MISSION BRIEFING", key="btn_p1"):
+    if st.button("PROCEED TO MISSION BRIEFING"):
         st.session_state.step = 'legal'; st.rerun()
 
 # --- PHASE 2: TERMS ---
 elif st.session_state.step == 'legal':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>📜 TERMS & POLICY</h1>", unsafe_allow_html=True)
     st.info("95% probability protocol active. Data secured within the Oracle Vault.")
-    if st.button("I ACCEPT THE TERMS", key="btn_p2"):
+    if st.button("I ACCEPT THE TERMS"):
         st.session_state.step = 'welcome'; st.rerun()
 
-# --- PHASE 3: WELCOME FAMILY ---
+# --- PHASE 3: THE IMPERIAL TREASURY ---
 elif st.session_state.step == 'welcome':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>✉️ WELCOME FAMILY</h1>", unsafe_allow_html=True)
     st.markdown("<div class='grid-box'><h3>Install the Oracle App Icon!</h3><p>Android: 3 Dots -> Install App<br>iPhone: Share -> Add to Home Screen</p></div>", unsafe_allow_html=True)
     
     st.markdown("<br><hr>", unsafe_allow_html=True)
-    st.markdown("<div style='text-align:center;'><h3>💎 UPGRADE TO GOLDEN ACCESS</h3><p>Unlock 24/7 Ghost Analysis & Prediction History</p></div>", unsafe_allow_html=True)
-    if st.button("⚜️ ACTIVATE GOLDEN MEMBERSHIP (PAYPAL)"):
-        st.warning("TREASURY LINK INITIALIZING... PAYPAL GATEWAY OPENING SOON.")
+    st.markdown("""
+    <div style='text-align:center;'>
+        <h2 style='color:#FFD700;'>💎 GOLDEN MEMBERSHIP ACCESS</h2>
+        <p style='font-size:18px;'>Unlock the Ghost Analysis Brain & Full Prediction History</p>
+        <p style='color:#FFD700; font-size:22px; font-weight:bold;'>Only $39.95 every 3 months</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # --- THE PAYPAL GATEWAY ---
+    st.markdown("""
+        <a href="https://www.paypal.com/ncp/payment/ZXZXQZ7ZBYUN8" target="_blank" class="pay-link">
+            ⚜️ ACTIVATE MEMBERSHIP NOW
+        </a>
+    """, unsafe_allow_html=True)
 
-    if st.button("CONTINUE TO VAULT REGISTRATION", key="btn_p3"):
+    if st.button("I HAVE PAID / CONTINUE TO VAULT REGISTRATION"):
         st.session_state.step = 'signup'; st.rerun()
 
 # --- PHASE 4: REGISTRATION ---
@@ -100,9 +106,10 @@ elif st.session_state.step == 'signup':
         if st.form_submit_button("ACTIVATE ORACLE VISION"):
             st.session_state.user_name = name; st.session_state.step = 'sector3'; st.rerun()
 
-# --- PHASE 5: SECTOR 3 - THE ORACLE BRAIN ---
-elif st.session_state.step == 'sector2' or st.session_state.step == 'sector3':
+# --- PHASE 5: THE ORACLE BRAIN (SECTOR 3) ---
+elif st.session_state.step == 'sector3':
     st.markdown(f"<div class='vault-header'>🔱 THE MITRAX ORACLE VISION ACTIVE</div>", unsafe_allow_html=True)
+    st.write(f"Welcome, Commander {st.session_state.get('user_name', 'Soldier')}.")
     
     tabs = st.tabs(["🧮 Symmetry Input", "👻 Ghost Analysis Brain"])
     
@@ -117,22 +124,12 @@ elif st.session_state.step == 'sector2' or st.session_state.step == 'sector3':
         if st.button("UPLOAD TO ORACLE BRAIN"):
             pred = f"{n1}{n2}{n3}{n4}"
             st.session_state.history.append(pred)
-            st.success(f"Pattern {pred} synchronized with the Oracle.")
+            st.success(f"Pattern {pred} synchronized.")
 
     with tabs[1]:
         if st.session_state.history:
             counts = Counter(st.session_state.history)
-            most_common = counts.most_common(1)
-            
-            if most_common[0][1] >= 2:
-                st.markdown(f"""
-                <div class='imperial-alert'>
-                    🚨 ORACLE ALERT: 100% SYMMETRY MATCH! 🚨<br>
-                    PATTERN {most_common[0][0]} IS MANIFESTING!
-                </div>
-                """, unsafe_allow_html=True)
-
-            st.write("### 🔥 Ghost Frequencies")
+            st.write("### 🔥 Ghost Frequencies Detected")
             for val, count in counts.most_common(3):
                 st.write(f"Pattern {val} - Strength: {count}x")
         else:
