@@ -23,6 +23,7 @@ st.markdown("""
         font-weight: 400;
         letter-spacing: 8px;
         margin-bottom: 0px;
+        line-height: 1.2;
     }
     
     .prediction-subtitle {
@@ -51,22 +52,5 @@ st.markdown("""
     
     .symbol-container { text-align: center; margin-top: 20px; margin-bottom: 10px; }
     .star-base { font-size: 60px; color: #FFD700; position: relative; display: inline-block; opacity: 0.9; }
-    .world-center { position: absolute; top: 12%; left: 0; right: 0; font-size: 30px; animation: slowGoldPulse 5s infinite; }
-    </style>
-    """, unsafe_allow_html=True)
-
-# --- 3. THE SLEEK UNIVERSAL COMPASS ---
-st.markdown("""
-    <div class='symbol-container'>
-        <div class='star-base'>
-            ✧
-            <div class='world-center'>🌍</div>
-        </div>
-    </div>
-""", unsafe_allow_html=True)
-
-if 'step' not in st.session_state: st.session_state.step = 'intro'
-
-# --- PHASE 1: THE PREDICTION INTRO ---
-if st.session_state.step == 'intro':
-    st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE
+    .world-center { position: absolute; top: 12%; left: 0; right: 0
+    
