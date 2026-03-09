@@ -52,5 +52,24 @@ st.markdown("""
     
     .symbol-container { text-align: center; margin-top: 20px; margin-bottom: 10px; }
     .star-base { font-size: 60px; color: #FFD700; position: relative; display: inline-block; opacity: 0.9; }
-    .world-center { position: absolute; top: 12%; left: 0; right: 0
+    .world-center { position: absolute; top: 12%; left: 0; right: 0; font-size: 30px; animation: slowGoldPulse 5s infinite; }
+    </style>
+    """, unsafe_allow_html=True)
+
+# --- 3. THE SLEEK UNIVERSAL COMPASS ---
+st.markdown("<div class='symbol-container'><div class='star-base'>✧<div class='world-center'>🌍</div></div></div>", unsafe_allow_html=True)
+
+if 'step' not in st.session_state: st.session_state.step = 'intro'
+
+# --- PHASE 1: THE PREDICTION INTRO ---
+if st.session_state.step == 'intro':
+    st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE</div>", unsafe_allow_html=True)
+    st.markdown("<div class='prediction-subtitle'>PREDICTION PIC 4</div>", unsafe_allow_html=True)
     
+    st.markdown("""
+    <div style='text-align: center; margin-bottom: 25px;'>
+        <h3 style='color:#FFFFFF; font-weight: 300; font-style:italic;'>Stop gambling and start forecasting.</h3>
+        <p style='font-size:18px; color:#AAAAAA;'>
+            The Mitrax Oracle uses mathematical patterns to fill the Grid with winning numbers.<br>
+            Get a <span style='color:#FFD700; font-weight:bold;'>95% chance of winning</span> by subscribing today.
+        </p>
