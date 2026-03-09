@@ -54,7 +54,7 @@ if 'history' not in st.session_state:
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>THE MITRAX ORACLE VISION</h1>", unsafe_allow_html=True)
     st.markdown("<div class='grid-box'> Predictor Outcome Tool. Analyzing 4-digit Global Symmetry Patterns. 95% Chance.</div>", unsafe_allow_html=True)
-    st.video("https://youtu.be/Hhj7UPfmB6U", autoplay=True, muted=True) 
+    st.video("https://youtu.be/-a7zfCFjEOA", autoplay=True, muted=True) 
     if st.button("PROCEED TO MISSION BRIEFING", key="btn_p1"):
         st.session_state.step = 'legal'; st.rerun()
 
