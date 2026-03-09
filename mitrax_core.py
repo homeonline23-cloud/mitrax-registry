@@ -12,10 +12,9 @@ st.markdown("""
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    /* SLOWED DOWN GOLDEN PULSE */
     @keyframes slowGoldPulse {
         0% { transform: scale(1); filter: drop-shadow(0 0 10px #FFD700); }
-        50% { transform: scale(1.03); filter: drop-shadow(0 0 20px #FFD700); }
+        50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #FFD700); }
         100% { transform: scale(1); filter: drop-shadow(0 0 10px #FFD700); }
     }
     
@@ -37,7 +36,7 @@ st.markdown("""
     
     .grid-box { border: 2px solid #FFD700; padding: 25px; border-radius: 15px; background-color: #1A1A1A; margin-bottom: 20px; }
     .globe-container { text-align: center; margin-bottom: 20px; }
-    .globe-pulse { font-size: 80px; display: inline-block; animation: slowGoldPulse 5s infinite; }
+    .globe-pulse { font-size: 80px; display: inline-block; animation: slowGoldPulse 6s infinite; }
     .compass-labels { color: #FFD700; font-family: 'Impact'; font-size: 22px; letter-spacing: 5px; line-height: 1.2; }
     </style>
     """, unsafe_allow_html=True)
@@ -67,4 +66,7 @@ if st.session_state.step == 'intro':
         <h3 style='color:#FFFFFF; font-style:italic;'>Stop gambling and start forecasting.</h3>
         <p style='font-size:20px; color:#FFFFFF;'>
             The Mitrax Oracle uses mathematical patterns to fill the Grid with winning numbers.<br>
-            Get
+            Get a <span style='color:#FFD700; font-weight:bold;'>95% chance of winning</span> by subscribing to the pattern analysis today.
+        </p>
+    </div>
+    """, unsafe_allow_html=True
