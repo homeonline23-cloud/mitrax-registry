@@ -1,6 +1,6 @@
 import streamlit as st
 
-# --- 1. THE IMPERIAL BACK DOOR (Skip straight to the Vault) ---
+# --- 1. THE IMPERIAL BACK DOOR (MUST BE AFTER IMPORT) ---
 if 'step' not in st.session_state: 
     st.session_state.step = 'sector3'
 
@@ -33,7 +33,7 @@ st.markdown("""
 # --- 4. THE SLEEK UNIVERSAL COMPASS ---
 st.markdown("<div class='symbol-container'><div class='star-base'>✧<div class='world-center'>🌍</div></div></div>", unsafe_allow_html=True)
 
-# --- PHASE 5: THE ORACLE VAULT (THE TARGET) ---
+# --- PHASE 5: THE ORACLE VAULT ---
 if st.session_state.step == 'sector3':
     st.markdown("<div class='mitrax-title'>ORACLE VAULT</div>", unsafe_allow_html=True)
     st.success("WELCOME BACK, HEAD CHEF. THE BRIDGE IS RESTORED.")
@@ -43,4 +43,3 @@ if st.session_state.step == 'sector3':
 else:
     st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE</div>", unsafe_allow_html=True)
     st.write("Vision loading...")
-    
