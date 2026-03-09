@@ -53,8 +53,20 @@ if 'history' not in st.session_state:
 # --- PHASE 1: THE ORACLE ENTRANCE ---
 if st.session_state.step == 'video':
     st.markdown("<h1 style='text-align:center; color:#FFD700;'>THE MITRAX ORACLE VISION</h1>", unsafe_allow_html=True)
-    st.markdown("<div class='grid-box'> Predictor Outcome Tool. Analyzing 4-digit Global Symmetry Patterns. 95% Chance.</div>", unsafe_allow_html=True)
-    st.video("https://youtu.be/-a7zfCFjEOA", autoplay=True, muted=True) 
+    
+    # --- FIXED MANTRA BOX (LINE 56 REPAIR) ---
+    st.markdown("""
+    <div class='grid-box'>
+        <b>Pick 4 Worldwide🌏</b><br><br>
+        The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers 
+        into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential 
+        winning numbers in the GRIDs. There is now a 95% chance of increasing your chances of winning.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # --- VIDEO FRAME ---
+    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ", autoplay=True, muted=True) 
+    
     if st.button("PROCEED TO MISSION BRIEFING", key="btn_p1"):
         st.session_state.step = 'legal'; st.rerun()
 
@@ -73,7 +85,7 @@ elif st.session_state.step == 'welcome':
     st.markdown("<br><hr>", unsafe_allow_html=True)
     st.markdown("<div style='text-align:center;'><h3>💎 UPGRADE TO GOLDEN ACCESS</h3><p>Unlock 24/7 Ghost Analysis & Prediction History</p></div>", unsafe_allow_html=True)
     if st.button("⚜️ ACTIVATE GOLDEN MEMBERSHIP (PAYPAL)"):
-        st.warning("TREASURY LINK INITIALIZING... PAYPAL GATEWAY OPENING TOMORROW.")
+        st.warning("TREASURY LINK INITIALIZING... PAYPAL GATEWAY OPENING SOON.")
 
     if st.button("CONTINUE TO VAULT REGISTRATION", key="btn_p3"):
         st.session_state.step = 'signup'; st.rerun()
@@ -89,9 +101,8 @@ elif st.session_state.step == 'signup':
             st.session_state.user_name = name; st.session_state.step = 'sector3'; st.rerun()
 
 # --- PHASE 5: SECTOR 3 - THE ORACLE BRAIN ---
-elif st.session_state.step == 'sector3':
+elif st.session_state.step == 'sector2' or st.session_state.step == 'sector3':
     st.markdown(f"<div class='vault-header'>🔱 THE MITRAX ORACLE VISION ACTIVE</div>", unsafe_allow_html=True)
-    st.write(f"Welcome, Commander {st.session_state.get('user_name', 'Soldier')}.")
     
     tabs = st.tabs(["🧮 Symmetry Input", "👻 Ghost Analysis Brain"])
     
@@ -113,7 +124,6 @@ elif st.session_state.step == 'sector3':
             counts = Counter(st.session_state.history)
             most_common = counts.most_common(1)
             
-            # --- THE IMPERIAL ALERT ---
             if most_common[0][1] >= 2:
                 st.markdown(f"""
                 <div class='imperial-alert'>
