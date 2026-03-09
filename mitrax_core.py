@@ -1,5 +1,12 @@
 import streamlit as st
 
+# --- 1. THE IMPERIAL BACK DOOR ---
+if 'step' not in st.session_state:
+    st.session_state.step = 'sector3'
+
+# --- 2. ENGINE CONFIGURATION ---
+st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
+
 # --- 1. THE IMPERIAL BACK DOOR (Skip straight to the Vault) ---
 if 'step' not in st.session_state: 
     st.session_state.step = 'sector3'
