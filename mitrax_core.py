@@ -2,6 +2,12 @@ import streamlit as st
 
 # --- 1. THE IMPERIAL BACK DOOR ---
 if 'step' not in st.session_state:
+    st.session_state.step = 'sector3'  # <--- THIS LINE MUST BE PUSHED IN!
+
+# --- 2. ENGINE CONFIGURATION ---
+st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
+# --- 1. THE IMPERIAL BACK DOOR ---
+if 'step' not in st.session_state:
 # --- 5. THE ORACLE VAULT (THE TARGET SECTOR) ---
 if st.session_state.step == 'sector3':
     # This tells the computer to show the Title
