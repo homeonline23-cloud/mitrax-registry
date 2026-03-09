@@ -71,7 +71,7 @@ elif st.session_state.step == 'sector3':
     # --- THE WHITE BOLD ARIAL GLOBAL COMMAND BANNER ---
     st.markdown("""
         <div class='global-banner'>
-            🌍 GLOBAL ADAPTATION PROTOCOL: MEMBERS MAY ENTER LOCAL WINNING NUMBERS ABOVE 
+            🌍 MEMBERS MAY ENTER LOCAL WINNING NUMBERS ABOVE 
             TO ANALYZE SYMMETRY WITHIN THE 6X MATRIX BELOW. 🌍
         </div>
         """, unsafe_allow_html=True)
