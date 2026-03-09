@@ -1,69 +1,58 @@
 import streamlit as st
 
-# --- 1. THE IMPERIAL BACK DOOR ---
-if 'step' not in st.session_state:
-    st.session_state.step = 'sector3'  # <--- THIS LINE MUST BE PUSHED IN!
-
-# --- 2. ENGINE CONFIGURATION ---
-st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
-# --- 1. THE IMPERIAL BACK DOOR ---
-if 'step' not in st.session_state:
-# --- 5. THE ORACLE VAULT (THE TARGET SECTOR) ---
-if st.session_state.step == 'sector3':
-    # This tells the computer to show the Title
-    st.markdown("<h1 style='text-align: center; color: #FFD700;'>THE MITRAX ORACLE VAULT</h1>", unsafe_allow_html=True)
-    
-    # This brings back the Imperial Compass!
-    st.markdown("<div style='text-align: center; font-size: 60px;'>✧🌍✧</div>", unsafe_allow_html=True)
-    
-    st.success("WELCOME BACK, HEAD CHEF. THE GRID IS ACTIVE.")
-    
-    # This is where your 6x Grids and Red 7/1 / Blue 8/3 must live!
-    st.write("Imperial Forecasting: 95% Probability Shield Engaged.")
-# --- 2. ENGINE CONFIGURATION ---
-st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
-
 # --- 1. THE IMPERIAL BACK DOOR (Skip straight to the Vault) ---
-if 'step' not in st.session_state: 
+if 'step' not in st.session_state:
     st.session_state.step = 'sector3'
 
 # --- 2. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="The Mitrax Oracle Vision", layout="wide")
 
-# --- 3. UNIVERSAL STYLING (SLEEK GOLDEN FILAMENT) ---
+# --- 3. UNIVERSAL STYLING (THE GOLDEN CASING) ---
 st.markdown("""
     <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    @keyframes slowGoldPulse {
-        0% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 15px #FFD700); }
-        100% { transform: scale(1); opacity: 0.8; }
-    }
-    
     .mitrax-title {
         text-align: center; color: #FFD700; font-family: 'Impact', sans-serif;
-        font-size: 42px; letter-spacing: 8px; margin-bottom: 0px; line-height: 1.2;
+        font-size: 45px; letter-spacing: 10px; margin-bottom: 0px;
     }
     
-    .symbol-container { text-align: center; margin-top: 20px; margin-bottom: 10px; }
-    .star-base { font-size: 60px; color: #FFD700; position: relative; display: inline-block; }
-    .world-center { position: absolute; top: 12%; left: 0; right: 0; font-size: 30px; animation: slowGoldPulse 5s infinite; }
+    .grid-box {
+        border: 2px solid #FFD700; border-radius: 10px; padding: 15px;
+        text-align: center; background-color: rgba(255, 215, 0, 0.05);
+    }
+    
+    .red-protocol { color: #FF4B4B; font-weight: bold; font-size: 22px; }
+    .blue-protocol { color: #1E90FF; font-weight: bold; font-size: 22px; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 4. THE SLEEK UNIVERSAL COMPASS ---
-st.markdown("<div class='symbol-container'><div class='star-base'>✧<div class='world-center'>🌍</div></div></div>", unsafe_allow_html=True)
+# --- 4. THE UNIVERSAL COMPASS ---
+st.markdown("<div style='text-align: center; font-size: 80px; margin-top: 20px;'>✧🌍✧</div>", unsafe_allow_html=True)
 
-# --- PHASE 5: THE ORACLE VAULT ---
+# --- 5. THE ORACLE VAULT CONTENT (SECTOR 3) ---
 if st.session_state.step == 'sector3':
-    st.markdown("<div class='mitrax-title'>ORACLE VAULT</div>", unsafe_allow_html=True)
-    st.success("WELCOME BACK, HEAD CHEF. THE BRIDGE IS RESTORED.")
-    st.write("The 6x Grids are standing by for your commands.")
-
-# --- EMERGENCY FALLBACK ---
-else:
     st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE</div>", unsafe_allow_html=True)
-    st.write("Vision loading...")
+    st.markdown("<h3 style='text-align: center; color: #AAAAAA;'>95% PROBABILITY VISION ACTIVE</h3>", unsafe_allow_html=True)
     
+    st.divider()
+
+    # THE CORE PROTOCOLS (7/1 and 8/3)
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.markdown("<div class='grid-box'><p>PROTOCOL 7/1</p><p class='red-protocol'>RED</p></div>", unsafe_allow_html=True)
+    with col_b:
+        st.markdown("<div class='grid-box'><p>PROTOCOL 8/3</p><p class='blue-protocol'>BLUE</p></div>", unsafe_allow_html=True)
+
+    st.divider()
+
+    # THE 6X SYMMETRY GRID
+    st.markdown("<h3 style='text-align: center;'>THE 6X SYMMETRY MATRIX</h3>", unsafe_allow_html=True)
+    cols = st.columns(6)
+    for i in range(6):
+        with cols[i]:
+            st.markdown(f"<div style='border: 1px solid #444; padding: 10px; text-align: center; border-radius: 5px;'>Sector {i+1}</div>", unsafe_allow_html=True)
+            st.number_input(f"Input {i+1}", label_visibility="collapsed", key=f"in_{i}")
+
+    st.success("HEAD CHEF: THE UNIVERSAL COMPASS IS CALIBRATED TO NORTH.")
