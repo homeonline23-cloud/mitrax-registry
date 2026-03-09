@@ -69,4 +69,50 @@ if st.session_state.step == 'intro':
             Get a <span style='color:#FFD700; font-weight:bold;'>95% chance of winning</span> by subscribing to the pattern analysis today.
         </p>
     </div>
-    """, unsafe_allow_html=True
+    """, unsafe_allow_html=True)
+    
+    st.video("https://youtu.be/Hhj7UPfmB6U") 
+    
+    if st.button("PROCEED TO SUBSCRIPTION"):
+        st.session_state.step = 'legal'; st.rerun()
+
+# --- PHASE 2: TERMS ---
+elif st.session_state.step == 'legal':
+    st.markdown("<h1 style='text-align:center; color:#FFD700; font-family:Impact;'>SERVICE TERMS</h1>", unsafe_allow_html=True)
+    st.info("Unlock the 95% mathematical advantage using the 6x Grid system.")
+    if st.button("I AGREE TO THE TERMS"):
+        st.session_state.step = 'welcome'; st.rerun()
+
+# --- PHASE 3: SUBSCRIPTION GATEWAY ---
+elif st.session_state.step == 'welcome':
+    st.markdown("<h1 style='text-align:center; color:#FFD700; font-family:Impact;'>GET YOUR PREDICTIONS</h1>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='grid-box'>
+        <h3 style='color:#FFD700;'>HOW IT WORKS:</h3>
+        <p style='font-size:18px;'>1. WE GATHER THE LAST 20 WINNING RESULTS.</p>
+        <p style='font-size:18px;'>2. WE ENTER DATA INTO THE 6X GRIDS TO FIND HIDDEN CODES.</p>
+        <p style='font-size:18px;'>3. YOU COPY AND PLAY THE PREDICTED NUMBERS FOR 3 DAYS.</p>
+    </div>
+    <div style='text-align:center;'>
+        <h2 style='color:#FFD700; font-family:Impact;'>SUBSCRIBE FOR FULL ACCESS</h2>
+        <p style='color:#FFD700; font-size:24px; font-weight:900;'>$39.95 EVERY 3 MONTHS</p>
+        <a href="https://www.paypal.com/ncp/payment/ZXZXQZ7ZBYUN8" target="_blank" class="pay-link">ACTIVATE SUBSCRIPTION NOW</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("CONTINUE TO SIGN-UP"):
+        st.session_state.step = 'signup'; st.rerun()
+
+# --- PHASE 4: SIGN-UP ---
+elif st.session_state.step == 'signup':
+    st.markdown("<div class='vault-header'>SIGN-UP FOR PREDICTIONS</div>", unsafe_allow_html=True)
+    with st.form("vault_reg"):
+        name = st.text_input("NAME")
+        email = st.text_input("EMAIL")
+        if st.form_submit_button("ENTER THE ORACLE"):
+            st.session_state.user_name = name; st.session_state.step = 'sector3'; st.rerun()
+
+# --- PHASE 5: THE ORACLE BRAIN ---
+elif st.session_state.step == 'sector3':
+    st.markdown(f"<div class='vault-header'>PREDICTIONS ACTIVE</div>", unsafe_allow_html=True)
+    st.write(f"Visionary {st.session_state.get('user_name', '')}, the Universal Compass is aligned.")
