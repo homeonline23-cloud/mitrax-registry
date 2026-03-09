@@ -1,6 +1,6 @@
 import streamlit as st
 
-# --- 1. THE IMPERIAL BACK DOOR (LEADS STRAIGHT TO THE VAULT) ---
+# --- 1. THE IMPERIAL BACK DOOR (Skip straight to the Vault) ---
 if 'step' not in st.session_state: 
     st.session_state.step = 'sector3'
 
@@ -43,3 +43,4 @@ if st.session_state.step == 'sector3':
 else:
     st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE</div>", unsafe_allow_html=True)
     st.write("Vision loading...")
+    
