@@ -8,36 +8,32 @@ if 'step' not in st.session_state:
 # --- 2. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="Mitrax Oracle Global", layout="wide")
 
-# --- 3. UNIVERSAL STYLING (BOLD ARIAL CASING) ---
+# --- 3. UNIVERSAL STYLING (THE GOLDEN HULL) ---
 st.markdown("""
     <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
-    
-    /* Imperial Headers */
     .mitrax-title { text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; font-size: 50px; letter-spacing: 12px; margin-bottom: 0px; }
-    .date-stamp { text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; font-size: 22px; letter-spacing: 4px; margin-bottom: 25px; opacity: 0.9; }
+    .date-stamp { text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; font-size: 20px; letter-spacing: 4px; margin-bottom: 25px; }
     
-    /* The BOLD ARIAL Global Banner */
+    /* THE WHITE BOLD ARIAL BANNER */
     .global-banner { 
-        background: rgba(255, 215, 0, 0.15);
-        border: 2px solid #FFD700; 
-        border-radius: 8px; 
-        padding: 20px; 
-        text-align: center; 
-        color: #FFFFFF; 
-        font-family: 'Arial', sans-serif; 
-        font-weight: bold; 
-        font-size: 20px; 
-        line-height: 1.5;
-        margin-top: 20px;
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        background: rgba(255, 215, 0, 0.1); border: 2px solid #FFD700; border-radius: 10px; 
+        padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; 
+        font-weight: bold; font-size: 18px; margin-top: 20px;
     }
     
-    .island-header { color: #FFD700; font-weight: bold; font-size: 18px; text-align: center; margin-bottom: 10px; border-bottom: 2px solid #FFD700; padding-bottom: 5px; font-family: 'Arial', sans-serif; }
+    /* PREDICTION BOARD STYLING */
+    .predict-box { 
+        background: linear-gradient(180deg, rgba(255,215,0,0.2) 0%, rgba(14,17,23,1) 100%);
+        border: 2px solid #FFD700; border-radius: 15px; padding: 20px; text-align: center;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+    .predict-num { color: #00FF00; font-family: 'Impact', sans-serif; font-size: 35px; text-shadow: 0 0 10px #00FF00; }
+    
+    .island-header { color: #FFD700; font-weight: bold; font-size: 18px; text-align: center; border-bottom: 2px solid #FFD700; font-family: 'Arial', sans-serif; }
     .red-protocol { color: #FF4B4B; font-weight: bold; font-size: 26px; }
     .blue-protocol { color: #1E90FF; font-weight: bold; font-size: 26px; }
-    .grid-box { border: 2px solid #FFD700; border-radius: 12px; padding: 20px; text-align: center; background-color: rgba(255, 215, 0, 0.07); }
     </style>
     """, unsafe_allow_html=True)
 
@@ -45,16 +41,27 @@ st.markdown("""
 if st.session_state.step == 'sector3':
     imperial_date = datetime.now().strftime("%-m/%-d/%Y")
     
-    st.markdown("<div style='text-align: center; font-size: 75px; margin-bottom: -10px;'>✧🌍✧</div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align: center; font-size: 60px;'>✧🌍✧</div>", unsafe_allow_html=True)
     st.markdown("<div class='mitrax-title'>THE MITRAX ORACLE</div>", unsafe_allow_html=True)
     st.markdown(f"<div class='date-stamp'>SESSION DATE: {imperial_date}</div>", unsafe_allow_html=True)
 
     # THE CORE PROTOCOLS
     col_a, col_b = st.columns(2)
     with col_a:
-        st.markdown("<div class='grid-box'><p style='color:#AAA; font-family:Arial;'>PROTOCOL 7/1</p><p class='red-protocol'>RED ZONE</p></div>", unsafe_allow_html=True)
+        st.markdown("<div style='border:2px solid #FFD700; border-radius:10px; padding:15px; text-align:center;'>PROTOCOL 7/1<br><span class='red-protocol'>RED</span></div>", unsafe_allow_html=True)
     with col_b:
-        st.markdown("<div class='grid-box'><p style='color:#AAA; font-family:Arial;'>PROTOCOL 8/3</p><p class='blue-protocol'>BLUE ZONE</p></div>", unsafe_allow_html=True)
+        st.markdown("<div style='border:2px solid #FFD700; border-radius:10px; padding:15px; text-align:center;'>PROTOCOL 8/3<br><span class='blue-protocol'>BLUE</span></div>", unsafe_allow_html=True)
+
+    st.divider()
+
+    # --- THE 5 PREDICTED WINNERS (THE HARVEST) ---
+    st.markdown("<h2 style='text-align: center; color: #00FF00; font-family:Impact;'>★ 5 PREDICTED WINNERS ★</h2>", unsafe_allow_html=True)
+    p_cols = st.columns(5)
+    for i in range(5):
+        with p_cols[i]:
+            st.markdown(f"<div class='predict-box'><span style='color:#AAA; font-size:12px;'>TARGET {i+1}</span>", unsafe_allow_html=True)
+            st.text_input("Prediction", key=f"pred_{i}", label_visibility="collapsed", placeholder="0000")
+            st.markdown("</div>", unsafe_allow_html=True)
 
     st.divider()
 
@@ -66,10 +73,9 @@ if st.session_state.step == 'sector3':
         with i_cols[i]:
             st.markdown(f"<div class='island-header'>{island}</div>", unsafe_allow_html=True)
             for row in range(1, 5):
-                label = f"PRIZE {row}" if row > 1 else "★ WINNER ★"
-                st.text_input(label, key=f"win_{island}_{row}", placeholder="----")
+                st.text_input(f"P{row}", key=f"win_{island}_{row}", placeholder="----", label_visibility="collapsed")
 
-    # --- THE BOLD ARIAL GLOBAL COMMAND BANNER ---
+    # --- THE WHITE BOLD ARIAL GLOBAL COMMAND BANNER ---
     st.markdown("""
         <div class='global-banner'>
             🌍 GLOBAL ADAPTATION PROTOCOL: MEMBERS FROM OTHER NATIONS MAY ENTER LOCAL WINNING NUMBERS ABOVE 
@@ -87,8 +93,8 @@ if st.session_state.step == 'sector3':
             st.markdown(f"<div style='border: 1px solid #FFD700; padding: 10px; text-align: center; background: rgba(255,215,0,0.05); color:#FFD700; font-weight:bold; font-family:Arial;'>SECTOR {i+1}</div>", unsafe_allow_html=True)
             st.number_input(f"v_{i}", label_visibility="collapsed", key=f"val_{i}", min_value=0, max_value=9999)
 
-    st.divider()
-    st.success("STATION STATUS: UNIVERSAL ACCESS ENABLED | BOLD FONT ACTIVE")
+    st.success("STATION STATUS: PREDICTION ENGINE ENGAGED | COMPASS NORTH")
 
 else:
     st.error("ACCESS DENIED.")
+    
