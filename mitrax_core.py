@@ -4,15 +4,27 @@ from datetime import datetime
 # --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="MITRAX ORACLE PICK 4 PREDICTOR", layout="wide")
 
-# --- 2. UNIVERSAL STYLING (IMPACT BOLD) ---
+# --- 2. UNIVERSAL STYLING (THE IMPACT ARMOR) ---
 st.markdown("""
     <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
-    .imp-header { text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+    
+    /* IMPACT FONT FOR HEADERS */
+    .imp-header { 
+        text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; 
+        text-transform: uppercase; letter-spacing: 2px;
+    }
     .main-title { font-size: 50px; margin-bottom: 0px; }
-    .predict-header { font-size: 35px; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
-    .global-banner { background: rgba(255, 215, 0, 0.15); border: 2px solid #FFD700; border-radius: 10px; padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; font-weight: bold; font-size: 20px; margin: 20px 0px; }
+    .section-header { font-size: 35px; margin-top: 20px; }
+    .predict-header { font-size: 40px; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
+    
+    /* BOLD ARIAL FOR BANNER */
+    .global-banner { 
+        background: rgba(255, 215, 0, 0.15); border: 2px solid #FFD700; border-radius: 10px; 
+        padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; 
+        font-weight: bold; font-size: 20px; margin: 20px 0px;
+    }
     .island-name { color: #FFD700; font-family: 'Impact', sans-serif; font-size: 24px; text-align: center; border-bottom: 2px solid #FFD700; }
     </style>
     """, unsafe_allow_html=True)
@@ -22,14 +34,14 @@ st.markdown("<div class='imp-header main-title'>MITRAX ORACLE PICK 4 PREDICTOR</
 st.markdown(f"<p style='text-align: center; color: #FFD700; font-weight: bold;'>DATE: {datetime.now().strftime('%-m/%-d/%Y')}</p>", unsafe_allow_html=True)
 
 # --- 4. IMAGE BROADCAST ---
-st.markdown("<div class='imp-header' style='font-size: 30px;'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
+st.markdown("<div class='imp-header section-header'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
 img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
-# NO COMPLEX INDENTATION HERE
-if img_file is not None:
+# SIMPLE LOGIC - NO INDENTATION ERRORS POSSIBLE
+if img_file:
     st.image(img_file, width='stretch')
 else:
-    st.info("Awaiting Image Broadcast... Ready for your recovered files!")
+    st.info("Station standing by. Upload your recovered image files here.")
 
 st.divider()
 
@@ -44,7 +56,7 @@ for i in range(5):
 st.divider()
 
 # --- 6. REGIONAL BOARD ---
-st.markdown("<div class='imp-header' style='font-size: 30px;'>REGIONAL WINNER BOARD</div>", unsafe_allow_html=True)
+st.markdown("<div class='imp-header section-header'>REGIONAL WINNER BOARD</div>", unsafe_allow_html=True)
 i_cols = st.columns(4)
 islands = ["ARUBA", "BONAIRE", "CURAÇAO", "ST. MARTIN"]
 for idx, island in enumerate(islands):
@@ -57,9 +69,9 @@ for idx, island in enumerate(islands):
 st.markdown("<div class='global-banner'>🌍 GLOBAL ADAPTATION PROTOCOL: UNIVERSAL SYSTEM ACTIVE 🌍</div>", unsafe_allow_html=True)
 
 # --- 8. SYMMETRY MATRIX ---
-st.markdown("<div class='imp-header' style='font-size: 30px;'>95% PROBABILITY MATRIX</div>", unsafe_allow_html=True)
+st.markdown("<div class='imp-header section-header'>95% PROBABILITY MATRIX</div>", unsafe_allow_html=True)
 g_cols = st.columns(6)
 for i in range(6):
     with g_cols[i]:
-        st.markdown(f"<div class='imp-header' style='font-size:14px; border:1px solid #FFD700; background: rgba(255,215,0,0.05);'>SECTOR {i+1}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='imp-header' style='font-size:14px; border:1px solid #FFD700;'>SECTOR {i+1}</div>", unsafe_allow_html=True)
         st.text_input(f"M_{i}", label_visibility="collapsed", key=f"s_{i}", placeholder="----")
