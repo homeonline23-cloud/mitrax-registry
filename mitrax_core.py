@@ -38,7 +38,7 @@ st.markdown(f"<div class='date-stamp'>SESSION DATE: {datetime.now().strftime('%-
 st.markdown("<div class='imperial-header section-header'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
 img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 if img_file:
-    # UPDATED FOR 2026 STANDARDS
+    # UPDATED FOR 2026 STANDARDS: width='stretch'
     st.image(img_file, width='stretch')
 else:
     st.info("Station standing by. Upload image file for display.")
