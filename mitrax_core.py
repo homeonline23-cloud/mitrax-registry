@@ -4,64 +4,73 @@ from datetime import datetime
 # --- 1. ENGINE CONFIGURATION (LOCKED & PERMANENT) ---
 st.set_page_config(page_title="MITRAX ORACLE PICK 4 PREDICTOR", layout="wide")
 
-# --- 2. UNIVERSAL STYLING (THE GOLDEN ARMOR) ---
+# --- 2. UNIVERSAL STYLING (THE IMPACT ARMOR) ---
 st.markdown("""
     <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
+    
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    .mitrax-header { 
-        text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; 
-        font-size: 50px; letter-spacing: 5px; margin-bottom: 0px; 
+    /* THE IMPERIAL IMPACT FONT FOR ALL HEADERS */
+    .imperial-header { 
+        text-align: center; 
+        color: #FFD700; 
+        font-family: 'Impact', sans-serif; 
+        text-transform: uppercase;
+        letter-spacing: 3px;
     }
+
+    .main-title { font-size: 55px; margin-bottom: 0px; }
+    .section-header { font-size: 35px; margin-top: 20px; margin-bottom: 10px; }
+    .prediction-header { font-size: 40px; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
     
     .date-stamp { text-align: center; color: #FFD700; font-family: 'Arial', sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 20px; }
     
+    /* BOLD ARIAL GLOBAL BANNER (WHITE) */
     .global-banner { 
         background: rgba(255, 215, 0, 0.15); border: 2px solid #FFD700; border-radius: 10px; 
         padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; 
         font-weight: bold; font-size: 20px; margin: 20px 0px;
     }
 
-    .island-header { color: #FFD700; font-weight: bold; font-size: 18px; text-align: center; border-bottom: 2px solid #FFD700; padding-bottom: 5px; font-family: 'Arial'; }
-    .predict-label { color: #00FF00; font-weight: bold; font-size: 14px; text-align: center; }
+    .island-name { color: #FFD700; font-family: 'Impact', sans-serif; font-size: 24px; text-align: center; border-bottom: 2px solid #FFD700; margin-bottom: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
 # --- 3. THE PERMANENT HEADER ---
 st.markdown("<div style='text-align: center; font-size: 60px;'>✧🌍✧</div>", unsafe_allow_html=True)
-st.markdown("<div class='mitrax-header'>MITRAX ORACLE PICK 4 PREDICTOR</div>", unsafe_allow_html=True)
+st.markdown("<div class='imperial-header main-title'>MITRAX ORACLE PICK 4 PREDICTOR</div>", unsafe_allow_html=True)
 st.markdown(f"<div class='date-stamp'>SESSION DATE: {datetime.now().strftime('%-m/%-d/%Y')}</div>", unsafe_allow_html=True)
 
-# --- 4. SECTOR 1: THE IMAGE VAULT (LOCAL FILE UPLOAD) ---
-st.markdown("<h3 style='color: #FFD700; text-align: center;'>IMPERIAL IMAGE BROADCAST</h3>", unsafe_allow_html=True)
-img_file = st.file_uploader("Upload Strategy Chart / Image", type=["png", "jpg", "jpeg"])
+# --- 4. SECTOR 1: THE IMAGE VAULT ---
+st.markdown("<div class='imperial-header section-header'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
+img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 if img_file:
     st.image(img_file, use_container_width=True)
 else:
-    st.info("Station standing by. Upload your image file to display on the main board.")
+    st.info("Station standing by. Upload image file.")
 
 st.divider()
 
-# --- 5. SECTOR 2: THE 5 PREDICTED PICK 4 WINNERS ---
-st.markdown("<h2 style='text-align: center; color: #00FF00; font-family:Impact;'>★ 5 PREDICTED PICK 4 WINNERS ★</h2>", unsafe_allow_html=True)
+# --- 5. SECTOR 2: THE 5 PREDICTED WINNERS ---
+st.markdown("<div class='imperial-header prediction-header'>★ 5 PREDICTED PICK 4 WINNERS ★</div>", unsafe_allow_html=True)
 p_cols = st.columns(5)
 for i in range(5):
     with p_cols[i]:
-        st.markdown(f"<div class='predict-label'>TARGET {i+1}</div>", unsafe_allow_html=True)
-        st.text_input(f"Predict {i}", key=f"p4_pred_{i}", label_visibility="collapsed", placeholder="0000")
+        st.markdown(f"<div class='imperial-header' style='font-size:18px; color:#00FF00;'>TARGET {i+1}</div>", unsafe_allow_html=True)
+        st.text_input(f"P4_{i}", key=f"p4_pred_{i}", label_visibility="collapsed", placeholder="0000")
 
 st.divider()
 
 # --- 6. SECTOR 3: THE 4-TIER ISLAND BOARD ---
-st.markdown("<h3 style='text-align: center; color: #FFD700; font-family:Arial;'>REGIONAL WINNER BOARD</h3>", unsafe_allow_html=True)
+st.markdown("<div class='imperial-header section-header'>REGIONAL WINNER BOARD</div>", unsafe_allow_html=True)
 i_cols = st.columns(4)
 islands = ["ARUBA", "BONAIRE", "CURAÇAO", "ST. MARTIN"]
 for i, island in enumerate(islands):
     with i_cols[i]:
-        st.markdown(f"<div class='island-header'>{island}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='island-name'>{island}</div>", unsafe_allow_html=True)
         for row in range(1, 5):
-            st.text_input(f"{island} Rank {row}", key=f"win_{island}_{row}", label_visibility="collapsed", placeholder="----")
+            st.text_input(f"{island}_R{row}", key=f"win_{island}_{row}", label_visibility="collapsed", placeholder="----")
 
 # --- 7. SECTOR 4: THE UNIVERSAL INSTRUCTION (WHITE BOLD ARIAL) ---
 st.markdown("""
@@ -72,12 +81,12 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- 8. SECTOR 5: THE 6X SYMMETRY MATRIX ---
-st.markdown("<h3 style='text-align: center; color: #FFD700; font-family:Arial;'>95% PROBABILITY MATRIX</h3>", unsafe_allow_html=True)
+st.markdown("<div class='imperial-header section-header'>95% PROBABILITY MATRIX</div>", unsafe_allow_html=True)
 g_cols = st.columns(6)
 for i in range(6):
     with g_cols[i]:
-        st.markdown(f"<div style='border: 1px solid #FFD700; padding: 10px; text-align: center; background: rgba(255,215,0,0.05); color:#FFD700; font-weight:bold;'>SECTOR {i+1}</div>", unsafe_allow_html=True)
-        st.text_input(f"Sec {i}", label_visibility="collapsed", key=f"sym_{i}", placeholder="----")
+        st.markdown(f"<div class='imperial-header' style='font-size:16px; border: 1px solid #FFD700; padding: 5px; background: rgba(255,215,0,0.05);'>SECTOR {i+1}</div>", unsafe_allow_html=True)
+        st.text_input(f"Matrix_{i}", label_visibility="collapsed", key=f"sym_{i}", placeholder="----")
 
 st.divider()
-st.success("STATION STATUS: PERMANENT HULL SECURED | INDENTATION ERROR PURGED")
+st.success("STATION STATUS: TOTAL IMPACT ALIGNMENT COMPLETE")
