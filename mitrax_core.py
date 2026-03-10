@@ -37,7 +37,7 @@ if st.session_state.step == 'gate':
     
     # --- THE YOUTUBE SCREEN ---
     # PASTE YOUR YOUTUBE LINK BELOW!
-    video_url = "https://www.youtube.com/watch?v=YOUR_updwq7Xz-cQ" 
+    video_url = "https://www.youtube.com/watch?v=updwq7Xz-cQ" 
     st.video(video_url)
     
     st.markdown("<p style='font-family: Arial; font-weight: bold;'>WATCH THE LATEST IMPERIAL BRIEFING ABOVE</p>", unsafe_allow_html=True)
