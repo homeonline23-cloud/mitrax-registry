@@ -5,15 +5,11 @@ from datetime import datetime
 st.set_page_config(page_title="MITRAX ORACLE", layout="wide")
 
 # --- 2. THE IMPERIAL STYLING (RED/BLUE BLOCKS) ---
-st.markdown("""
-    <style>
    # --- THE SYMMETRY LINE (SHRUNK FOR IPHONE) ---
 st.markdown("<h5 style='text-align: center; color: #D4AF37;'>7/1 & 8/3 SYMMETRY</h5>", unsafe_allow_html=True)
 c1, c2 = st.columns(2)
 c1.error("7 / 1") # THE RED SUN
 c2.info("8 / 3")  # THE BLUE OCEAN
-    </style>
-    """, unsafe_allow_html=True)
 
 # --- 3. THE COMMAND DECK ---
 st.markdown("<div class='imp-header' style='font-size: 60px;'>MITRAX ORACLE</div>", unsafe_allow_html=True)
