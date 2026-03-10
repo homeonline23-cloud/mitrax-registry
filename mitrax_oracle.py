@@ -1,24 +1,27 @@
 import streamlit as st
 
-# --- 1. IMPERIAL PAGE CONFIG (CENTERED ALIGNMENT) ---
-st.set_page_config(layout="centered")
+# --- 1. IMPERIAL PAGE CONFIG ---
+st.set_page_config(layout="centered", page_title="MITRAX ORACLE")
 
-# --- 2. THE BRANDING (CENTERED) ---
+# --- 2. THE BRANDING (TOP WINDOW) ---
 st.markdown("<h1 style='text-align: center; color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center; color: #D4AF37;'>Pick 4 Worldwide🌏</h3>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center; color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
 
-# --- 3. THE EXPLAINER SHIELD ---
+# --- 3. THE UPDATED MISSION STATEMENT (CENTERED) ---
 st.markdown("""
-    <div style='border: 2px solid #D4AF37; border-radius: 10px; padding: 15px; background-color: #0e1117; text-align: center; margin-bottom: 25px;'>
-        <p style='color: white; font-size: 15px; margin: 0;'>
-            The 4-digit Prediction Calculator for Global symmetry patterns. 
-            <b>95% chance</b> of increasing your success.
+    <div style='border: 2px solid #D4AF37; border-radius: 10px; padding: 20px; background-color: #0e1117; text-align: center; margin-bottom: 30px;'>
+        <p style='color: white; font-size: 16px; line-height: 1.6;'>
+            The 4-digit Prediction Calculator that can be used Globally. 
+            By entering the 4 chosen winning numbers into the calculator Grids. 
+            When analyzing the symmetry patterns, you can see and identify potential 
+            winning numbers in the GRID’s. There’s now a <b>95% chance</b> of increasing 
+            your chances of winning.
         </p>
     </div>
 """, unsafe_allow_html=True)
 
-# --- 4. THE 4-ISLAND SENSORS (NAME ABOVE 3 ROWS) ---
-# We use a 4-pillar layout centered on the page
+# --- 4. THE 4-ISLAND PILLARS (CENTERED) ---
+st.markdown("<h4 style='text-align: center; color: #D4AF37;'>LATEST DRAW RESULTS</h4>", unsafe_allow_html=True)
 colA, colB, colC, colD = st.columns(4)
 
 with colA:
@@ -47,18 +50,14 @@ with colD:
 
 st.write("---")
 
-# --- 5. THE CALIBRATION ENGINE (7/1 & 8/3 CENTERED) ---
-st.markdown("<h5 style='text-align: center; color: #D4AF37;'>SYMMETRY LOCK</h5>", unsafe_allow_html=True)
-
-# We use 3 columns here to "Push" the Red and Blue into the center
-# [1, 2, 1] means the side columns are empty spacers
-left_gap, center_content, right_gap = st.columns([1, 4, 1])
-
-with center_content:
-    inner_c1, inner_c2 = st.columns(2)
-    inner_c1.error("7 / 1")
-    inner_c2.info("8 / 3")
+# --- 5. THE SYMMETRY BALANCE (RED/BLUE) ---
+# This pushes them to the center
+_, center_col, _ = st.columns([1, 2, 1])
+with center_col:
+    inner_left, inner_right = st.columns(2)
+    inner_left.error("7 / 1")
+    inner_right.info("8 / 3")
 
 # --- 6. SYSTEM STATUS ---
 st.write("---")
-st.markdown("<p style='text-align: center; color: #555;'>System Status: Online | Balance: Stabilized</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #555;'>Status: Online | Branch: Main | Symmetry: 95%</p>", unsafe_allow_html=True)
