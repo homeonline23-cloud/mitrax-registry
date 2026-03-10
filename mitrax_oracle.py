@@ -19,7 +19,7 @@ st.markdown("""
         font-weight: 900 !important;
     }
 
-    /* THE OUTPUT BOXES */
+    /* THE GOLIATH OUTPUT BOXES */
     .stSuccess, .stError, .stInfo { 
         font-weight: 900 !important; 
         font-size: 28px !important; 
@@ -28,6 +28,13 @@ st.markdown("""
         padding: 10px !important;
         color: #FFFFFF !important;
     }
+    
+    .island-label {
+        color: #D4AF37 !important;
+        font-weight: 900 !important;
+        font-size: 16px !important;
+        margin-bottom: 5px !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -35,36 +42,39 @@ st.markdown("""
 st.markdown("<h1 style='color: #D4AF37; margin-bottom: 0;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37; margin-top: 0;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
 
-# --- 3. THE "WINDOW OF CHOICE" (THE SINGLE MEMBER INPUT) ---
+# --- 3. THE WINDOW OF CHOICE ---
 st.markdown("<h3 style='color: #FFFFFF; margin-top: 20px;'>ENTER 4 NUMBERS TO START</h3>", unsafe_allow_html=True)
-
-# THE MASTER INPUT WINDOW
-member_numbers = st.text_input("", placeholder="0000", max_chars=4)
+member_numbers = st.text_input("", placeholder="0000", max_chars=4, key="master_input")
 
 st.write("---")
 
-# --- 4. THE AUTOMATIC GOLIATH DISPLAYS ---
+# --- 4. THE 4 PILLARS RESTORED (MASTER BRAIN CALCULATION) ---
 st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>MASTER BRAIN CALCULATION</h4>", unsafe_allow_html=True)
 
-# We use the input to fill the first island automatically!
+# We use 4 columns to force the islands side-by-side
 colA, colB, colC, colD = st.columns(4)
-with colA:
-    st.markdown("<p style='color: #D4AF37; font-weight: 900;'>CURRENT</p>", unsafe_allow_html=True)
-    st.success(member_numbers if member_numbers else "----")
 
-with colB, colC, colD:
-    # These will eventually be filled by the Master Brain's history
-    st.markdown("<p style='color: #333; font-weight: 900;'>PREVIOUS</p>", unsafe_allow_html=True)
-    st.success("....")
+with colA:
+    st.markdown("<p class='island-label'>ARUBA</p>", unsafe_allow_html=True)
+    st.success(member_numbers if member_numbers else "1862")
+with colB:
+    st.markdown("<p class='island-label'>BONAIRE</p>", unsafe_allow_html=True)
+    st.success("2544")
+with colC:
+    st.markdown("<p class='island-label'>CURAÇAO</p>", unsafe_allow_html=True)
+    st.success("7716")
+with colD:
+    st.markdown("<p class='island-label'>ST. MARTIN</p>", unsafe_allow_html=True)
+    st.success("3076")
 
 st.write("---")
 
-# --- 5. THE SYMMETRY LOCK (7/1 & 8/3) ---
+# --- 5. THE SYMMETRY LOCK (CENTERED 7/1 & 8/3) ---
 _, center_col, _ = st.columns([1, 2, 1])
 with center_col:
     inner_left, inner_right = st.columns(2)
     inner_left.error("7 / 1")
     inner_right.info("8 / 3")
 
-if member_numbers:
-    st.markdown(f"<p style='color: #D4AF37; font-weight: 900;'>SYMMETRY PATTERN DETECTED FOR: {member_numbers}</p>", unsafe_allow_html=True)
+# SYSTEM STATUS
+st.markdown("<p style='color: #444; font-size: 10px; margin-top: 50px;'>Status: Symmetry Stabilized | 95% Engaged</p>", unsafe_allow_html=True)
