@@ -17,33 +17,33 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. HEADER SECTOR ---
+# --- 3. HEADER (LINE 10 IS NOW SAFE) ---
 st.markdown("<div class='imp-header main-title'>MITRAX ORACLE PICK 4 PREDICTOR</div>", unsafe_allow_html=True)
-st.markdown(f"<p style='text-align: center; color: #FFD700; font-weight: bold;'>SESSION DATE: {datetime.now().strftime('%-m/%-d/%Y')}</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: center; color: #FFD700; font-weight: bold;'>DATE: {datetime.now().strftime('%-m/%-d/%Y')}</p>", unsafe_allow_html=True)
 
-# --- 4. IMAGE BROADCAST SECTOR ---
+# --- 4. IMAGE BROADCAST ---
 st.markdown("<div class='imp-header' style='font-size: 30px;'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
 img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
-# THIS IS THE AREA WHERE THE ERROR WAS - NOW PROTECTED
+# NO NESTED LOGIC AT THE TOP LEVEL
 if img_file is not None:
     st.image(img_file, width='stretch')
 else:
-    st.info("Awaiting Image Broadcast... No logic errors here.")
+    st.info("Station standing by. Upload your recovered files here!")
 
 st.divider()
 
-# --- 5. PREDICTED WINNERS SECTOR ---
+# --- 5. PREDICTED WINNERS ---
 st.markdown("<div class='imp-header predict-header'>★ 5 PREDICTED PICK 4 WINNERS ★</div>", unsafe_allow_html=True)
 p_cols = st.columns(5)
 for i in range(5):
     with p_cols[i]:
         st.markdown(f"<div class='imp-header' style='font-size:16px; color:#00FF00;'>TARGET {i+1}</div>", unsafe_allow_html=True)
-        st.text_input(f"P4_Target_{i}", key=f"p4_{i}", label_visibility="collapsed", placeholder="0000")
+        st.text_input(f"P4_{i}", key=f"p_{i}", label_visibility="collapsed", placeholder="0000")
 
 st.divider()
 
-# --- 6. REGIONAL WINNER BOARD ---
+# --- 6. REGIONAL BOARD ---
 st.markdown("<div class='imp-header' style='font-size: 30px;'>REGIONAL WINNER BOARD</div>", unsafe_allow_html=True)
 i_cols = st.columns(4)
 islands = ["ARUBA", "BONAIRE", "CURAÇAO", "ST. MARTIN"]
@@ -51,7 +51,7 @@ for idx, island in enumerate(islands):
     with i_cols[idx]:
         st.markdown(f"<div class='island-name'>{island}</div>", unsafe_allow_html=True)
         for row in range(1, 5):
-            st.text_input(f"{island}_R{row}", key=f"win_{island}_{row}", label_visibility="collapsed", placeholder="----")
+            st.text_input(f"{island}_{row}", key=f"w_{island}_{row}", label_visibility="collapsed", placeholder="----")
 
 # --- 7. GLOBAL BANNER ---
 st.markdown("<div class='global-banner'>🌍 GLOBAL ADAPTATION PROTOCOL: UNIVERSAL SYSTEM ACTIVE 🌍</div>", unsafe_allow_html=True)
@@ -61,5 +61,5 @@ st.markdown("<div class='imp-header' style='font-size: 30px;'>95% PROBABILITY MA
 g_cols = st.columns(6)
 for i in range(6):
     with g_cols[i]:
-        st.markdown(f"<div class='imp-header' style='font-size:14px; border:1px solid #FFD700;'>SECTOR {i+1}</div>", unsafe_allow_html=True)
-        st.text_input(f"M_Sector_{i}", label_visibility="collapsed", key=f"s_{i}", placeholder="----")
+        st.markdown(f"<div class='imp-header' style='font-size:14px; border:1px solid #FFD700; background: rgba(255,215,0,0.05);'>SECTOR {i+1}</div>", unsafe_allow_html=True)
+        st.text_input(f"M_{i}", label_visibility="collapsed", key=f"s_{i}", placeholder="----")
