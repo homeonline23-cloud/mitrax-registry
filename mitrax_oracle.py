@@ -9,10 +9,10 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    /* THE GOLIATH NUMBERS (Green, Red, Blue Boxes) */
+    /* THE GOLIATH NUMBERS */
     .stSuccess, .stError, .stInfo { 
         font-weight: 900 !important; 
-        font-size: 28px !important; /* SUPERSZIED TO FILL THE WINDOW */
+        font-size: 28px !important; 
         line-height: 1.2 !important;
         border-radius: 12px !important;
         border: 2px solid #D4AF37 !important;
@@ -20,32 +20,33 @@ st.markdown("""
         color: #FFFFFF !important;
     }
     
-    /* Ensuring the labels (Aruba, etc) are also thick and clear */
     .island-label {
         color: #D4AF37 !important;
         font-weight: 900 !important;
         font-size: 18px !important;
-        margin-bottom: 5px !important;
         text-transform: uppercase;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE TITLES ---
-st.markdown("<h1 style='color: #D4AF37; margin-bottom: 0;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='color: #D4AF37; margin-top: 0;'>PICK 4 WORLDWIDE 🌏</h3>", unsafe_allow_html=True)
+# --- 2. THE CORRECTED TITLES (MITRAX LOCK) ---
+st.markdown("<h1 style='color: #D4AF37; margin-bottom: 0; font-weight: 900;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: #D4AF37; margin-top: 0; font-weight: 800;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
 
-# --- 3. THE MISSION SHIELD ---
+# --- 3. THE COMPLETE MISSION STATEMENT ---
 st.markdown("""
-    <div style='border: 3px solid #D4AF37; border-radius: 15px; padding: 20px; background-color: #111111; margin-bottom: 30px;'>
-        <p style='color: #FFFFFF; font-size: 18px; font-weight: 900;'>
-            THE 4-DIGIT PREDICTION CALCULATOR FOR GLOBAL USE. <br>
-            <span style='color: #D4AF37; font-size: 24px;'>🎯 95% CHANCE OF SUCCESS</span>
+    <div style='border: 3px solid #D4AF37; border-radius: 15px; padding: 25px; background-color: #111111; margin-bottom: 30px;'>
+        <p style='color: #FFFFFF; font-size: 17px; font-weight: 900; line-height: 1.6;'>
+            The 4-digit Prediction Calculator that can be used Globally. <br>
+            By entering the 4 chosen winning numbers into the calculator Grids. <br>
+            When analyzing the symmetry patterns, you can see and identify potential 
+            winning numbers in the GRID’s. <br><br>
+            <span style='color: #D4AF37; font-size: 20px;'>🎯 There’s now a 95% chance of increasing your chances of winning.</span>
         </p>
     </div>
 """, unsafe_allow_html=True)
 
-# --- 4. THE 4-ISLAND PILLARS (GOLIATH NUMBERS) ---
+# --- 4. THE 4-ISLAND PILLARS ---
 st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>LATEST DRAW RESULTS</h4>", unsafe_allow_html=True)
 
 colA, colB, colC, colD = st.columns(4)
@@ -73,7 +74,7 @@ with colD:
 
 st.write("---")
 
-# --- 5. THE SYMMETRY BALANCE (CENTERED & MASSIVE) ---
+# --- 5. THE SYMMETRY BALANCE ---
 _, center_col, _ = st.columns([1, 2, 1])
 with center_col:
     inner_left, inner_right = st.columns(2)
