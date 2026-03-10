@@ -10,7 +10,6 @@ st.markdown("""
     @import url('https://fonts.cdnfonts.com/css/impact');
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    /* IMPACT FONT FOR HEADERS */
     .imp-header { 
         text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; 
         text-transform: uppercase; letter-spacing: 2px;
@@ -19,7 +18,6 @@ st.markdown("""
     .section-header { font-size: 35px; margin-top: 20px; }
     .predict-header { font-size: 40px; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
     
-    /* BOLD ARIAL FOR GLOBAL BANNER */
     .global-banner { 
         background: rgba(255, 215, 0, 0.15); border: 2px solid #FFD700; border-radius: 10px; 
         padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; 
@@ -36,9 +34,10 @@ st.markdown(f"<p style='text-align: center; color: #FFD700; font-weight: bold;'>
 
 # --- 4. SECTOR 1: THE IMAGE BROADCAST ---
 st.markdown("<div class='imp-header section-header'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
+
+# --- THE UPLOADER (THE ONLY IF-BLOCK) ---
 img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
-# NO COMPLEX INDENTATION HERE - 100% ERROR PROOF
 if img_file:
     st.image(img_file, width='stretch')
 else:
