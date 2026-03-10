@@ -7,12 +7,11 @@ st.set_page_config(page_title="MITRAX ORACLE", layout="wide")
 # --- 2. THE IMPERIAL STYLING (RED/BLUE BLOCKS) ---
 st.markdown("""
     <style>
-    @import url('https://fonts.cdnfonts.com/css/impact');
-    .stApp { background-color: #0E1117; color: #FFFFFF; }
-    .imp-header { text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; text-transform: uppercase; }
-    .red-block { background-color: #FF0000; color: white; padding: 30px; text-align: center; font-family: 'Impact'; font-size: 45px; border-radius: 15px; border: 3px solid #FFD700; margin: 15px 0; }
-    .blue-block { background-color: #0000FF; color: white; padding: 30px; text-align: center; font-family: 'Impact'; font-size: 45px; border-radius: 15px; border: 3px solid #FFD700; margin: 15px 0; }
-    .grid-label { color: #FFD700; font-family: 'Impact'; font-size: 24px; text-align: center; margin-top: 10px; }
+   # --- THE SYMMETRY LINE (SHRUNK FOR IPHONE) ---
+st.markdown("<h5 style='text-align: center; color: #D4AF37;'>7/1 & 8/3 SYMMETRY</h5>", unsafe_allow_html=True)
+c1, c2 = st.columns(2)
+c1.error("7 / 1") # THE RED SUN
+c2.info("8 / 3")  # THE BLUE OCEAN
     </style>
     """, unsafe_allow_html=True)
 
