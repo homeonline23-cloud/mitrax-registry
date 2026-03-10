@@ -1,38 +1,30 @@
 import streamlit as st
 from datetime import datetime
 
-# --- 1. ENGINE CONFIGURATION (LOCKED & PERMANENT) ---
+# --- 1. ENGINE CONFIGURATION ---
 st.set_page_config(page_title="MITRAX ORACLE PICK 4 PREDICTOR", layout="wide")
 
-# --- 2. UNIVERSAL STYLING (THE IMPACT ARMOR) ---
+# --- 2. UNIVERSAL STYLING (TOTAL IMPACT) ---
 st.markdown("""
     <style>
     @import url('https://fonts.cdnfonts.com/css/impact');
-    
     .stApp { background-color: #0E1117; color: #FFFFFF; }
     
-    /* THE IMPERIAL IMPACT FONT FOR ALL HEADERS */
     .imperial-header { 
-        text-align: center; 
-        color: #FFD700; 
-        font-family: 'Impact', sans-serif; 
-        text-transform: uppercase;
-        letter-spacing: 3px;
+        text-align: center; color: #FFD700; font-family: 'Impact', sans-serif; 
+        text-transform: uppercase; letter-spacing: 3px;
     }
-
     .main-title { font-size: 55px; margin-bottom: 0px; }
     .section-header { font-size: 35px; margin-top: 20px; margin-bottom: 10px; }
     .prediction-header { font-size: 40px; color: #00FF00; text-shadow: 0 0 10px #00FF00; }
     
     .date-stamp { text-align: center; color: #FFD700; font-family: 'Arial', sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 20px; }
     
-    /* BOLD ARIAL GLOBAL BANNER (WHITE) */
     .global-banner { 
         background: rgba(255, 215, 0, 0.15); border: 2px solid #FFD700; border-radius: 10px; 
         padding: 20px; text-align: center; color: #FFFFFF; font-family: 'Arial', sans-serif; 
         font-weight: bold; font-size: 20px; margin: 20px 0px;
     }
-
     .island-name { color: #FFD700; font-family: 'Impact', sans-serif; font-size: 24px; text-align: center; border-bottom: 2px solid #FFD700; margin-bottom: 10px; }
     </style>
     """, unsafe_allow_html=True)
@@ -46,9 +38,10 @@ st.markdown(f"<div class='date-stamp'>SESSION DATE: {datetime.now().strftime('%-
 st.markdown("<div class='imperial-header section-header'>IMPERIAL IMAGE BROADCAST</div>", unsafe_allow_html=True)
 img_file = st.file_uploader("Upload Strategy Chart", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 if img_file:
-    st.image(img_file, use_container_width=True)
+    # UPDATED FOR 2026 STANDARDS
+    st.image(img_file, width='stretch')
 else:
-    st.info("Station standing by. Upload image file.")
+    st.info("Station standing by. Upload image file for display.")
 
 st.divider()
 
@@ -72,7 +65,7 @@ for i, island in enumerate(islands):
         for row in range(1, 5):
             st.text_input(f"{island}_R{row}", key=f"win_{island}_{row}", label_visibility="collapsed", placeholder="----")
 
-# --- 7. SECTOR 4: THE UNIVERSAL INSTRUCTION (WHITE BOLD ARIAL) ---
+# --- 7. SECTOR 4: GLOBAL INSTRUCTION (WHITE BOLD ARIAL) ---
 st.markdown("""
     <div class='global-banner'>
         🌍 GLOBAL ADAPTATION PROTOCOL: MEMBERS FROM OTHER NATIONS MAY ENTER LOCAL WINNING NUMBERS ABOVE 
@@ -89,4 +82,4 @@ for i in range(6):
         st.text_input(f"Matrix_{i}", label_visibility="collapsed", key=f"sym_{i}", placeholder="----")
 
 st.divider()
-st.success("STATION STATUS: TOTAL IMPACT ALIGNMENT COMPLETE")
+st.success("STATION STATUS: TOTAL IMPACT ALIGNMENT COMPLETE | ALL ERRORS PURGED")
