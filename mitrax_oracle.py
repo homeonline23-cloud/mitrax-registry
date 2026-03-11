@@ -46,4 +46,62 @@ st.markdown("""
 # --- 2. TOP SECTION: BRANDING & MISSION ---
 st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4
+st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
+
+# --- 3. WINNING NUMBERS BOARD ---
+st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
+res_cols = st.columns(4)
+res_data = [("ARUBA", ["1862", "0801", "9394"]), ("BONAIRE", ["2544", "8732", "7296"]), ("CURAÇAO", ["7716", "5502", "5918"]), ("ST. MARTIN", ["3076", "8561", "3465"])]
+for i, (name, nums) in enumerate(res_data):
+    with res_cols[i]:
+        st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
+        for n in nums: st.success(n)
+
+# --- 4. THE SLEEK DATE ANCHOR (7-1 RED / 8-3 BLUE) ---
+st.write("---")
+da1, da2, da3, da4, da5 = st.columns([1, 1, 3, 1, 1])
+with da1: st.markdown("<div class='date-circle-red'>7</div>", unsafe_allow_html=True)
+with da2: st.markdown("<div class='date-circle-red'>1</div>", unsafe_allow_html=True)
+with da3:
+    curr_date = datetime.now().strftime("%m/%d/%Y")
+    st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
+with da4: st.markdown("<div class='date-circle-blue'>8</div>", unsafe_allow_html=True)
+with da5: st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
+
+# --- 5. INPUTS ---
+st.write("---")
+_, in_center, _ = st.columns([1, 2, 1])
+with in_center:
+    il, ir = st.columns(2)
+    val_red = il.text_input("", placeholder="RED IN", max_chars=4, key="v71")
+    val_blue = ir.text_input("", placeholder="BLUE IN", max_chars=4, key="v83")
+
+# --- 6. GRIDS ---
+st.markdown("<h4 style='color: #D4AF37;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
+
+def draw_grid(val, color, target=None):
+    for r in range(4):
+        cols = st.columns(4)
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
+with g1: 
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_grid(val_red, "grid-light", "red")
+with p1: st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
+with g2: 
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_grid(val_blue, "grid-light", "blue")
+with p2: st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
+with g3: 
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+with p3: st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
+with g4: 
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
