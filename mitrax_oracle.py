@@ -4,7 +4,7 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
-# SEALED STYLE BLOCK - FINISHED AND RE-WELDED
+# SEALED STYLE BLOCK - TRIPLE CHECKED & CLOSED
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -29,4 +29,100 @@ st.markdown("""
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
-        border-radius: 4px; margin: 2px; color: #000000; height:
+        border-radius: 4px; margin: 2px; color: #000000; height: 45px; width: 45px;
+    }
+    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+    
+    .gold-pillar { background-color: #D4AF37; width: 12px; height: 320px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
+    
+    .grid-light { background-color: #D3D3D3 !important; }
+    .grid-dark { background-color: #707070 !important; }
+    
+    .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
+    .stSuccess { font-weight: 900; font-size: 20px; border: 1px solid #D4AF37; color: #000000 !important; background-color: #D4AF37 !important; padding: 2px; }
+    
+    .vertical-title {
+        color: #D4AF37; font-size: 20px; font-weight: 900; line-height: 1.2;
+        text-transform: uppercase; writing-mode: vertical-rl;
+        text-orientation: upright; margin: 0 auto; white-space: nowrap;
+    }
+
+    .stTextInput > div > div > input { 
+        background-color: #FFFFFF !important; color: #000000 !important; 
+        border: 4px solid #D4AF37 !important; font-size: 32px !important; 
+        text-align: center !important; height: 80px !important; width: 180px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 12px !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- 2. TOP SECTION ---
+st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
+st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
+
+# --- 3. WINNING NUMBERS BOARD ---
+st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
+res_cols = st.columns(4)
+res_data = [("ARUBA", ["1862", "0801", "9394"]), ("BONAIRE", ["2544", "8732", "7296"]), ("CURAÇAO", ["7716", "5502", "5918"]), ("ST. MARTIN", ["3076", "8561", "3465"])]
+for i, (name, nums) in enumerate(res_data):
+    with res_cols[i]:
+        st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
+        for n in nums: st.success(n)
+
+# --- 4. THE VERTICAL DATE ANCHOR ---
+st.write("---")
+da1, da2, da3 = st.columns([1, 2, 1])
+with da1:
+    st.markdown("<div class='date-circle-red'>7</div>", unsafe_allow_html=True)
+    st.markdown("<div class='date-circle-red'>1</div>", unsafe_allow_html=True)
+with da2:
+    curr_date = datetime.now().strftime("%m/%d/%Y")
+    st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
+with da3:
+    st.markdown("<div class='date-circle-blue'>8</div>", unsafe_allow_html=True)
+    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
+st.write("---")
+
+# --- 5. THE UNIFIED COMMAND LINE (VERTICAL SPINE) ---
+def draw_grid(val, color, target=None):
+    for r in range(4):
+        cols = st.columns(4)
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+t_col1, t_col2, t_col3, t_col4, t_col5, t_col6, t_col7 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
+
+with t_col2:
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="v_red_v_final", label_visibility="collapsed")
+with t_col4:
+    st.markdown("<div class='vertical-title'>SYMMETRY MATRIX SENSORS</div>", unsafe_allow_html=True)
+with t_col6:
+    blue_val = st.text_input("", placeholder="****", max_chars=4, key="v_blue_v_final", label_visibility="collapsed")
+
+# --- 6. THE GRID DECK ---
+g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
+
+with g1:
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_grid(red_val, "grid-light", "red")
+with p1: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g2:
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_grid(blue_val, "grid-light", "blue")
+with p2: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g3:
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+with p3: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g4:
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
