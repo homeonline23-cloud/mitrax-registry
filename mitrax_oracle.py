@@ -8,36 +8,38 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    /* THE MASTER SQUARE CELL STYLING */
+    /* THE MASTER SQUARE CELL */
     .matrix-cell {
         font-weight: 900 !important;
         font-size: 18px !important;
         border: 1px solid #000000 !important;
-        aspect-ratio: 1 / 1; /* FORCES A PERFECT SQUARE */
+        aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 2px;
+        border-radius: 4px;
         margin: 2px;
         color: #000000 !important;
     }
     
-    /* GRID 1 & 2: LIGHT GRAY */
-    .grid-light { background-color: #D3D3D3 !important; }
-    
-    /* GRID 3 & 4: DARK GRAY */
-    .grid-dark { background-color: #707070 !important; }
+    /* TARGET CIRCLES */
+    .red-circle { border: 3px solid #FF4B4B !important; border-radius: 50% !important; width: 85%; height: 85%; display: flex; align-items: center; justify-content: center; }
+    .blue-circle { border: 3px solid #0000FF !important; border-radius: 50% !important; width: 85%; height: 85%; display: flex; align-items: center; justify-content: center; }
 
-    .island-label { color: #D4AF37; font-weight: 900; font-size: 18px; text-transform: uppercase; margin-top: 15px; }
-    
-    /* INPUT BOXES */
-    .stTextInput > div > div > input {
-        background-color: #222222 !important;
-        color: #D4AF37 !important;
-        border: 2px solid #D4AF37 !important;
-        font-size: 22px !important;
-        text-align: center !important;
+    /* THE YELLOW POOL (VERTICAL DIVIDER) */
+    .yellow-pool {
+        background-color: #FFFF00 !important;
+        width: 15px;
+        height: 100%;
+        min-height: 250px;
+        margin: 0 auto;
+        border-radius: 10px;
+        border: 1px solid #D4AF37;
     }
+
+    .grid-light { background-color: #D3D3D3 !important; }
+    .grid-dark { background-color: #707070 !important; }
+    .island-label { color: #D4AF37; font-weight: 900; font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -51,33 +53,50 @@ with center_col:
     c_left.error("7 / 1")
     c_right.info("8 / 3")
     in_left, in_right = st.columns(2)
-    val_71 = in_left.text_input("", placeholder="----", key="v71")
-    val_83 = in_right.text_input("", placeholder="----", key="v83")
+    val_71 = in_left.text_input("", placeholder="RED IN", key="v71")
+    val_83 = in_right.text_input("", placeholder="BLUE IN", key="v83")
 
 st.write("---")
 
-# --- 3. THE 4 GRIDS (SQUARE CELLS & GRAY-SCALE) ---
-st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
-g1, g2, g3, g4 = st.columns(4)
+# --- 3. THE 4 GRIDS WITH 3 YELLOW POOLS ---
+# We use 7 columns: Grid - Pool - Grid - Pool - Grid - Pool - Grid
+g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
 
-def draw_16_square_grid(label, main_val, color_class):
-    st.markdown(f"<p class='island-label'>{label}</p>", unsafe_allow_html=True)
-    # 4 Rows for a 4x4
+def draw_radar_grid(main_val, color_class, target_type=None):
     for row in range(4):
         cols = st.columns(4)
         for col in range(4):
-            # Fill first cell with input, others with 0
-            cell_text = main_val if (row == 0 and col == 0 and main_val) else "0"
-            cols[col].markdown(f"<div class='matrix-cell {color_class}'>{cell_text}</div>", unsafe_allow_html=True)
+            is_match = (row == 0 and col == 0 and main_val)
+            circle_style = ""
+            if is_match:
+                if target_type == "red": circle_style = "red-circle"
+                if target_type == "blue": circle_style = "blue-circle"
+            
+            cell_content = main_val if is_match else "0"
+            if circle_style:
+                display_html = f"<div class='matrix-cell {color_class}'><div class='{circle_style}'>{cell_content}</div></div>"
+            else:
+                display_html = f"<div class='matrix-cell {color_class}'>{cell_content}</div>"
+            cols[col].markdown(display_html, unsafe_allow_html=True)
 
 with g1:
-    draw_16_square_grid("GRID 1", val_71, "grid-light")
-with g2:
-    draw_16_square_grid("GRID 2", val_83, "grid-light")
-with g3:
-    draw_16_square_grid("GRID 3", "", "grid-dark")
-with g4:
-    draw_16_square_grid("GRID 4", "", "grid-dark")
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_radar_grid(val_71, "grid-light", "red")
+with p1:
+    st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
 
-st.write("---")
-st.markdown("<p style='text-align: center; color: #555; font-size: 10px;'>Vessel Status: High-Contrast Navigation Engaged</p>", unsafe_allow_html=True)
+with g2:
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_radar_grid(val_83, "grid-light", "blue")
+with p2:
+    st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
+
+with g3:
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_radar_grid("", "grid-dark")
+with p3:
+    st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
+
+with g4:
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_radar_grid("", "grid-dark")
