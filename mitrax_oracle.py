@@ -9,8 +9,6 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
-
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
         font-size: 22px; font-weight: 900; width: 45px; height: 45px;
@@ -34,10 +32,8 @@ st.markdown("""
     .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
     .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border-radius: 5px; border: 2px solid #000000; }
-    
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
-    
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
     .stTextInput > div > div > input { 
@@ -46,24 +42,14 @@ st.markdown("""
         text-align: center !important; height: 70px !important; width: 140px !important;
         padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
     }
-    
     .symmetry-bridge { color: #D4AF37; font-size: 26px; font-weight: 900; margin-bottom: 20px; border-bottom: 3px solid #D4AF37; display: inline-block; padding: 0 20px; }
-    
     .grid-drop { margin-top: 145px !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. TOP SECTION ---
-st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("""
-<div class='mission-text'>
-    The 4-digit Prediction Calculator that can be used Globally. 
-    By entering the 4 chosen winning numbers into the calculator Grids. 
-    When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. 
-    There’s now a 95% chance of increasing your chances of winning.
-</div>
-""", unsafe_allow_html=True)
+# --- 2. HEADER PLACEHOLDER ---
+# This is where we will insert the Banner Image link next!
+st.write("---")
 
 # --- 3. WINNING NUMBERS BOARD ---
 st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
@@ -99,25 +85,24 @@ def draw_grid(val, color, target=None):
 
 st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div></center>", unsafe_allow_html=True)
 
-# 7-COLUMN LOCKED DECK
 c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with c1:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    r_val = st.session_state.get('vr_final_locked', "")
+    r_val = st.session_state.get('vr_final', "")
     draw_grid(r_val, "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with p1:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_locked", label_visibility="collapsed")
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c2:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    b_val = st.session_state.get('vb_final_locked', "")
+    b_val = st.session_state.get('vb_final', "")
     draw_grid(b_val, "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -132,7 +117,7 @@ with c3:
 
 with p3:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_locked", label_visibility="collapsed")
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c4:
