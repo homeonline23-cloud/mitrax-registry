@@ -34,14 +34,14 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE LOCAL IMAGE HANDLER ---
+# --- 2. THE LOCAL IMAGE HANDLER (THE BANNER) ---
 if os.path.exists("mitrax_banner.jpg"):
     st.image("mitrax_banner.jpg", use_container_width=True)
 else:
     st.error("⚠️ SYSTEM ERROR: mitrax_banner.jpg not detected.")
 
 # --- 3. THE SYMMETRY DECK ---
-# The winning numbers panel has been BANNED.
+# ALL ISLANDS (ARUBA, BONAIRE, CURAÇAO, ST. MARTIN) HAVE BEEN REMOVED.
 st.write("---")
 
 def draw_grid(val, color, target=None):
@@ -60,18 +60,18 @@ cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 with cols[0]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_final_logic', ""), "grid-light", "red")
+    draw_grid(st.session_state.get('v_pure_logic', ""), "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[1]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_final_logic", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_pure_logic", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_blue_logic', ""), "grid-light", "blue")
+    draw_grid(st.session_state.get('v_blue_pure', ""), "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[4]:
@@ -82,7 +82,7 @@ with cols[4]:
 
 with cols[5]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_blue_logic", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_blue_pure", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[6]:
