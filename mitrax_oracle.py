@@ -48,11 +48,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. BRANDING ---
+# --- 2. THE BRANDING (RE-WELDED) ---
 st.markdown("<h1 style='color: #D4AF37; margin-bottom: 0;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
+# THE GLOBE HAS RETURNED!
 st.markdown("<h2 style='color: #D4AF37; margin-top: 0;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
 
-# --- 3. WINNING NUMBERS RESULTS (NEW STARTING POINT) ---
+# --- 3. WINNING NUMBERS RESULTS (STEP 1 START POINT) ---
 st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
 colA, colB, colC, colD = st.columns(4)
 with colA:
@@ -66,7 +67,7 @@ with colD:
 
 st.write("---")
 
-# --- 4. THE INPUT ENGINE ---
+# --- 4. THE INPUT ENGINE (STRICT 4-DIGIT) ---
 _, center_col, _ = st.columns([1, 2, 1])
 with center_col:
     c_left, c_right = st.columns(2)
@@ -74,13 +75,12 @@ with center_col:
     c_right.info("8 / 3")
     st.markdown("<p style='color: white; font-size: 14px;'>STRICT 4-DIGIT ENTRY</p>", unsafe_allow_html=True)
     in_left, in_right = st.columns(2)
-    # MAX_CHARS=4 LOCK IS ENGAGED HERE
     val_71 = in_left.text_input("", placeholder="----", max_chars=4, key="v71")
     val_83 = in_right.text_input("", placeholder="----", max_chars=4, key="v83")
 
 st.write("---")
 
-# --- 5. THE 4 GRIDS (SEQUENCE READY) ---
+# --- 5. THE 4 GRIDS (ISOLATED BY YELLOW POOLS) ---
 st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
 
 def draw_radar_grid(main_val, color_class, target_type=None):
