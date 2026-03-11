@@ -48,7 +48,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 2. THE MITRAX IMPERIAL STRATEGY CHART (BANNER) ---
-# This is the Gold and Green Chart with the spinning world and Universal Compass
+# Locked at the peak of the warship!
 st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
@@ -69,4 +69,59 @@ with da2:
     curr_date = datetime.now().strftime("%m/%d/%Y")
     st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
 with da3:
-    st.markdown("<div class='date-circle-blue'>8</div><div class='date-circle-blue
+    st.markdown("<div class='date-circle-blue'>8</div><div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
+st.write("---")
+
+# --- 5. THE MASTER SYMMETRY DECK ---
+def draw_grid(val, color, target=None):
+    for r in range(4):
+        cols = st.columns(4)
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div></center>", unsafe_allow_html=True)
+
+c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
+
+with c1:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    r_val = st.session_state.get('vr_sealed', "")
+    draw_grid(r_val, "grid-light", "red")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with p1:
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_sealed", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c2:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    b_val = st.session_state.get('vb_sealed', "")
+    draw_grid(b_val, "grid-light", "blue")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with mid:
+    st.write("") 
+
+with c3:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with p3:
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_sealed", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c4:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+    st.markdown("</div>", unsafe_allow_html=True)
