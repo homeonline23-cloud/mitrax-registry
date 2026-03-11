@@ -1,8 +1,8 @@
 import streamlit as st
 import os
 
-# --- 1. ENGINE CONFIG (V65 CONSOLIDATED) ---
-st.set_page_config(layout="wide", page_title="MITRAX ORACLE V65")
+# --- 1. ENGINE CONFIG (V66 TITAN-SCALE) ---
+st.set_page_config(layout="wide", page_title="MITRAX ORACLE V66")
 
 st.markdown("""
     <style>
@@ -16,70 +16,67 @@ st.markdown("""
         width: 100% !important;
     }
 
-    /* THE CROWN */
-    .stImage { display: flex !important; justify-content: center !important; width: 800px !important; margin-bottom: 20px !important; }
-    img { border: 3px solid #D4AF37; border-radius: 15px; width: 800px !important; }
+    /* THE CROWN (TOP IMAGE) */
+    .stImage { display: flex !important; justify-content: center !important; width: 1000px !important; margin-bottom: 20px !important; }
+    img { border: 4px solid #D4AF37; border-radius: 20px; width: 1000px !important; }
 
-    /* TRIPLE-STACK BOARD (HORIZONTAL) */
-    .v65-board-container { 
+    /* TRIPLE-STACK BOARD (HORIZONTAL & LARGE) */
+    .v66-board-container { 
         display: flex !important; 
         flex-direction: row !important; 
         justify-content: center !important;
-        width: 1100px !important; 
+        width: 1300px !important; 
         margin: 10px auto !important; 
     }
-    .v65-column { 
-        border: 2px solid #4B6321; background-color: #4B6321; 
-        margin: 0 5px; padding: 6px; width: 250px !important;
+    .v66-column { 
+        border: 3px solid #4B6321; background-color: #4B6321; 
+        margin: 0 8px; padding: 10px; width: 300px !important;
         display: flex; flex-direction: column; 
     }
-    .v65-header { color: #D4AF37; text-align: center; font-weight: 900; font-size: 16px; margin-bottom: 4px; }
-    .v65-box { background-color: #FFFFFF; border: 1px solid #000; margin: 2px 0; padding: 4px; text-align: center; }
-    .v65-num { color: #000; font-family: 'Courier New', Courier, monospace; font-size: 30px !important; font-weight: 900; font-style: italic; }
+    .v66-header { color: #D4AF37; text-align: center; font-weight: 900; font-size: 22px; margin-bottom: 6px; text-transform: uppercase; }
+    .v66-box { background-color: #FFFFFF; border: 2px solid #000; margin: 4px 0; padding: 8px; text-align: center; }
+    .v66-num { color: #000; font-family: 'Courier New', Courier, monospace; font-size: 45px !important; font-weight: 900; font-style: italic; }
 
-    /* THE CONSOLIDATED SENSOR DECK */
-    .v65-sensor-deck {
-        width: 1200px !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: flex-start !important;
-        margin-top: 40px !important;
+    /* THE TITAN SENSOR DECK (EXPANDED) */
+    .v66-unit { display: flex; flex-direction: column; align-items: center; width: 180px; }
+    .v66-pillar { background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%); width: 35px; height: 320px; border-radius: 15px; border: 2px solid #000; box-shadow: 0px 0px 30px #D4AF37; }
+    .v66-spire { background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%); width: 60px; height: 500px; border-radius: 25px; border: 3px solid #000; box-shadow: 0px 0px 45px #D4AF37; margin: 0 30px; }
+
+    /* TITAN GRID CELLS */
+    .v66-cell { 
+        background-color: #1a1a1a; border: 2px solid #00FF00; 
+        height: 75px; width: 75px; 
+        display: flex; align-items: center; justify-content: center; 
+        font-weight: 900; font-size: 32px; border-radius: 12px; margin: 5px; color: #00FF00; 
+        box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.3);
     }
+    .red-t { border: 6px solid #FF0000; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+    .blue-t { border: 6px solid #0000FF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
 
-    .v65-grid-box { width: 240px; }
-    .v65-unit { display: flex; flex-direction: column; align-items: center; width: 140px; }
-    .v65-pillar { background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%); width: 20px; height: 220px; border-radius: 10px; border: 1px solid #000; box-shadow: 0px 0px 15px #D4AF37; }
-    .v65-spire { background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%); width: 35px; height: 350px; border-radius: 15px; border: 2px solid #000; box-shadow: 0px 0px 25px #D4AF37; margin: 0 20px; }
-
-    /* GRID CELLS */
-    .v65-cell { background-color: #1a1a1a; border: 1px solid #00FF00; height: 50px; width: 50px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px; border-radius: 8px; margin: 2px; color: #00FF00; }
-    .red-t { border: 3px solid #FF0000; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-    .blue-t { border: 3px solid #0000FF; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-
-    /* INPUTS */
-    div[data-baseweb="input"] { background-color: #000 !important; border: 3px solid #00FF00 !important; width: 120px !important; }
-    input { color: #00FF00 !important; font-size: 24px !important; text-align: center !important; font-weight: 900 !important; }
+    /* TITAN INPUTS */
+    div[data-baseweb="input"] { background-color: #000 !important; border: 5px solid #00FF00 !important; width: 160px !important; margin-bottom: 10px !important; }
+    input { color: #00FF00 !important; font-size: 35px !important; text-align: center !important; font-weight: 900 !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 1. THE IMAGE ---
+# --- 1. THE CROWN ---
 if os.path.exists("mitrax_banner.jpg"):
     st.image("mitrax_banner.jpg")
 
-# --- 2. THE BOARD ---
+# --- 2. THE TRIPLE-STACK BOARD ---
 st.markdown("""
-<div class='v65-board-container'>
-    <div class='v65-column'><div class='v65-header'>ARUBA</div><div class='v65-box'><span class='v65-num'>1862</span></div><div class='v65-box'><span class='v65-num'>0801</span></div><div class='v65-box'><span class='v65-num'>9394</span></div></div>
-    <div class='v65-column'><div class='v65-header'>BONAIRE</div><div class='v65-box'><span class='v65-num'>2544</span></div><div class='v65-box'><span class='v65-num'>8732</span></div><div class='v65-box'><span class='v65-num'>7296</span></div></div>
-    <div class='v65-column'><div class='v65-header'>CURAÇAO</div><div class='v65-box'><span class='v65-num'>7716</span></div><div class='v65-box'><span class='v65-num'>5502</span></div><div class='v65-box'><span class='v65-num'>5918</span></div></div>
-    <div class='v65-column'><div class='v65-header'>ST. MARTIN</div><div class='v65-box'><span class='v65-num'>3076</span></div><div class='v65-box'><span class='v65-num'>8561</span></div><div class='v65-box'><span class='v65-num'>3465</span></div></div>
+<div class='v66-board-container'>
+    <div class='v66-column'><div class='v66-header'>ARUBA</div><div class='v66-box'><span class='v66-num'>1862</span></div><div class='v66-box'><span class='v66-num'>0801</span></div><div class='v66-box'><span class='v66-num'>9394</span></div></div>
+    <div class='v66-column'><div class='v66-header'>BONAIRE</div><div class='v66-box'><span class='v66-num'>2544</span></div><div class='v66-box'><span class='v66-num'>8732</span></div><div class='v66-box'><span class='v66-num'>7296</span></div></div>
+    <div class='v66-column'><div class='v66-header'>CURAÇAO</div><div class='v66-box'><span class='v66-num'>7716</span></div><div class='v66-box'><span class='v66-num'>5502</span></div><div class='v66-box'><span class='v66-num'>5918</span></div></div>
+    <div class='v66-column'><div class='v66-header'>ST. MARTIN</div><div class='v66-box'><span class='v66-num'>3076</span></div><div class='v66-box'><span class='v66-num'>8561</span></div><div class='v66-box'><span class='v66-num'>3465</span></div></div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. THE SENSORS (CONSOLIDATED) ---
-st.markdown("<h2 style='color:#00FF00; text-align:center; border-bottom: 2px solid #00FF00; width:1000px;'>MATRIX SENSORS</h2>", unsafe_allow_html=True)
+# --- 3. THE SENSORS (TITAN SCALE) ---
+st.markdown("<h2 style='color:#00FF00; text-align:center; border-bottom: 5px solid #00FF00; width:1200px; margin-bottom:50px;'>MATRIX SENSORS</h2>", unsafe_allow_html=True)
 
-def get_v65_data(input_str):
+def get_v66_data(input_str):
     grid = [[0]*4 for _ in range(4)]
     if input_str and len(input_str) >= 1:
         try:
@@ -90,42 +87,42 @@ def get_v65_data(input_str):
         except: pass
     return grid
 
-def draw_v65_grid(data, is_dark=False, target=None):
+def draw_v66_grid(data, is_dark=False, target=None):
     bg = "#111" if is_dark else "#1a1a1a"
     for r in range(4):
         rows = st.columns(4)
         for c in range(4):
             val = data[r][c]
             is_target = (r == 0 and c == 0 and val != 0)
-            html = f"<div class='v65-cell' style='background-color:{bg}'>"
+            html = f"<div class='v66-cell' style='background-color:{bg}'>"
             if is_target and target == "red": html += f"<div class='red-t'>{val}</div>"
             elif is_target and target == "blue": html += f"<div class='blue-t'>{val}</div>"
             else: html += f"{val}"
             html += "</div>"
             rows[c].markdown(html, unsafe_allow_html=True)
 
-# SENSOR ROW
-s_cols = st.columns([3, 2, 3, 1, 3, 2, 3])
+# TITAN SENSOR ROW
+s_cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with s_cols[0]:
-    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 1</p>", unsafe_allow_html=True)
-    draw_v65_grid(get_v65_data(st.session_state.get('v65_r', "")), target="red")
+    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900; font-size:20px;'>GRID 1</p>", unsafe_allow_html=True)
+    draw_v66_grid(get_v66_data(st.session_state.get('v66_r', "")), target="red")
 with s_cols[1]:
-    st.markdown("<div class='v65-unit'><p style='color:red; font-weight:900; margin-bottom:5px;'>RED</p>", unsafe_allow_html=True)
-    st.text_input("R", key="v65_r", label_visibility="collapsed")
-    st.markdown("<div class='v65-pillar'></div></div>", unsafe_allow_html=True)
+    st.markdown("<div class='v66-unit'><p style='color:red; font-weight:900; font-size:24px;'>RED</p>", unsafe_allow_html=True)
+    st.text_input("R", key="v66_r", label_visibility="collapsed")
+    st.markdown("<div class='v66-pillar'></div></div>", unsafe_allow_html=True)
 with s_cols[2]:
-    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 2</p>", unsafe_allow_html=True)
-    draw_v65_grid(get_v65_data(st.session_state.get('v65_b', "")), target="blue")
+    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900; font-size:20px;'>GRID 2</p>", unsafe_allow_html=True)
+    draw_v66_grid(get_v66_data(st.session_state.get('v66_b', "")), target="blue")
 with s_cols[3]:
-    st.markdown("<div style='height:80px;'></div><div class='v65-spire'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:120px;'></div><div class='v66-spire'></div>", unsafe_allow_html=True)
 with s_cols[4]:
-    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 3</p>", unsafe_allow_html=True)
-    draw_v65_grid([[0]*4 for _ in range(4)], is_dark=True)
+    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900; font-size:20px;'>GRID 3</p>", unsafe_allow_html=True)
+    draw_v66_grid([[0]*4 for _ in range(4)], is_dark=True)
 with s_cols[5]:
-    st.markdown("<div class='v65-unit'><p style='color:blue; font-weight:900; margin-bottom:5px;'>BLUE</p>", unsafe_allow_html=True)
-    st.text_input("B", key="v65_b", label_visibility="collapsed")
-    st.markdown("<div class='v65-pillar'></div></div>", unsafe_allow_html=True)
+    st.markdown("<div class='v66-unit'><p style='color:blue; font-weight:900; font-size:24px;'>BLUE</p>", unsafe_allow_html=True)
+    st.text_input("B", key="v66_b", label_visibility="collapsed")
+    st.markdown("<div class='v66-pillar'></div></div>", unsafe_allow_html=True)
 with s_cols[6]:
-    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 4</p>", unsafe_allow_html=True)
-    draw_v65_grid([[0]*4 for _ in range(4)], is_dark=True)
+    st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900; font-size:20px;'>GRID 4</p>", unsafe_allow_html=True)
+    draw_v66_grid([[0]*4 for _ in range(4)], is_dark=True)
