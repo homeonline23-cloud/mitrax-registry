@@ -11,7 +11,6 @@ st.markdown("""
     
     .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
 
-    /* SLEEK DATE CIRCLES */
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
         font-size: 22px; font-weight: 900; width: 45px; height: 45px;
@@ -26,7 +25,6 @@ st.markdown("""
     }
     .date-display { color: #D4AF37; font-size: 18px; font-weight: 900; margin-top: 15px; }
 
-    /* MATRIX CELL STYLING */
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -48,17 +46,4 @@ st.markdown("""
 # --- 2. TOP SECTION: BRANDING & MISSION ---
 st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
-
-# --- 3. WINNING NUMBERS BOARD ---
-st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
-res_cols = st.columns(4)
-res_data = [("ARUBA", ["1862", "0801", "9394"]), ("BONAIRE", ["2544", "8732", "7296"]), ("CURAÇAO", ["7716", "5502", "5918"]), ("ST. MARTIN", ["3076", "8561", "3465"])]
-for i, (name, nums) in enumerate(res_data):
-    with res_cols[i]:
-        st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
-        for n in nums: st.success(n)
-
-# --- 4. THE SLEEK DATE ANCHOR (UNDER THE BOARD) ---
-st.write("---")
-d
+st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4
