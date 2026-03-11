@@ -8,47 +8,51 @@ st.markdown("""
     <style>
     .stApp { background-color: #000000; }
     
-    /* THE NEON STRATEGY BOX - REPLACING THE BROKEN IMAGE */
+    /* THE INDESTRUCTIBLE HEADER BOX */
     .strategy-container {
         border: 4px solid #00FF00;
         border-radius: 20px;
-        padding: 30px;
+        padding: 25px;
         background: radial-gradient(circle, #001a00 0%, #000000 100%);
-        box-shadow: 0 0 25px #00FF00, inset 0 0 15px #00FF00;
-        margin-bottom: 30px;
+        box-shadow: 0 0 20px #00FF00;
+        margin-bottom: 50px; /* INCREASED SPACE SO BOARD DOES NOT HIDE */
         text-align: center;
+        position: relative;
+        z-index: 100;
     }
     
-    .impact-bold { color: #D4AF37; font-family: 'Arial Black'; font-size: 45px; text-shadow: 2px 2px #000000; margin: 0; }
-    .worldwide-glow { color: #00FF00; font-size: 28px; font-weight: 900; margin-top: 10px; }
-    .manifesto-text { color: #FFFFFF; font-size: 16px; font-weight: 700; line-height: 1.6; max-width: 900px; margin: 20px auto; }
+    .impact-bold { color: #D4AF37; font-family: 'Arial Black'; font-size: 38px; margin: 0; }
+    .worldwide-glow { color: #00FF00; font-size: 24px; font-weight: 900; margin-top: 5px; }
+    .manifesto-text { color: #FFFFFF; font-size: 15px; font-weight: 700; line-height: 1.4; max-width: 850px; margin: 15px auto; }
 
-    /* THE PILLARS AND GRIDS */
+    /* WINNING BOARD STABILIZER */
+    .board-spacer { margin-top: 20px; padding: 10px; border-top: 2px solid #D4AF37; }
+
     .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border: 2px solid #000000; border-radius: 5px; }
     .matrix-cell { 
         font-weight: 900; font-size: 20px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
-        border-radius: 4px; margin: 2px; color: #000000; height: 50px; width: 50px;
+        border-radius: 4px; margin: 2px; color: #000000; height: 48px; width: 48px;
     }
-    .red-target { border: 4px solid #FF0000; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 4px solid #0000FF; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .red-target { border: 4px solid #FF0000; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
+    .blue-target { border: 4px solid #0000FF; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
-    .island-label { color: #D4AF37; font-weight: 900; font-size: 18px; text-transform: uppercase; }
+    .island-label { color: #D4AF37; font-weight: 900; font-size: 18px; text-transform: uppercase; margin-bottom: 10px; }
 
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 5px solid #D4AF37 !important; font-size: 32px !important; 
-        text-align: center !important; height: 80px !important; width: 150px !important;
+        text-align: center !important; height: 75px !important; width: 140px !important;
         font-weight: 900 !important;
     }
-    .symmetry-bridge { color: #00FF00; font-size: 28px; font-weight: 900; border-bottom: 4px solid #00FF00; padding: 0 30px; }
-    .grid-drop { margin-top: 150px !important; }
+    .symmetry-bridge { color: #00FF00; font-size: 26px; font-weight: 900; border-bottom: 4px solid #00FF00; padding: 0 30px; margin-top: 40px; }
+    .grid-drop { margin-top: 140px !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE CUSTOM NEON STRATEGY CHART (CODE-BUILT) ---
+# --- 2. THE CUSTOM NEON STRATEGY CHART ---
 st.markdown("""
 <div class='strategy-container'>
     <div class='impact-bold'>MITRAX ORACLE Pic 4 App</div>
@@ -56,19 +60,20 @@ st.markdown("""
     <div class='manifesto-text'>
         The 4-digit Prediction Calculator that can be used Globally. <br>
         By entering the 4 chosen winning numbers into the calculator Grids. <br>
-        When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. <br>
-        There’s now a 95% chance of increasing your chances of winning.
+        Analyze symmetry patterns to identify potential winning numbers. <br>
+        95% chance of increasing your winning potential!
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. WINNING NUMBERS ---
+# --- 3. WINNING NUMBERS (THE RECLAIMED BOARD) ---
+st.markdown("<div class='board-spacer'></div>", unsafe_allow_html=True)
 c1, c2, c3, c4 = st.columns(4)
 islands = [("ARUBA", "1862"), ("BONAIRE", "2544"), ("CURAÇAO", "7716"), ("ST. MARTIN", "3076")]
 for i, (name, num) in enumerate(islands):
     with [c1, c2, c3, c4][i]:
         st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
-        st.success(num)
+        st.success(f"**{num}**")
 
 # --- 4. THE DECK ---
 st.write("---")
@@ -90,18 +95,18 @@ cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 with cols[0]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('vr_neon_lock', ""), "grid-light", "red")
+    draw_grid(st.session_state.get('v_stabilize_1', ""), "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[1]:
-    st.write("<div style='height:30px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="vr_neon_lock", label_visibility="collapsed")
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    st.text_input("", placeholder="****", max_chars=4, key="v_stabilize_1", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('vb_neon_lock', ""), "grid-light", "blue")
+    draw_grid(st.session_state.get('v_stabilize_2', ""), "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[4]:
@@ -111,8 +116,8 @@ with cols[4]:
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[5]:
-    st.write("<div style='height:30px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="vb_neon_lock", label_visibility="collapsed")
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    st.text_input("", placeholder="****", max_chars=4, key="v_stabilize_2", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[6]:
