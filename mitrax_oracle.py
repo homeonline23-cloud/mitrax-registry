@@ -16,7 +16,6 @@ st.markdown("""
         margin: 0 auto 40px auto;
         border: 6px solid #D4AF37;
         border-radius: 25px;
-        box-shadow: 0px 0px 100px rgba(212, 175, 55, 0.5);
     }
 
     /* AMPLIFIED WINNING BOARD */
@@ -56,7 +55,6 @@ st.markdown("""
 
 # --- 2. THE TITAN IMAGE (FORCED EXPANSION) ---
 if os.path.exists("mitrax_banner.jpg"):
-    # RE-INDEXING TO FORCE RELOAD AT 1600PX
     st.image("mitrax_banner.jpg", width=1600) 
 else:
     st.write("🌌 TITAN MOTHERSHIP NOT DETECTED")
@@ -81,10 +79,12 @@ def draw_grid_titan(val, is_dark=False, target=None):
             is_m = (r == 0 and c == 0 and val)
             circle = "red-target-titan" if is_m and target=="red" else "blue-target-titan" if is_m and target=="blue" else ""
             txt = val if is_m else "0"
+            html = f"<div class='matrix-cell-titan' style='background-color:{bg_color}'>"
             if circle:
-                html = f"<div class='matrix-cell-titan' style='background-color:{bg_color}'><div class='{circle}'>{txt}</div></div>"
+                html += f"<div class='{circle}'>{txt}</div>"
             else:
-                html = f"<div class='matrix-cell-titan' style='background-color:{bg_color}'>{txt}</div>"
+                html += f"{txt}"
+            html += "</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
 cols = st.columns([4, 2, 4, 1, 4, 2, 4])
@@ -112,4 +112,5 @@ with cols[5]:
     st.markdown("<div class='gold-pillar-titan'></div>", unsafe_allow_html=True)
 
 with cols[6]:
-    st.markdown("<p class='island-label-titan'>GRID 4</p>", unsafe_
+    st.markdown("<p class='island-label-titan'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid_titan("", is_dark=True)
