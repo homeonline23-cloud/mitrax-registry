@@ -4,6 +4,7 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
+# SEALED STYLE BLOCK - TRIPLE CHECKED
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -11,7 +12,6 @@ st.markdown("""
     
     .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 10px; border: 1px solid #D4AF37; border-radius: 10px; }
 
-    /* SLEEK DATE CIRCLES */
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
         font-size: 24px; font-weight: 900; width: 50px; height: 50px;
@@ -26,7 +26,6 @@ st.markdown("""
     }
     .date-display { color: #D4AF37; font-size: 20px; font-weight: 900; margin-top: 20px; }
 
-    /* GRID & MATRIX STYLING */
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -41,4 +40,4 @@ st.markdown("""
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
     .stSuccess { font-weight: 900; font-size: 20px; border: 1px solid #D4AF37; color: #000000; background-color: #D4AF37; padding: 2px; }
-    .stTextInput > div > div > input { background-color: #111111; color: #D4AF37; border: 2px solid #D4AF
+    .stTextInput > div > div > input { background-color: #111111; color: #D4AF37; border: 2px solid #D4AF37; font-size: 20px; text-align: center; }
