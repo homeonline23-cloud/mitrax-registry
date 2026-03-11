@@ -4,7 +4,7 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
-# SEALED STYLE BLOCK - TRIPLE CHECKED
+# SEALED STYLE BLOCK - FINISHED AND RE-WELDED
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -29,7 +29,4 @@ st.markdown("""
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
-        border-radius: 4px; margin: 2px; color: #000000; height: 45px; width: 45px;
-    }
-    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center
+        border-radius: 4px; margin: 2px; color: #000000; height:
