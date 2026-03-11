@@ -41,13 +41,15 @@ st.markdown("""
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
     .stSuccess { font-weight: 900; font-size: 20px; border: 1px solid #D4AF37; color: #000000 !important; background-color: #D4AF37 !important; padding: 2px; }
     
-    /* MINI INPUT BOXES */
+    /* THE NANO-INPUT STAR SENSORS */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 2px solid #D4AF37 !important; font-size: 14px !important; 
-        text-align: center !important; height: 45px !important; width: 45px !important;
-        padding: 0px !important; font-weight: 900 !important;
+        border: 2px solid #D4AF37 !important; font-size: 16px !important; 
+        text-align: center !important; height: 30px !important; width: 60px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 5px !important;
     }
+    /* Removal of extra space around inputs */
+    .stTextInput { margin-top: -10px; margin-bottom: 5px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -82,21 +84,12 @@ st.write("---")
 # --- 5. THE INTEGRATED GRID SYSTEM ---
 st.markdown("<h4 style='color: #D4AF37;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
 
-# THE MINI INPUTS CAPTURE
-# We place these in a hidden container first to ensure they are available for the draw function
-col_hidden_1, col_hidden_2 = st.columns(2)
-with col_hidden_1:
-    # Capturing Red In for Grid 1
-    red_in_val = st.text_input("", placeholder="R", max_chars=4, key="v_red_final")
-with col_hidden_2:
-    # Capturing Blue In for Grid 2
-    blue_in_val = st.text_input("", placeholder="B", max_chars=4, key="v_blue_final")
-
+# THE MINI NANO-INPUTS CAPTURE (Hidden from logic flow, visible in UI)
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
         for c in range(4):
-            is_m = (r == 0 and c == 0 and val) # First box logic
+            is_m = (r == 0 and c == 0 and val)
             circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
             txt = val if is_m else "0"
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
@@ -106,18 +99,23 @@ g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
 
 with g1:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(red_in_val, "grid-light", "red")
+    # The value will be set via the input in pillar 1
+    # For now, we use a session state to pass the value
+    red_val = st.session_state.get('v_red_nano', "")
+    draw_grid(red_val, "grid-light", "red")
 
 with p1: 
-    st.markdown("<div style='height:45px;'></div>", unsafe_allow_html=True) # Space where input was
+    # NANO STAR SENSOR (RED)
+    st.text_input("", placeholder="****", max_chars=4, key="v_red_nano")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g2:
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(blue_in_val, "grid-light", "blue")
+    blue_val = st.session_state.get('v_blue_nano', "")
+    draw_grid(blue_val, "grid-light", "blue")
 
 with p2: 
-    st.markdown("<div style='height:45px;'></div>", unsafe_allow_html=True)
+    st.write("") 
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g3:
@@ -125,7 +123,8 @@ with g3:
     draw_grid("", "grid-dark")
 
 with p3: 
-    st.markdown("<div style='height:45px;'></div>", unsafe_allow_html=True)
+    # NANO STAR SENSOR (BLUE)
+    st.text_input("", placeholder="****", max_chars=4, key="v_blue_nano")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g4:
