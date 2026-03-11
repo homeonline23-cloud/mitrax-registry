@@ -4,6 +4,7 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
+# SEALED STYLE BLOCK
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -11,7 +12,6 @@ st.markdown("""
     
     .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
 
-    /* DATE ANCHOR CIRCLES */
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
         font-size: 22px; font-weight: 900; width: 45px; height: 45px;
@@ -26,7 +26,6 @@ st.markdown("""
     }
     .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
 
-    /* MATRIX CELL STYLING */
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -42,14 +41,12 @@ st.markdown("""
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
-    /* THE VERTICAL SPINE */
     .vertical-spine {
         color: #D4AF37; font-size: 16px; font-weight: 900; line-height: 1.1;
         text-transform: uppercase; writing-mode: vertical-rl;
         text-orientation: upright; white-space: nowrap; margin-top: 20px;
     }
 
-    /* MEGA INPUT BOXES (4X SIZE) */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 4px solid #D4AF37 !important; font-size: 28px !important; 
@@ -84,4 +81,27 @@ with da2:
     st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
 with da3:
     st.markdown("<div class='date-circle-blue'>8</div>", unsafe_allow_html=True)
-    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_
+    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
+st.write("---")
+
+# --- 5. THE MASTER SYMMETRY DECK ---
+def draw_grid(val, color, target=None):
+    for r in range(4):
+        cols = st.columns(4)
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+c1, c2, c3, c4, c5, c6, c7 = st.columns([4, 1.5, 4, 1, 4, 1.5, 4])
+
+with c1:
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    red_val = st.session_state.get('vr_final_v2', "")
+    draw_grid(red_val, "grid-light", "red")
+
+with c2: 
+    st.write("<div style='height:40px;'></div>", unsafe_allow_html=True)
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_
