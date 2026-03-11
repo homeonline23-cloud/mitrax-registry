@@ -44,12 +44,15 @@ st.markdown("""
     }
     .symmetry-bridge { color: #D4AF37; font-size: 26px; font-weight: 900; margin-bottom: 20px; border-bottom: 3px solid #D4AF37; display: inline-block; padding: 0 20px; }
     .grid-drop { margin-top: 145px !important; }
+    
+    /* BANNER STYLING */
+    .imperial-banner { width: 100%; border: 4px solid #D4AF37; border-radius: 15px; margin-bottom: 20px; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. HEADER PLACEHOLDER ---
-# This is where we will insert the Banner Image link next!
-st.write("---")
+# --- 2. THE IMPERIAL STRATEGY CHART (HEADER) ---
+# Using the specific image link for the Green & Gold Chart
+st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
 st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
@@ -90,19 +93,19 @@ c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
 with c1:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    r_val = st.session_state.get('vr_final', "")
+    r_val = st.session_state.get('vr_final_impact', "")
     draw_grid(r_val, "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with p1:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final", label_visibility="collapsed")
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_impact", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c2:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    b_val = st.session_state.get('vb_final', "")
+    b_val = st.session_state.get('vb_final_impact', "")
     draw_grid(b_val, "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -117,7 +120,7 @@ with c3:
 
 with p3:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final", label_visibility="collapsed")
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_impact", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c4:
