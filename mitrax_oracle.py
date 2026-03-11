@@ -25,6 +25,7 @@ st.markdown("""
     }
     .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 45px; }
 
+    /* MATRIX & PILLAR STYLING */
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -33,7 +34,7 @@ st.markdown("""
     .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
-    .gold-pillar { background-color: #D4AF37; width: 10px; height: 220px; margin: 0 auto; border-radius: 5px; }
+    .gold-pillar { background-color: #D4AF37; width: 10px; height: 260px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
@@ -41,15 +42,14 @@ st.markdown("""
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
     .stSuccess { font-weight: 900; font-size: 20px; border: 1px solid #D4AF37; color: #000000 !important; background-color: #D4AF37 !important; padding: 2px; }
     
-    /* THE NANO-INPUT STAR SENSORS */
+    /* 5 CM CENTERED INPUT SENSORS */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 2px solid #D4AF37 !important; font-size: 16px !important; 
-        text-align: center !important; height: 30px !important; width: 60px !important;
-        padding: 0px !important; font-weight: 900 !important; border-radius: 5px !important;
+        border: 3px solid #D4AF37 !important; font-size: 20px !important; 
+        text-align: center !important; height: 50px !important; width: 100px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 8px !important;
     }
-    /* Removal of extra space around inputs */
-    .stTextInput { margin-top: -10px; margin-bottom: 5px; }
+    .stTextInput { margin-top: -15px !important; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -81,10 +81,8 @@ with da3:
     st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
 st.write("---")
 
-# --- 5. THE INTEGRATED GRID SYSTEM ---
-st.markdown("<h4 style='color: #D4AF37;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
+# --- 5. THE INTEGRATED GRID SYSTEM (LEVEL DECK) ---
 
-# THE MINI NANO-INPUTS CAPTURE (Hidden from logic flow, visible in UI)
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
@@ -95,38 +93,30 @@ def draw_grid(val, color, target=None):
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
+# LEVELED TITLE ROW
+t_col1, t_col2, t_col3, t_col4, t_col5, t_col6, t_col7 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
+with t_col2:
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="v_red_level")
+with t_col4:
+    st.markdown("<h4 style='color: #D4AF37; white-space: nowrap;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
+with t_col6:
+    blue_val = st.text_input("", placeholder="****", max_chars=4, key="v_blue_level")
+
+# GRID DECK
 g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
 
 with g1:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    # The value will be set via the input in pillar 1
-    # For now, we use a session state to pass the value
-    red_val = st.session_state.get('v_red_nano', "")
     draw_grid(red_val, "grid-light", "red")
-
-with p1: 
-    # NANO STAR SENSOR (RED)
-    st.text_input("", placeholder="****", max_chars=4, key="v_red_nano")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
+with p1: st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 with g2:
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    blue_val = st.session_state.get('v_blue_nano', "")
     draw_grid(blue_val, "grid-light", "blue")
-
-with p2: 
-    st.write("") 
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
+with p2: st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 with g3:
     st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
-
-with p3: 
-    # NANO STAR SENSOR (BLUE)
-    st.text_input("", placeholder="****", max_chars=4, key="v_blue_nano")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
+with p3: st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 with g4:
     st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
