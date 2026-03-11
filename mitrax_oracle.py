@@ -39,19 +39,15 @@ st.markdown("""
     .grid-dark { background-color: #707070 !important; }
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
-    
-    /* COMPACT VERTICAL TITLE */
-    .vertical-title-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 180px; /* Locked height to prevent pushing grids down */
+
+    /* CENTER VERTICAL SPINE */
+    .spine-container {
+        display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 250px;
     }
-    .vertical-title {
+    .vertical-spine-text {
         color: #D4AF37; font-size: 18px; font-weight: 900; line-height: 1.1;
         text-transform: uppercase; writing-mode: vertical-rl;
-        text-orientation: upright; white-space: nowrap;
+        text-orientation: upright; white-space: nowrap; margin-bottom: 10px;
     }
 
     .stTextInput > div > div > input { 
@@ -91,7 +87,7 @@ with da3:
     st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
 st.write("---")
 
-# --- 5. THE UNIFIED COMMAND ROW (WITH COMPACT VERTICAL TITLE) ---
+# --- 5. THE SYMMETRIC GRID DECK ---
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
@@ -102,36 +98,34 @@ def draw_grid(val, color, target=None):
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
-# THE DECK LAYOUT
 g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
 
 with g1:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    red_val = st.session_state.get('v_red_compact', "")
+    red_val = st.session_state.get('v_red_final', "")
     draw_grid(red_val, "grid-light", "red")
 
-with p1: 
-    st.markdown("<div class='vertical-title-container'><div class='vertical-title'>SYMMETRY</div></div>", unsafe_allow_html=True)
-    red_val = st.text_input("", placeholder="****", max_chars=4, key="v_red_compact", label_visibility="collapsed")
+with p1: # PILLAR 1: JUST RED INPUT + GOLD
+    st.write("<div style='height:165px;'></div>", unsafe_allow_html=True)
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="v_red_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g2:
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    blue_val = st.session_state.get('v_blue_compact', "")
+    blue_val = st.session_state.get('v_blue_final', "")
     draw_grid(blue_val, "grid-light", "blue")
 
-with p2: 
-    st.markdown("<div class='vertical-title-container'><div class='vertical-title'>MATRIX</div></div>", unsafe_allow_html=True)
-    st.write("<div style='height:80px;'></div>", unsafe_allow_html=True)
+with p2: # PILLAR 2: THE MASTER VERTICAL SPINE
+    st.markdown("<div class='spine-container'><div class='vertical-spine-text'>SYMMETRY MATRIX SENSORS</div></div>", unsafe_allow_html=True)
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g3:
     st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
 
-with p3: 
-    st.markdown("<div class='vertical-title-container'><div class='vertical-title'>SENSORS</div></div>", unsafe_allow_html=True)
-    blue_val = st.text_input("", placeholder="****", max_chars=4, key="v_blue_compact", label_visibility="collapsed")
+with p3: # PILLAR 3: JUST BLUE INPUT + GOLD
+    st.write("<div style='height:165px;'></div>", unsafe_allow_html=True)
+    blue_val = st.text_input("", placeholder="****", max_chars=4, key="v_blue_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with g4:
