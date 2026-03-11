@@ -48,7 +48,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 2. THE IMPERIAL STRATEGY CHART (BANNER) ---
-# Locked as the primary visual foundation
 st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
@@ -88,4 +87,7 @@ st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div><
 c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with c1:
-    st.markdown("<div class='grid-
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    r_val = st.session_state.get('vr_sealed_v2', "")
+    draw_grid(
