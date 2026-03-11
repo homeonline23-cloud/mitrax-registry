@@ -10,6 +10,10 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
+    /* PREVENTS GRIDS FROM HIDING UNDER THE BANNER */
+    .banner-anchor { margin-bottom: 50px; position: relative; z-index: 10; }
+    .deck-clearance { height: 300px; } 
+
     .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border: 2px solid #000000; border-radius: 5px; }
     .matrix-cell { 
         font-weight: 900; font-size: 20px; border: 1px solid #000000; 
@@ -17,7 +21,7 @@ st.markdown("""
         border-radius: 4px; margin: 2px; color: #000000; height: 48px; width: 48px;
     }
     .red-target { border: 4px solid #FF0000; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 4px solid #0000FF; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
+    .blue-target { border: 4px solid #0000FF; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
@@ -29,20 +33,25 @@ st.markdown("""
         text-align: center !important; height: 75px !important; width: 140px !important;
         font-weight: 900 !important;
     }
-    .symmetry-bridge { color: #00FF00; font-size: 26px; font-weight: 900; border-bottom: 4px solid #00FF00; padding: 0 30px; margin-top: 40px; }
-    .grid-drop { margin-top: 140px !important; }
+    .symmetry-bridge { color: #00FF00; font-size: 28px; font-weight: 900; border-bottom: 4px solid #00FF00; padding: 0 30px; margin-top: 20px; }
+    .grid-drop { margin-top: 20px !important; }
     </style>
 """, unsafe_allow_html=True)
 
 # --- 2. THE LOCAL IMAGE HANDLER (THE BANNER) ---
+st.markdown("<div class='banner-anchor'>", unsafe_allow_html=True)
 if os.path.exists("mitrax_banner.jpg"):
     st.image("mitrax_banner.jpg", use_container_width=True)
 else:
     st.error("⚠️ SYSTEM ERROR: mitrax_banner.jpg not detected.")
+st.markdown("</div>", unsafe_allow_html=True)
 
 # --- 3. THE SYMMETRY DECK ---
-# ALL ISLANDS (ARUBA, BONAIRE, CURAÇAO, ST. MARTIN) HAVE BEEN REMOVED.
-st.write("---")
+st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div></center>", unsafe_allow_html=True)
+
+# Space buffer to push the sensors down from the banner
+st.write("") 
+st.write("") 
 
 def draw_grid(val, color, target=None):
     for r in range(4):
@@ -54,39 +63,30 @@ def draw_grid(val, color, target=None):
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
-st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div></center>", unsafe_allow_html=True)
 cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with cols[0]:
-    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_pure_logic', ""), "grid-light", "red")
-    st.markdown("</div>", unsafe_allow_html=True)
+    draw_grid(st.session_state.get('v_rebound_1', ""), "grid-light", "red")
 
 with cols[1]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_pure_logic", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_rebound_1", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
-    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_blue_pure', ""), "grid-light", "blue")
-    st.markdown("</div>", unsafe_allow_html=True)
+    draw_grid(st.session_state.get('v_rebound_2', ""), "grid-light", "blue")
 
 with cols[4]:
-    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
-    st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[5]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_blue_pure", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_rebound_2", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[6]:
-    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
-    st.markdown("</div>", unsafe_allow_html=True)
