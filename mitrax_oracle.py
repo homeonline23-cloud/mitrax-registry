@@ -11,6 +11,7 @@ st.markdown("""
     
     .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
 
+    /* DATE ANCHOR CIRCLES */
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
         font-size: 22px; font-weight: 900; width: 45px; height: 45px;
@@ -23,8 +24,9 @@ st.markdown("""
         display: flex; align-items: center; justify-content: center;
         margin: 5px auto; background-color: #FFFFFF;
     }
-    .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 40px; }
+    .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
 
+    /* MATRIX CELL STYLING */
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -33,28 +35,26 @@ st.markdown("""
     .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
-    .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
+    .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 10px auto; border-radius: 5px; border: 1px solid #000000; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
-    /* CENTER VERTICAL SPINE */
-    .spine-container {
-        display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 250px;
-    }
-    .vertical-spine-text {
-        color: #D4AF37; font-size: 18px; font-weight: 900; line-height: 1.1;
+    /* THE VERTICAL SPINE */
+    .vertical-spine {
+        color: #D4AF37; font-size: 16px; font-weight: 900; line-height: 1.1;
         text-transform: uppercase; writing-mode: vertical-rl;
-        text-orientation: upright; white-space: nowrap; margin-bottom: 10px;
+        text-orientation: upright; white-space: nowrap; margin-top: 20px;
     }
 
+    /* MEGA INPUT BOXES (4X SIZE) */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 4px solid #D4AF37 !important; font-size: 32px !important; 
-        text-align: center !important; height: 80px !important; width: 180px !important;
-        padding: 0px !important; font-weight: 900 !important; border-radius: 12px !important;
+        border: 4px solid #D4AF37 !important; font-size: 28px !important; 
+        text-align: center !important; height: 70px !important; width: 150px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -84,50 +84,4 @@ with da2:
     st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
 with da3:
     st.markdown("<div class='date-circle-blue'>8</div>", unsafe_allow_html=True)
-    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
-st.write("---")
-
-# --- 5. THE SYMMETRIC GRID DECK ---
-def draw_grid(val, color, target=None):
-    for r in range(4):
-        cols = st.columns(4)
-        for c in range(4):
-            is_m = (r == 0 and c == 0 and val)
-            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
-            txt = val if is_m else "0"
-            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
-            cols[c].markdown(html, unsafe_allow_html=True)
-
-g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
-
-with g1:
-    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    red_val = st.session_state.get('v_red_final', "")
-    draw_grid(red_val, "grid-light", "red")
-
-with p1: # PILLAR 1: JUST RED INPUT + GOLD
-    st.write("<div style='height:165px;'></div>", unsafe_allow_html=True)
-    red_val = st.text_input("", placeholder="****", max_chars=4, key="v_red_final", label_visibility="collapsed")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with g2:
-    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    blue_val = st.session_state.get('v_blue_final', "")
-    draw_grid(blue_val, "grid-light", "blue")
-
-with p2: # PILLAR 2: THE MASTER VERTICAL SPINE
-    st.markdown("<div class='spine-container'><div class='vertical-spine-text'>SYMMETRY MATRIX SENSORS</div></div>", unsafe_allow_html=True)
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with g3:
-    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
-
-with p3: # PILLAR 3: JUST BLUE INPUT + GOLD
-    st.write("<div style='height:165px;'></div>", unsafe_allow_html=True)
-    blue_val = st.text_input("", placeholder="****", max_chars=4, key="v_blue_final", label_visibility="collapsed")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with g4:
-    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
+    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_
