@@ -4,7 +4,6 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
-# SEALED STYLE BLOCK
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -34,19 +33,25 @@ st.markdown("""
     .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
-    .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 10px auto; border-radius: 5px; border: 1px solid #000000; }
+    .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
+    /* BALANCED INPUT BOXES */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 4px solid #D4AF37 !important; font-size: 28px !important; 
-        text-align: center !important; height: 70px !important; width: 150px !important;
+        text-align: center !important; height: 70px !important; width: 120px !important;
         padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
+        margin: 0 auto !important;
     }
+    
+    /* ALIGNMENT HELPERS */
+    .title-align { margin-top: 25px; white-space: nowrap; }
+    .input-container { display: flex; justify-content: center; align-items: center; height: 80px; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -89,34 +94,42 @@ def draw_grid(val, color, target=None):
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
-# CENTERED HORIZONTAL COMMAND ROW
-t_col1, t_col2, t_col3, t_col4, t_col5, t_col6, t_col7 = st.columns([4, 1.5, 4, 3, 4, 1.5, 4])
+# 7-SLOT DECK: FORCED VERTICAL ALIGNMENT
+# Slot 1: Grid 1 | Slot 2: Input Above Pillar 1 | Slot 3: Grid 2 | Slot 4: Horizontal Sentence | Slot 5: Grid 3 | Slot 6: Input Above Pillar 2 | Slot 7: Grid 4
+c1, c2, c3, c4, c5, c6, c7 = st.columns([4, 1.5, 4, 3, 4, 1.5, 4])
 
-with t_col2:
-    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_h", label_visibility="collapsed")
-with t_col4:
-    st.markdown("<h4 style='color: #D4AF37; margin-top: 15px; white-space: nowrap;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
-with t_col6:
-    blue_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_h", label_visibility="collapsed")
-
-# --- 6. THE GRID DECK ---
-g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
-
-with g1:
+with c1:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(red_val, "grid-light", "red")
-with p1: 
+    r_val = st.session_state.get('vr_balanced', "")
+    draw_grid(r_val, "grid-light", "red")
+
+with c2: 
+    # RED INPUT BOX (Centered over Pillar)
+    st.markdown("<div class='input-container'>", unsafe_allow_html=True)
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_balanced", label_visibility="collapsed")
+    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-with g2:
+
+with c3:
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(blue_val, "grid-light", "blue")
-with p2: 
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-with g3:
+    b_val = st.session_state.get('vb_balanced', "")
+    draw_grid(b_val, "grid-light", "blue")
+
+with c4: 
+    # CENTERED HORIZONTAL SENTENCE
+    st.markdown("<h4 class='title-align' style='color: #D4AF37;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
+
+with c5:
     st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
-with p3: 
+
+with c6: 
+    # BLUE INPUT BOX (Centered over Pillar)
+    st.markdown("<div class='input-container'>", unsafe_allow_html=True)
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_balanced", label_visibility="collapsed")
+    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-with g4:
+
+with c7:
     st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
     draw_grid("", "grid-dark")
