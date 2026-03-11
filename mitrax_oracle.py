@@ -4,7 +4,6 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
-# SEALED STYLE BLOCK - TRIPLE CHECKED
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -42,9 +41,9 @@ st.markdown("""
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
     .vertical-spine {
-        color: #D4AF37; font-size: 16px; font-weight: 900; line-height: 1.1;
+        color: #D4AF37; font-size: 18px; font-weight: 900; line-height: 1.2;
         text-transform: uppercase; writing-mode: vertical-rl;
-        text-orientation: upright; white-space: nowrap; margin-top: 20px; margin-left: auto; margin-right: auto;
+        text-orientation: upright; white-space: nowrap; margin: 0 auto;
     }
 
     .stTextInput > div > div > input { 
@@ -95,25 +94,29 @@ def draw_grid(val, color, target=None):
             html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
-# HIGH STABILITY 7-SLOT DECK
+# INTEGRATED LAYOUT
+# Grid 1 | Red Input | Grid 2 | Vertical Spine | Grid 3 | Blue Input | Grid 4
 c1, c2, c3, c4, c5, c6, c7 = st.columns([4, 1.5, 4, 1, 4, 1.5, 4])
 
 with c1:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    red_val = st.session_state.get('vr_final_locked', "")
-    draw_grid(red_val, "grid-light", "red")
+    r_val = st.session_state.get('vr_final_v3', "")
+    draw_grid(r_val, "grid-light", "red")
 
 with c2: 
     st.write("<div style='height:40px;'></div>", unsafe_allow_html=True)
-    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_locked", label_visibility="collapsed")
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_v3", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c3:
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    blue_val = st.session_state.get('vb_final_locked', "")
-    draw_grid(blue_val, "grid-light", "blue")
+    # Grid 2 takes input from Blue sensor per previous instruction
+    b_val = st.session_state.get('vb_final_v3', "")
+    draw_grid(b_val, "grid-light", "blue")
 
 with c4: 
+    # THE HEART OF THE MACHINE
+    st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
     st.markdown("<div class='vertical-spine'>SYMMETRY MATRIX SENSORS</div>", unsafe_allow_html=True)
 
 with c5:
@@ -122,7 +125,7 @@ with c5:
 
 with c6: 
     st.write("<div style='height:40px;'></div>", unsafe_allow_html=True)
-    blue_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_locked", label_visibility="collapsed")
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_v3", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c7:
