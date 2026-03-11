@@ -44,7 +44,7 @@ st.markdown("""
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 4px solid #D4AF37 !important; font-size: 28px !important; 
-        text-align: center !important; height: 70px !important; width: 160px !important;
+        text-align: center !important; height: 70px !important; width: 150px !important;
         padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
     }
     </style>
@@ -93,11 +93,11 @@ def draw_grid(val, color, target=None):
 t_col1, t_col2, t_col3, t_col4, t_col5, t_col6, t_col7 = st.columns([4, 1.5, 4, 3, 4, 1.5, 4])
 
 with t_col2:
-    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_f", label_visibility="collapsed")
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_h", label_visibility="collapsed")
 with t_col4:
     st.markdown("<h4 style='color: #D4AF37; margin-top: 15px; white-space: nowrap;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
 with t_col6:
-    blue_val = st.text_input("", placeholder="****", max_chars=4, key="vb_f", label_visibility="collapsed")
+    blue_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_h", label_visibility="collapsed")
 
 # --- 6. THE GRID DECK ---
 g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
