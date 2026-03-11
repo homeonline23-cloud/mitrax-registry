@@ -48,19 +48,19 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE BRANDING & MISSION STATEMENT (RE-WELDED) ---
+# --- 2. THE BRANDING & MISSION STATEMENT (POLISHED) ---
 st.markdown("<h1 style='color: #D4AF37; margin-bottom: 0;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37; margin-top: 0;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
 
-# THE FULL MISSION STATEMENT BOX
+# THE MISSION STATEMENT (CLEAN - NO QUOTES)
 st.markdown("""
     <div style='border: 3px solid #D4AF37; border-radius: 15px; padding: 25px; background-color: #111111; margin: 20px auto; max-width: 900px;'>
         <p style='color: #FFFFFF; font-size: 17px; font-weight: 900; line-height: 1.6;'>
-            "The 4-digit Prediction Calculator that can be used Globally. <br>
+            The 4-digit Prediction Calculator that can be used Globally. <br>
             By entering the 4 chosen winning numbers into the calculator Grids. <br>
             When analyzing the symmetry patterns, you can see and identify potential 
             winning numbers in the GRID’s. <br>
-            <span style='color: #D4AF37; font-size: 19px;'>There’s now a 95% chance of increasing your chances of winning."</span>
+            <span style='color: #D4AF37; font-size: 19px;'>There’s now a 95% chance of increasing your chances of winning.</span>
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -79,7 +79,7 @@ with colD:
 
 st.write("---")
 
-# --- 4. THE INPUT ENGINE (STRICT 4-DIGIT) ---
+# --- 4. THE INPUT ENGINE ---
 _, center_col, _ = st.columns([1, 2, 1])
 with center_col:
     c_left, c_right = st.columns(2)
@@ -91,7 +91,7 @@ with center_col:
 
 st.write("---")
 
-# --- 5. THE 4 GRIDS (ISOLATED BY YELLOW POOLS) ---
+# --- 5. THE 4 GRIDS ---
 st.markdown("<h4 style='color: #D4AF37; font-weight: 900;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
 
 def draw_radar_grid(main_val, color_class, target_type=None):
@@ -108,4 +108,10 @@ def draw_radar_grid(main_val, color_class, target_type=None):
                 display_html = f"<div class='matrix-cell {color_class}'><div class='{circle_style}'>{cell_content}</div></div>"
             else:
                 display_html = f"<div class='matrix-cell {color_class}'>{cell_content}</div>"
-            inner_cols[col].markdown
+            inner_cols[col].markdown(display_html, unsafe_allow_html=True)
+
+g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
+
+with g1:
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_radar_grid(val_71, "grid-light", "red
