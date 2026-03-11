@@ -57,10 +57,4 @@ st.markdown("""
     .grid-light { background-color: #D3D3D3; }
     .grid-dark { background-color: #707070; }
     .island-label { color: #D4AF37; font-weight: 900; font-size: 18px; text-transform: uppercase; margin-bottom: 5px; }
-    .stSuccess { font-weight: 900; font-size: 22px; border: 2px solid #D4AF37; color: #000000; background-color: #D4AF37; padding: 5px; }
-    .stTextInput > div > div > input { background-color: #111111; color: #D4AF37; border: 2px solid #D4AF37; font-size: 22px; text-align: center; font-weight: 900; }
-    </style>
-""", unsafe_allow_html=True)
-
-# --- 2. TOP DECK: BRANDING & GLOBE ---
-st.markdown("<h
+    .stSuccess {
