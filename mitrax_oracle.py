@@ -40,16 +40,11 @@ st.markdown("""
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
-    .vertical-spine {
-        color: #D4AF37; font-size: 18px; font-weight: 900; line-height: 1.2;
-        text-transform: uppercase; writing-mode: vertical-rl;
-        text-orientation: upright; white-space: nowrap; margin: 0 auto;
-    }
-
+    /* MEGA INPUT BOXES */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 4px solid #D4AF37 !important; font-size: 28px !important; 
-        text-align: center !important; height: 70px !important; width: 150px !important;
+        text-align: center !important; height: 70px !important; width: 160px !important;
         padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
     }
     </style>
@@ -83,51 +78,8 @@ with da3:
     st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
 st.write("---")
 
-# --- 5. THE MASTER SYMMETRY DECK ---
+# --- 5. THE MASTER HORIZONTAL COMMAND LINE ---
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
-        for c in range(4):
-            is_m = (r == 0 and c == 0 and val)
-            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
-            txt = val if is_m else "0"
-            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
-            cols[c].markdown(html, unsafe_allow_html=True)
-
-# INTEGRATED LAYOUT
-# Grid 1 | Red Input | Grid 2 | Vertical Spine | Grid 3 | Blue Input | Grid 4
-c1, c2, c3, c4, c5, c6, c7 = st.columns([4, 1.5, 4, 1, 4, 1.5, 4])
-
-with c1:
-    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    r_val = st.session_state.get('vr_final_v3', "")
-    draw_grid(r_val, "grid-light", "red")
-
-with c2: 
-    st.write("<div style='height:40px;'></div>", unsafe_allow_html=True)
-    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_v3", label_visibility="collapsed")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with c3:
-    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    # Grid 2 takes input from Blue sensor per previous instruction
-    b_val = st.session_state.get('vb_final_v3', "")
-    draw_grid(b_val, "grid-light", "blue")
-
-with c4: 
-    # THE HEART OF THE MACHINE
-    st.markdown("<div style='height:30px;'></div>", unsafe_allow_html=True)
-    st.markdown("<div class='vertical-spine'>SYMMETRY MATRIX SENSORS</div>", unsafe_allow_html=True)
-
-with c5:
-    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
-
-with c6: 
-    st.write("<div style='height:40px;'></div>", unsafe_allow_html=True)
-    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_v3", label_visibility="collapsed")
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with c7:
-    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
+        for c in range
