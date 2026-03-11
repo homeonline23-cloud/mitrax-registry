@@ -4,6 +4,7 @@ from datetime import datetime
 # --- 1. THE IMPERIAL ENGINE CONFIG ---
 st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 
+# SEALED STYLE BLOCK
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
@@ -21,7 +22,7 @@ st.markdown("""
         border: 3px solid #0000FF; border-radius: 50%; color: #0000FF;
         font-size: 22px; font-weight: 900; width: 45px; height: 45px;
         display: flex; align-items: center; justify-content: center;
-        margin: 5px auto; background-color: #FFFFFF;
+        margin: 8px auto; background-color: #FFFFFF;
     }
     .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
 
@@ -40,7 +41,6 @@ st.markdown("""
     
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
-    /* MEGA INPUT BOXES */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
         border: 4px solid #D4AF37 !important; font-size: 28px !important; 
@@ -78,8 +78,45 @@ with da3:
     st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
 st.write("---")
 
-# --- 5. THE MASTER HORIZONTAL COMMAND LINE ---
+# --- 5. THE MASTER SYMMETRY LOGIC ---
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
-        for c in range
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+# CENTERED HORIZONTAL COMMAND ROW
+t_col1, t_col2, t_col3, t_col4, t_col5, t_col6, t_col7 = st.columns([4, 1.5, 4, 3, 4, 1.5, 4])
+
+with t_col2:
+    red_val = st.text_input("", placeholder="****", max_chars=4, key="vr_f", label_visibility="collapsed")
+with t_col4:
+    st.markdown("<h4 style='color: #D4AF37; margin-top: 15px; white-space: nowrap;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
+with t_col6:
+    blue_val = st.text_input("", placeholder="****", max_chars=4, key="vb_f", label_visibility="collapsed")
+
+# --- 6. THE GRID DECK ---
+g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 1.5, 4, 1.5, 4, 1.5, 4])
+
+with g1:
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_grid(red_val, "grid-light", "red")
+with p1: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g2:
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_grid(blue_val, "grid-light", "blue")
+with p2: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g3:
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+with p3: 
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+with g4:
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
