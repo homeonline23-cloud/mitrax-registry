@@ -9,20 +9,7 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    .date-circle-red {
-        border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
-        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
-        display: flex; align-items: center; justify-content: center;
-        margin: 5px auto; background-color: #FFFFFF;
-    }
-    .date-circle-blue {
-        border: 3px solid #0000FF; border-radius: 50%; color: #0000FF;
-        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
-        display: flex; align-items: center; justify-content: center;
-        margin: 8px auto; background-color: #FFFFFF;
-    }
-    .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
-
+    .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border-radius: 5px; border: 2px solid #000000; }
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
@@ -31,7 +18,6 @@ st.markdown("""
     .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
-    .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border-radius: 5px; border: 2px solid #000000; }
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
     .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
@@ -48,30 +34,20 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 2. THE MITRAX IMPERIAL STRATEGY CHART (BANNER) ---
-st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True)
+# Direct Link Restore - The Imperial Crown
+st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True, caption="MITRAX STRATEGY CHART")
 
 # --- 3. WINNING NUMBERS BOARD ---
-st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
+st.write("---")
 res_cols = st.columns(4)
-res_data = [("ARUBA", ["1862", "0801", "9394"]), ("BONAIRE", ["2544", "8732", "7296"]), ("CURAÇAO", ["7716", "5502", "5918"]), ("ST. MARTIN", ["3076", "8561", "3465"])]
+res_data = [("ARUBA", ["1862", "0801"]), ("BONAIRE", ["2544", "8732"]), ("CURAÇAO", ["7716", "5502"]), ("ST. MARTIN", ["3076", "8561"])]
 for i, (name, nums) in enumerate(res_data):
     with res_cols[i]:
         st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
         for n in nums: st.success(n)
 
-# --- 4. THE VERTICAL DATE ANCHOR ---
+# --- 4. THE MASTER SYMMETRY DECK ---
 st.write("---")
-da1, da2, da3 = st.columns([1, 2, 1])
-with da1:
-    st.markdown("<div class='date-circle-red'>7</div><div class='date-circle-red'>1</div>", unsafe_allow_html=True)
-with da2:
-    curr_date = datetime.now().strftime("%m/%d/%Y")
-    st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
-with da3:
-    st.markdown("<div class='date-circle-blue'>8</div><div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
-st.write("---")
-
-# --- 5. THE MASTER SYMMETRY DECK ---
 def draw_grid(val, color, target=None):
     for r in range(4):
         cols = st.columns(4)
@@ -88,3 +64,39 @@ c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with c1:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    r_val = st.session_state.get('vr_restore', "")
+    draw_grid(r_val, "grid-light", "red")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with p1:
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_restore", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c2:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    b_val = st.session_state.get('vb_restore', "")
+    draw_grid(b_val, "grid-light", "blue")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with mid:
+    st.write("") 
+
+with c3:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with p3:
+    st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_restore", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c4:
+    st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+    st.markdown("</div>", unsafe_allow_html=True)
