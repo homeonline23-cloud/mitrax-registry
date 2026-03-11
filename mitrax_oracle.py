@@ -89,17 +89,17 @@ with colA:
 with colB:
     st.markdown("<p class='island-label'>BONAIRE</p>", unsafe_allow_html=True); st.success("2544"); st.success("8732"); st.success("7296")
 with colC:
-    st.markdown("<p style='color:#D4AF37; font-weight:900;'>CURAÇAO</p>", unsafe_allow_html=True); st.success("7716"); st.success("5502"); st.success("5918")
+    st.markdown("<p class='island-label'>CURAÇAO</p>", unsafe_allow_html=True); st.success("7716"); st.success("5502"); st.success("5918")
 with colD:
     st.markdown("<p class='island-label'>ST. MARTIN</p>", unsafe_allow_html=True); st.success("3076"); st.success("8561"); st.success("3465")
 
 st.write("---")
 
-# --- 4. THE DATE ANCHOR (NOW UNDER RESULTS) ---
+# --- 4. THE DATE ANCHOR (UNDER RESULTS) ---
 curr_date = datetime.now().strftime("%m/%d/%Y")
 st.markdown(f"""
     <div class='date-box'>
-        <div style='color:black; font-size:24px; font-weight:900;'>Date: {curr_date}</div>
+        <div style='color:black; font-size:24px; font-weight:900; margin-bottom:10px;'>Date: {curr_date}</div>
         <table style='width: 100%; border: none;'>
             <tr>
                 <td style='width: 45%; text-align: center;'>
@@ -135,17 +135,3 @@ def draw_radar_grid(main_val, color_class, target_type=None):
             if is_match:
                 if target_type == "red": circle_style = "red-circle"
                 if target_type == "blue": circle_style = "blue-circle"
-            cell_content = main_val if is_match else "0"
-            display_html = f"<div class='matrix-cell {color_class}'><div class='{circle_style}'>{cell_content}</div></div>" if circle_style else f"<div class='matrix-cell {color_class}'>{cell_content}</div>"
-            inner_cols[col].markdown(display_html, unsafe_allow_html=True)
-
-g1, p1, g2, p2, g3, p3, g4 = st.columns([4, 0.5, 4, 0.5, 4, 0.5, 4])
-with g1:
-    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_radar_grid(val_71, "grid-light", "red")
-with p1: st.markdown("<div class='yellow-pool'></div>", unsafe_allow_html=True)
-with g2:
-    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_radar_grid(val_83, "grid-light", "blue")
-with p2: st.markdown("<div class='yellow-pool'>
-                     
