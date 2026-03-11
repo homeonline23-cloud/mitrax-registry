@@ -9,56 +9,54 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
+    .mission-text { color: #FFFFFF; font-size: 14px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
 
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
-        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
+        font-size: 20px; font-weight: 900; width: 40px; height: 40px;
         display: flex; align-items: center; justify-content: center;
         margin: 5px auto; background-color: #FFFFFF;
     }
     .date-circle-blue {
         border: 3px solid #0000FF; border-radius: 50%; color: #0000FF;
-        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
+        font-size: 20px; font-weight: 900; width: 40px; height: 40px;
         display: flex; align-items: center; justify-content: center;
-        margin: 8px auto; background-color: #FFFFFF;
+        margin: 5px auto; background-color: #FFFFFF;
     }
-    .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
+    .date-display { color: #D4AF37; font-size: 20px; font-weight: 900; margin-top: 30px; }
 
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
-        border-radius: 4px; margin: 2px; color: #000000; height: 45px; width: 45px;
+        border-radius: 4px; margin: 2px; color: #000000; height: 42px; width: 42px;
     }
-    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
     
     .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
     
-    .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
+    .island-label { color: #D4AF37; font-weight: 900; font-size: 14px; text-transform: uppercase; margin-bottom: 2px; }
 
-    /* BALANCED INPUT BOXES */
+    /* INPUTS ABOVE PILLARS */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 4px solid #D4AF37 !important; font-size: 28px !important; 
-        text-align: center !important; height: 70px !important; width: 120px !important;
-        padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
-        margin: 0 auto !important;
+        border: 3px solid #D4AF37 !important; font-size: 24px !important; 
+        text-align: center !important; height: 60px !important; width: 120px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 8px !important;
     }
     
-    /* ALIGNMENT HELPERS */
-    .title-align { margin-top: 25px; white-space: nowrap; }
-    .input-container { display: flex; justify-content: center; align-items: center; height: 80px; }
+    /* HORIZONTAL SKY TITLE (ABOVE PILLARS) */
+    .sky-title { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: -10px; margin-bottom: 10px; }
     </style>
 """, unsafe_allow_html=True)
 
 # --- 2. TOP SECTION ---
 st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
+st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally... 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
 st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
@@ -73,63 +71,13 @@ for i, (name, nums) in enumerate(res_data):
 st.write("---")
 da1, da2, da3 = st.columns([1, 2, 1])
 with da1:
-    st.markdown("<div class='date-circle-red'>7</div>", unsafe_allow_html=True)
-    st.markdown("<div class='date-circle-red'>1</div>", unsafe_allow_html=True)
+    st.markdown("<div class='date-circle-red'>7</div><div class='date-circle-red'>1</div>", unsafe_allow_html=True)
 with da2:
     curr_date = datetime.now().strftime("%m/%d/%Y")
     st.markdown(f"<div class='date-display'>Date: {curr_date}</div>", unsafe_allow_html=True)
 with da3:
-    st.markdown("<div class='date-circle-blue'>8</div>", unsafe_allow_html=True)
-    st.markdown("<div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
+    st.markdown("<div class='date-circle-blue'>8</div><div class='date-circle-blue'>3</div>", unsafe_allow_html=True)
 st.write("---")
 
-# --- 5. THE MASTER SYMMETRY LOGIC ---
-def draw_grid(val, color, target=None):
-    for r in range(4):
-        cols = st.columns(4)
-        for c in range(4):
-            is_m = (r == 0 and c == 0 and val)
-            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
-            txt = val if is_m else "0"
-            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
-            cols[c].markdown(html, unsafe_allow_html=True)
-
-# 7-SLOT DECK: FORCED VERTICAL ALIGNMENT
-# Slot 1: Grid 1 | Slot 2: Input Above Pillar 1 | Slot 3: Grid 2 | Slot 4: Horizontal Sentence | Slot 5: Grid 3 | Slot 6: Input Above Pillar 2 | Slot 7: Grid 4
-c1, c2, c3, c4, c5, c6, c7 = st.columns([4, 1.5, 4, 3, 4, 1.5, 4])
-
-with c1:
-    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    r_val = st.session_state.get('vr_balanced', "")
-    draw_grid(r_val, "grid-light", "red")
-
-with c2: 
-    # RED INPUT BOX (Centered over Pillar)
-    st.markdown("<div class='input-container'>", unsafe_allow_html=True)
-    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_balanced", label_visibility="collapsed")
-    st.markdown("</div>", unsafe_allow_html=True)
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with c3:
-    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    b_val = st.session_state.get('vb_balanced', "")
-    draw_grid(b_val, "grid-light", "blue")
-
-with c4: 
-    # CENTERED HORIZONTAL SENTENCE
-    st.markdown("<h4 class='title-align' style='color: #D4AF37;'>SYMMETRY MATRIX SENSORS</h4>", unsafe_allow_html=True)
-
-with c5:
-    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
-
-with c6: 
-    # BLUE INPUT BOX (Centered over Pillar)
-    st.markdown("<div class='input-container'>", unsafe_allow_html=True)
-    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_balanced", label_visibility="collapsed")
-    st.markdown("</div>", unsafe_allow_html=True)
-    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
-
-with c7:
-    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
-    draw_grid("", "grid-dark")
+# --- 5. THE MASTER SYMMETRY DECK ---
+def draw_grid(val, color, target=
