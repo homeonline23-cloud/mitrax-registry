@@ -117,4 +117,49 @@ def get_rabbit_data(input_str):
     return grid
 
 def draw_v30_grid(data, is_dark=False, target_color=None):
-    bg_color
+    bg_color = "#707070" if is_dark else "#D3D3D3"
+    for r in range(4):
+        rows = st.columns(4)
+        for c in range(4):
+            val = data[r][c]
+            is_rabbit = (r == 0 and c == 0 and val != 0)
+            target_class = f"{target_color}-rabbit-t" if is_rabbit and target_color else ""
+            html = f"<div class='v30-cell' style='background-color:{bg_color}'>"
+            if target_class: html += f"<div class='{target_class}'>{val}</div>"
+            else: html += f"{val}"
+            html += "</div>"
+            rows[c].markdown(html, unsafe_allow_html=True)
+
+# --- THE MAIN DECK ---
+cols = st.columns([4, 2, 4, 1, 4, 2, 4])
+
+with cols[0]:
+    st.markdown("<p class='v30-label'>GRID 1</p>", unsafe_allow_html=True)
+    draw_v30_grid(get_rabbit_data(st.session_state.get('v30_r', "")), target_color="red")
+
+with cols[1]:
+    # THE V30 ABSOLUTE COMMAND CENTER
+    st.markdown("<div class='v30-command-center'>", unsafe_allow_html=True)
+    st.text_input("RED", value="", max_chars=4, key="v30_r", label_visibility="collapsed")
+    st.markdown("<div class='v30-pillar'></div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with cols[2]:
+    st.markdown("<p class='v30-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_v30_grid(get_rabbit_data(st.session_state.get('v30_b', "")), target_color="blue")
+
+with cols[4]:
+    st.markdown("<p class='v30-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_v30_grid([[0]*4 for _ in range(4)], is_dark=True)
+
+with cols[5]:
+    st.markdown("<div class='v30-command-center'>", unsafe_allow_html=True)
+    st.text_input("BLUE", value="", max_chars=4, key="v30_b", label_visibility="collapsed")
+    st.markdown("<div class='v30-pillar'></div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with cols[6]:
+    st.markdown("<p class='v30-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_v30_grid([[0]*4 for _ in range(4)], is_dark=True)
+
+st.markdown("<div class='v30-spacer'></div>", unsafe_allow_html=True)
