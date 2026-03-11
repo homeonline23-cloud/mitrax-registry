@@ -9,6 +9,19 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
+    /* THE UNBREAKABLE IMPERIAL BANNER */
+    .imperial-banner-box {
+        background: linear-gradient(145deg, #111111, #000000);
+        border: 5px solid #D4AF37;
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 20px #00FF00;
+    }
+    .banner-title { color: #D4AF37; font-size: 42px; text-transform: uppercase; margin: 0; }
+    .banner-subtitle { color: #00FF00; font-size: 28px; margin-top: 10px; }
+    .banner-text { color: #FFFFFF; font-size: 16px; font-weight: 900; line-height: 1.6; max-width: 800px; margin: 20px auto; }
+
     .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border-radius: 5px; border: 2px solid #000000; }
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
@@ -33,12 +46,21 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE MITRAX IMPERIAL STRATEGY CHART (BANNER) ---
-# Direct Link Restore - The Imperial Crown
-st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True, caption="MITRAX STRATEGY CHART")
+# --- 2. THE MITRAX IMPERIAL HEADER (CODE-BASED) ---
+st.markdown("""
+<div class='imperial-banner-box'>
+    <div class='banner-title'>MITRAX ORACLE Pic 4 App</div>
+    <div class='banner-subtitle'>Pick 4 Worldwide 🌏</div>
+    <div class='banner-text'>
+        The 4-digit Prediction Calculator that can be used Globally. 
+        By entering the 4 chosen winning numbers into the calculator Grids. 
+        When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. 
+        There’s now a 95% chance of increasing your chances of winning.
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
-st.write("---")
 res_cols = st.columns(4)
 res_data = [("ARUBA", ["1862", "0801"]), ("BONAIRE", ["2544", "8732"]), ("CURAÇAO", ["7716", "5502"]), ("ST. MARTIN", ["3076", "8561"])]
 for i, (name, nums) in enumerate(res_data):
@@ -65,19 +87,19 @@ c1, p1, c2, mid, c3, p3, c4 = st.columns([4, 2, 4, 1, 4, 2, 4])
 with c1:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    r_val = st.session_state.get('vr_restore', "")
+    r_val = st.session_state.get('vr_final_v1', "")
     draw_grid(r_val, "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with p1:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_restore", label_visibility="collapsed")
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_v1", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c2:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    b_val = st.session_state.get('vb_restore', "")
+    b_val = st.session_state.get('vb_final_v1', "")
     draw_grid(b_val, "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -92,7 +114,7 @@ with c3:
 
 with p3:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_restore", label_visibility="collapsed")
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_v1", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with c4:
