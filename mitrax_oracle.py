@@ -12,7 +12,7 @@ st.markdown("""
     
     /* ULTRA-COMPACT BANNER - SHRUNK FOR TOTAL VISIBILITY */
     .banner-container {
-        max-width: 320px; /* MINI-EMBLEM SIZE */
+        max-width: 320px;
         margin: 0 auto 5px auto;
         padding-top: 10px;
     }
@@ -74,25 +74,43 @@ st.markdown("<center><div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div><
 st.write("") 
 
 def draw_grid(val, color, target=None):
+    # Fixed drawing logic to prevent syntax leaks
     for r in range(4):
         cols = st.columns(4)
         for c in range(4):
             is_m = (r == 0 and c == 0 and val)
-            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            circle_class = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
             txt = val if is_m else "0"
-            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            if circle_class:
+                html = f"<div class='matrix-cell {color}'><div class='{circle_class}'>{txt}</div></div>"
+            else:
+                html = f"<div class='matrix-cell {color}'>{txt}</div>"
             cols[c].markdown(html, unsafe_allow_html=True)
 
 cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 
 with cols[0]:
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_ultra_1', ""), "grid-light", "red")
+    draw_grid(st.session_state.get('v_sealed_1', ""), "grid-light", "red")
 
 with cols[1]:
     st.write("<div style='height:10px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_ultra_1", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_sealed_1", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
-    st.markdown("
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    draw_grid(st.session_state.get('v_sealed_2', ""), "grid-light", "blue")
+
+with cols[4]:
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+
+with cols[5]:
+    st.write("<div style='height:10px;'></div>", unsafe_allow_html=True)
+    st.text_input("", placeholder="****", max_chars=4, key="v_sealed_2", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with cols[6]:
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
