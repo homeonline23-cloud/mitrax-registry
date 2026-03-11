@@ -7,11 +7,23 @@ st.set_page_config(layout="wide", page_title="MITRAX ORACLE")
 st.markdown("""
     <style>
     .stApp { background-color: #000000; }
-    h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    /* NEON GREEN GLOW FOR THE DECK */
-    .stImage { border: 3px solid #00FF00; border-radius: 15px; box-shadow: 0 0 20px #00FF00; }
+    /* THE NEON STRATEGY BOX - REPLACING THE BROKEN IMAGE */
+    .strategy-container {
+        border: 4px solid #00FF00;
+        border-radius: 20px;
+        padding: 30px;
+        background: radial-gradient(circle, #001a00 0%, #000000 100%);
+        box-shadow: 0 0 25px #00FF00, inset 0 0 15px #00FF00;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .impact-bold { color: #D4AF37; font-family: 'Arial Black'; font-size: 45px; text-shadow: 2px 2px #000000; margin: 0; }
+    .worldwide-glow { color: #00FF00; font-size: 28px; font-weight: 900; margin-top: 10px; }
+    .manifesto-text { color: #FFFFFF; font-size: 16px; font-weight: 700; line-height: 1.6; max-width: 900px; margin: 20px auto; }
 
+    /* THE PILLARS AND GRIDS */
     .gold-pillar { background-color: #D4AF37; width: 14px; height: 210px; margin: 0 auto; border: 2px solid #000000; border-radius: 5px; }
     .matrix-cell { 
         font-weight: 900; font-size: 20px; border: 1px solid #000000; 
@@ -36,15 +48,21 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE IMPERIAL IMAGE (FORCED RENDER) ---
-# If this link still breaks, I will rebuild the symbols with code in the next turn!
-try:
-    st.image("https://files.oaiusercontent.com/file-92csyc92csyc92cs", use_container_width=True)
-except:
-    st.error("VISUAL LINK INTERRUPTED - SHIELDING ACTIVE")
+# --- 2. THE CUSTOM NEON STRATEGY CHART (CODE-BUILT) ---
+st.markdown("""
+<div class='strategy-container'>
+    <div class='impact-bold'>MITRAX ORACLE Pic 4 App</div>
+    <div class='worldwide-glow'>Pick 4 Worldwide 🌏</div>
+    <div class='manifesto-text'>
+        The 4-digit Prediction Calculator that can be used Globally. <br>
+        By entering the 4 chosen winning numbers into the calculator Grids. <br>
+        When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. <br>
+        There’s now a 95% chance of increasing your chances of winning.
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- 3. WINNING NUMBERS ---
-st.write("---")
 c1, c2, c3, c4 = st.columns(4)
 islands = [("ARUBA", "1862"), ("BONAIRE", "2544"), ("CURAÇAO", "7716"), ("ST. MARTIN", "3076")]
 for i, (name, num) in enumerate(islands):
@@ -72,18 +90,18 @@ cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 with cols[0]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_red_final', ""), "grid-light", "red")
+    draw_grid(st.session_state.get('vr_neon_lock', ""), "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[1]:
     st.write("<div style='height:30px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_red_final", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="vr_neon_lock", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_blue_final', ""), "grid-light", "blue")
+    draw_grid(st.session_state.get('vb_neon_lock', ""), "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[4]:
@@ -94,7 +112,7 @@ with cols[4]:
 
 with cols[5]:
     st.write("<div style='height:30px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_blue_final", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="vb_neon_lock", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[6]:
