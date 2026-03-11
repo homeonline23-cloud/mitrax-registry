@@ -9,54 +9,54 @@ st.markdown("""
     .stApp { background-color: #000000; }
     h1, h2, h3, h4, p, div { text-align: center !important; font-family: 'Arial Black', Gadget, sans-serif; }
     
-    .mission-text { color: #FFFFFF; font-size: 14px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
+    .mission-text { color: #FFFFFF; font-size: 15px; font-weight: 900; margin-bottom: 20px; padding: 15px; border: 2px solid #D4AF37; border-radius: 10px; background-color: #111111; }
 
     .date-circle-red {
         border: 3px solid #FF0000; border-radius: 50%; color: #FF0000;
-        font-size: 20px; font-weight: 900; width: 40px; height: 40px;
+        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
         display: flex; align-items: center; justify-content: center;
         margin: 5px auto; background-color: #FFFFFF;
     }
     .date-circle-blue {
         border: 3px solid #0000FF; border-radius: 50%; color: #0000FF;
-        font-size: 20px; font-weight: 900; width: 40px; height: 40px;
+        font-size: 22px; font-weight: 900; width: 45px; height: 45px;
         display: flex; align-items: center; justify-content: center;
-        margin: 5px auto; background-color: #FFFFFF;
+        margin: 8px auto; background-color: #FFFFFF;
     }
-    .date-display { color: #D4AF37; font-size: 20px; font-weight: 900; margin-top: 30px; }
+    .date-display { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: 35px; }
 
     .matrix-cell { 
         font-weight: 900; font-size: 18px; border: 1px solid #000000; 
         aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
-        border-radius: 4px; margin: 2px; color: #000000; height: 42px; width: 42px;
+        border-radius: 4px; margin: 2px; color: #000000; height: 45px; width: 45px;
     }
-    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+    .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
+    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
     
     .gold-pillar { background-color: #D4AF37; width: 12px; height: 260px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
     
     .grid-light { background-color: #D3D3D3 !important; }
     .grid-dark { background-color: #707070 !important; }
     
-    .island-label { color: #D4AF37; font-weight: 900; font-size: 14px; text-transform: uppercase; margin-bottom: 2px; }
+    .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
 
-    /* INPUTS ABOVE PILLARS */
+    /* MEGA INPUT BOXES - LOCKED ABOVE PILLARS */
     .stTextInput > div > div > input { 
         background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 3px solid #D4AF37 !important; font-size: 24px !important; 
-        text-align: center !important; height: 60px !important; width: 120px !important;
-        padding: 0px !important; font-weight: 900 !important; border-radius: 8px !important;
+        border: 4px solid #D4AF37 !important; font-size: 28px !important; 
+        text-align: center !important; height: 70px !important; width: 150px !important;
+        padding: 0px !important; font-weight: 900 !important; border-radius: 10px !important;
     }
     
-    /* HORIZONTAL SKY TITLE (ABOVE PILLARS) */
-    .sky-title { color: #D4AF37; font-size: 22px; font-weight: 900; margin-top: -10px; margin-bottom: 10px; }
+    /* HORIZONTAL SYMMETRY TITLE (CENTERED BRIDGE) */
+    .symmetry-bridge { color: #D4AF37; font-size: 24px; font-weight: 900; margin: 10px 0; border-bottom: 2px solid #D4AF37; padding-bottom: 5px; }
     </style>
 """, unsafe_allow_html=True)
 
 # --- 2. TOP SECTION ---
 st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally... 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
+st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
 
 # --- 3. WINNING NUMBERS BOARD ---
 st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
@@ -80,4 +80,47 @@ with da3:
 st.write("---")
 
 # --- 5. THE MASTER SYMMETRY DECK ---
-def draw_grid(val, color, target=
+def draw_grid(val, color, target=None):
+    for r in range(4):
+        cols = st.columns(4)
+        for c in range(4):
+            is_m = (r == 0 and c == 0 and val)
+            circle = "red-target" if is_m and target=="red" else "blue-target" if is_m and target=="blue" else ""
+            txt = val if is_m else "0"
+            html = f"<div class='matrix-cell {color}'><div class='{circle}'>{txt}</div></div>" if circle else f"<div class='matrix-cell {color}'>{txt}</div>"
+            cols[c].markdown(html, unsafe_allow_html=True)
+
+# COMMAND BRIDGE ROW (TITLE)
+st.markdown("<div class='symmetry-bridge'>SYMMETRY MATRIX SENSORS</div>", unsafe_allow_html=True)
+
+# GRID DECK (STABILIZED)
+c1, p1, c2, p2, c3, p3, c4 = st.columns([4, 1.5, 4, 0.5, 4, 1.5, 4])
+
+with c1:
+    st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
+    r_val = st.session_state.get('vr_final_fix', "")
+    draw_grid(r_val, "grid-light", "red")
+
+with p1: # RED PILLAR
+    r_val = st.text_input("", placeholder="****", max_chars=4, key="vr_final_fix", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c2:
+    st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
+    b_val = st.session_state.get('vb_final_fix', "")
+    draw_grid(b_val, "grid-light", "blue")
+
+with p2: # THE CENTRAL SPINE (SPACING)
+    st.write("")
+
+with c3:
+    st.markdown("<p class='island-label'>GRID 3</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
+
+with p3: # BLUE PILLAR
+    b_val = st.text_input("", placeholder="****", max_chars=4, key="vb_final_fix", label_visibility="collapsed")
+    st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
+
+with c4:
+    st.markdown("<p class='island-label'>GRID 4</p>", unsafe_allow_html=True)
+    draw_grid("", "grid-dark")
