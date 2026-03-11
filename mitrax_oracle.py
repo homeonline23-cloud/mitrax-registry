@@ -34,13 +34,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. THE LOCAL IMAGE HANDLER ---
-# This looks for the file 'mitrax_banner.jpg' in your folder.
+# --- 2. THE LOCAL IMAGE HANDLER (THE WELD) ---
 if os.path.exists("mitrax_banner.jpg"):
     st.image("mitrax_banner.jpg", use_container_width=True)
 else:
-    # EMERGENCY NEON HEADER IF FILE NOT FOUND
-    st.markdown("<h1 style='color: #00FF00; border: 5px solid #D4AF37; padding: 20px;'>IMAGE FILE NOT DETECTED IN REPOSITORY</h1>", unsafe_allow_html=True)
+    st.error("⚠️ SYSTEM ERROR: mitrax_banner.jpg not detected in repository root.")
 
 # --- 3. WINNING NUMBERS BOARD ---
 st.write("---")
@@ -69,18 +67,18 @@ cols = st.columns([4, 2, 4, 1, 4, 2, 4])
 with cols[0]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 1</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_local_lock', ""), "grid-light", "red")
+    draw_grid(st.session_state.get('v_local_final', ""), "grid-light", "red")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[1]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_local_lock", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_local_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[2]:
     st.markdown("<div class='grid-drop'>", unsafe_allow_html=True)
     st.markdown("<p class='island-label'>GRID 2</p>", unsafe_allow_html=True)
-    draw_grid(st.session_state.get('v_blue_local', ""), "grid-light", "blue")
+    draw_grid(st.session_state.get('v_blue_local_final', ""), "grid-light", "blue")
     st.markdown("</div>", unsafe_allow_html=True)
 
 with cols[4]:
@@ -91,7 +89,7 @@ with cols[4]:
 
 with cols[5]:
     st.write("<div style='height:25px;'></div>", unsafe_allow_html=True)
-    st.text_input("", placeholder="****", max_chars=4, key="v_blue_local", label_visibility="collapsed")
+    st.text_input("", placeholder="****", max_chars=4, key="v_blue_local_final", label_visibility="collapsed")
     st.markdown("<div class='gold-pillar'></div>", unsafe_allow_html=True)
 
 with cols[6]:
