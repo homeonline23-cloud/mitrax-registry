@@ -32,41 +32,4 @@ st.markdown("""
         border-radius: 4px; margin: 2px; color: #000000; height: 45px; width: 45px;
     }
     .red-target { border: 3px solid #FF0000; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
-    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; }
-    
-    .gold-pillar { background-color: #D4AF37; width: 12px; height: 320px; margin: 0 auto; border-radius: 5px; border: 1px solid #000000; }
-    
-    .grid-light { background-color: #D3D3D3 !important; }
-    .grid-dark { background-color: #707070 !important; }
-    
-    .island-label { color: #D4AF37; font-weight: 900; font-size: 16px; text-transform: uppercase; margin-bottom: 5px; }
-    .stSuccess { font-weight: 900; font-size: 20px; border: 1px solid #D4AF37; color: #000000 !important; background-color: #D4AF37 !important; padding: 2px; }
-    
-    /* VERTICAL TEXT ROTATION */
-    .vertical-title {
-        color: #D4AF37; font-size: 20px; font-weight: 900; line-height: 1.2;
-        text-transform: uppercase; writing-mode: vertical-rl;
-        text-orientation: upright; margin: 0 auto; white-space: nowrap;
-    }
-
-    .stTextInput > div > div > input { 
-        background-color: #FFFFFF !important; color: #000000 !important; 
-        border: 4px solid #D4AF37 !important; font-size: 32px !important; 
-        text-align: center !important; height: 80px !important; width: 180px !important;
-        padding: 0px !important; font-weight: 900 !important; border-radius: 12px !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# --- 2. TOP SECTION ---
-st.markdown("<h1 style='color: #D4AF37;'>MITRAX ORACLE Pic 4 App</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='color: #D4AF37;'>Pick 4 Worldwide🌏</h2>", unsafe_allow_html=True)
-st.markdown("<div class='mission-text'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>", unsafe_allow_html=True)
-
-# --- 3. WINNING NUMBERS BOARD ---
-st.markdown("<h4 style='color: #D4AF37;'>WINNING NUMBERS RESULTS</h4>", unsafe_allow_html=True)
-res_cols = st.columns(4)
-res_data = [("ARUBA", ["1862", "0801", "9394"]), ("BONAIRE", ["2544", "8732", "7296"]), ("CURAÇAO", ["7716", "5502", "5918"]), ("ST. MARTIN", ["3076", "8561", "3465"])]
-for i, (name, nums) in enumerate(res_data):
-    with res_cols[i]:
-        st.markdown(f"<p class='island-label'>{name}</p>", unsafe_allow_html=True)
+    .blue-target { border: 3px solid #0000FF; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center
