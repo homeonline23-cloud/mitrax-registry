@@ -1,8 +1,8 @@
 import streamlit as st
 import os
 
-# --- 1. ENGINE CONFIG (V109 BALANCED SCALE) ---
-st.set_page_config(layout="wide", page_title="MITRAX ORACLE V109")
+# --- 1. ENGINE CONFIG (V110 IRON BLOCKS) ---
+st.set_page_config(layout="wide", page_title="MITRAX ORACLE V110")
 
 st.markdown("""
     <style>
@@ -12,127 +12,97 @@ st.markdown("""
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        width: 100% !important;
+        width: 1200px !important;
+        margin: 0 auto !important;
     }
 
-    /* CENTERED HEADER */
-    .v109-header-box {
-        text-align: center !important;
-        width: 1000px !important;
-        margin-top: -65px !important;
-    }
-    .v109-title { color: #D4AF37 !important; font-size: 38px !important; font-weight: 900 !important; text-shadow: 4px 4px 8px #000; }
-    .v109-worldwide { color: #FFFFFF !important; font-size: 22px !important; font-weight: 700 !important; margin-bottom: 5px; }
+    /* THE TITLE BLOCK */
+    .v110-header { text-align: center; margin-top: -60px; margin-bottom: 20px; }
+    .v110-title { color: #D4AF37; font-size: 42px; font-weight: 900; text-shadow: 3px 3px 5px #000; }
+    .v110-worldwide { color: #FFF; font-size: 26px; font-weight: 700; }
+    .v110-mission { color: #FFF; font-size: 15px; font-style: italic; max-width: 900px; margin: 0 auto; line-height: 1.4; }
 
-    /* SHRUNKEN WINNING BOARD */
-    .v109-board-container { 
-        display: flex !important; flex-direction: row !important; justify-content: center !important;
-        width: 900px !important; margin: 0 auto !important; 
-    }
-    .v109-city-card { 
-        border: 2px solid #4B6321 !important; background-color: #4B6321 !important; 
-        margin: 0 4px !important; padding: 6px !important; width: 200px !important;
-        border-radius: 10px;
-    }
-    .v109-white-num { 
-        color: #000 !important; font-family: 'Courier New', monospace; 
-        font-size: 28px !important; font-weight: 900 !important; font-style: italic !important; 
-        text-align: center; background: #FFF; margin: 2px 0; border-radius: 4px;
-    }
+    /* THE WINNING BLOCK (SHRUNKEN & LOCKED) */
+    .v110-board-row { display: flex; justify-content: center; gap: 10px; width: 1000px; margin: 0 auto; }
+    .v110-city { background: #4B6321; border: 2px solid #4B6321; border-radius: 12px; padding: 10px; width: 220px; }
+    .v110-white-num { background: #FFF; color: #000; font-family: 'Courier New', monospace; font-size: 30px; font-weight: 900; text-align: center; margin: 3px 0; border-radius: 5px; }
 
-    /* ENLARGED DATE INPUTS (THE LIFTED BAY) */
-    .v109-date-bay {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 1000px !important;
-        margin-top: 25px !important;
-        margin-bottom: 20px !important;
-    }
-    .v109-date-unit { display: flex; flex-direction: column; align-items: center; width: 220px !important; }
-    .v109-date-label { font-weight: 900 !important; font-size: 32px !important; margin-bottom: 8px !important; }
+    /* THE DATE COCKPIT (7/1 & 8/3) */
+    .v110-cockpit { display: flex; justify-content: center; gap: 100px; margin: 20px 0; width: 1000px; }
+    .v110-date-label { font-size: 28px; font-weight: 900; margin-bottom: 5px; text-align: center; }
 
-    /* MATRIX SENSORS */
-    .v109-cell { 
-        background-color: #1a1a1a !important; border: 2px solid #00FF00 !important; 
-        height: 65px !important; width: 65px !important; display: flex !important; 
-        align-items: center !important; justify-content: center !important; 
-        font-weight: 900 !important; font-size: 34px !important; color: #00FF00 !important; 
-        border-radius: 10px !important; margin: 2px !important;
-    }
+    /* THE SENSOR ROW (UNBREAKABLE) */
+    .v110-sensor-row { display: flex; flex-wrap: nowrap; justify-content: center; align-items: flex-start; width: 1200px; gap: 5px; }
+    .v110-grid-box { width: 260px; text-align: center; }
+    .v110-cell { background: #1a1a1a; border: 2px solid #00FF00; height: 60px; width: 60px; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 900; color: #00FF00; border-radius: 10px; margin: 2px; }
     
-    .v109-pillar-shaft { 
-        background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%) !important; 
-        width: 40px !important; height: 280px !important; 
-        border-radius: 0 0 10px 10px !important; border: 2px solid #000 !important; 
-        box-shadow: 0px 0px 15px #D4AF37 !important;
-        margin-top: 25px !important;
-    }
+    .v110-pillar-unit { width: 60px; display: flex; flex-direction: column; align-items: center; margin-top: 35px; }
+    .v110-gold-pillar { background: linear-gradient(180deg, #D4AF37 0%, #8A6D3B 100%); width: 40px; height: 260px; border-radius: 0 0 10px 10px; border: 2px solid #000; box-shadow: 0px 0px 15px #D4AF37; }
 
-    /* LARGE INPUT BOXES */
-    div[data-baseweb="input"] { 
-        background-color: #000 !important; border: 5px solid #00FF00 !important; 
-        width: 180px !important; border-radius: 12px !important;
-    }
-    input { color: #00FF00 !important; font-size: 40px !important; text-align: center !important; font-weight: 900 !important; }
+    /* INPUT STYLING */
+    div[data-baseweb="input"] { background-color: #000 !important; border: 4px solid #00FF00 !important; width: 140px !important; border-radius: 10px !important; }
+    input { color: #00FF00 !important; font-size: 32px !important; text-align: center !important; font-weight: 900 !important; }
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. HEADER ---
+# --- 2. HEADER BLOCK ---
 st.markdown("""
-<div class='v109-header-box'>
-    <div class='v109-title'>MITRAX ORACLE PIC 4 App.</div>
-    <div class='v109-worldwide'>Worldwide 🌏 Advantage</div>
+<div class='v110-header'>
+    <div class='v106-title'>MITRAX ORACLE PIC 4 App.</div>
+    <div class='v110-worldwide'>Worldwide 🌏 Advantage</div>
+    <div class='v110-mission'>The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers into the calculator Grids. When analyzing the symmetry patterns, you can see and identify potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning.</div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 3. THE WINNING BOARD (SHRUNKEN) ---
+# --- 3. WINNING BLOCK ---
 st.markdown("""
-<div class='v109-board-container'>
-    <div class='v109-city-card'><div style='color:#D4AF37; text-align:center; font-weight:900;'>ARUBA</div><div class='v109-white-num'>1862</div><div class='v109-white-num'>0801</div><div class='v109-white-num'>9394</div></div>
-    <div class='v109-city-card'><div style='color:#D4AF37; text-align:center; font-weight:900;'>BONAIRE</div><div class='v109-white-num'>2544</div><div class='v109-white-num'>8732</div><div class='v109-white-num'>7296</div></div>
-    <div class='v109-city-card'><div style='color:#D4AF37; text-align:center; font-weight:900;'>CURAÇAO</div><div class='v109-white-num'>7716</div><div class='v109-white-num'>5502</div><div class='v109-white-num'>5918</div></div>
-    <div class='v109-city-card'><div style='color:#D4AF37; text-align:center; font-weight:900;'>ST. MARTIN</div><div class='v109-white-num'>3076</div><div class='v109-white-num'>8561</div><div class='v109-white-num'>3465</div></div>
+<div class='v110-board-row'>
+    <div class='v110-city'><div style='color:#D4AF37; text-align:center; font-weight:900;'>ARUBA</div><div class='v110-white-num'>1862</div><div class='v110-white-num'>0801</div><div class='v110-white-num'>9394</div></div>
+    <div class='v110-city'><div style='color:#D4AF37; text-align:center; font-weight:900;'>BONAIRE</div><div class='v110-white-num'>2544</div><div class='v110-white-num'>8732</div><div class='v110-white-num'>7296</div></div>
+    <div class='v110-city'><div style='color:#D4AF37; text-align:center; font-weight:900;'>CURAÇAO</div><div class='v110-white-num'>7716</div><div class='v110-white-num'>5502</div><div class='v110-white-num'>5918</div></div>
+    <div class='v110-city'><div style='color:#D4AF37; text-align:center; font-weight:900;'>ST. MARTIN</div><div class='v110-white-num'>3076</div><div class='v110-white-num'>8561</div><div class='v110-white-num'>3465</div></div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 4. THE LARGE DATE BAY ---
-db_c1, db_c2, db_c3 = st.columns([2, 1, 2])
-with db_c1:
-    st.markdown("<div style='display:flex; flex-direction:column; align-items:flex-end; padding-right:50px;'><p class='v109-date-label' style='color:red;'>7/1 RED</p>", unsafe_allow_html=True)
-    st.text_input("71", key="v109_r", label_visibility="collapsed")
+# --- 4. DATE COCKPIT ---
+st.markdown("<div style='display:flex; justify-content:center; gap:80px; width:1000px; margin:20px auto;'>", unsafe_allow_html=True)
+c1, c2 = st.columns([1, 1])
+with c1:
+    st.markdown("<div style='text-align:right; margin-left:350px;'><p class='v110-date-label' style='color:red;'>7/1 RED</p>", unsafe_allow_html=True)
+    st.text_input("R", key="v110_r", label_visibility="collapsed")
     st.markdown("</div>", unsafe_allow_html=True)
-with db_c3:
-    st.markdown("<div style='display:flex; flex-direction:column; align-items:flex-start; padding-left:50px;'><p class='v109-date-label' style='color:blue;'>8/3 BLUE</p>", unsafe_allow_html=True)
-    st.text_input("83", key="v109_b", label_visibility="collapsed")
+with c2:
+    st.markdown("<div style='text-align:left; margin-right:350px;'><p class='v110-date-label' style='color:blue;'>8/3 BLUE</p>", unsafe_allow_html=True)
+    st.text_input("B", key="v110_b", label_visibility="collapsed")
     st.markdown("</div>", unsafe_allow_html=True)
 
-st.markdown("<div style='margin-top:10px; border-bottom:4px solid #00FF00; width:1100px; text-align:center; color:#00FF00; font-weight:900; font-size:24px;'>MATRIX SENSORS</div>", unsafe_allow_html=True)
+st.markdown("<hr style='border: 2px solid #00FF00; width: 1100px;'>", unsafe_allow_html=True)
 
 # --- 5. GRID LOGIC ---
-def draw_v109_grid(key, active=True):
+def draw_v110_grid(key, active=True):
     grid = [[0]*4 for _ in range(4)]
     val = st.session_state.get(key, "") if active else ""
     if val:
         try:
             s = int(val[0])
-            for c in range(4): grid[0][c] = (s + c) % 10
-            grid[1][0] = (grid[0][3] - 1) % 10
-            for c in range(1, 4): grid[1][c] = (grid[1][c-1] + 1) % 10
+            for r in range(4):
+                for c in range(4): grid[r][c] = (s + r + c) % 10 # Sample logic for Row 1&2
         except: pass
     
+    html = ""
     for r in range(4):
-        rows = st.columns(4)
+        html += "<div style='display:block;'>"
         for c in range(4):
-            num = grid[r][c]
-            rows[c].markdown(f"<div class='v109-cell'>{num}</div>", unsafe_allow_html=True)
+            html += f"<div class='v110-cell'>{grid[r][c]}</div>"
+        html += "</div>"
+    return html
 
-# --- 6. THE STABILIZED HORIZONTAL ROW ---
-main_cols = st.columns([5, 2, 5, 2, 5, 2, 5])
-with main_cols[0]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 1</p>", unsafe_allow_html=True); draw_v109_grid("v109_r")
-with main_cols[1]: st.markdown("<div class='v109-pillar-shaft'></div>", unsafe_allow_html=True)
-with main_cols[2]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 2</p>", unsafe_allow_html=True); draw_v109_grid("v109_b")
-with main_cols[3]: st.markdown("<div class='v109-pillar-shaft' style='background:#D4AF37;'></div><p style='color:#D4AF37; font-weight:900; text-align:center;'>CORE</p>", unsafe_allow_html=True)
-with main_cols[4]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 3</p>", unsafe_allow_html=True); draw_v109_grid("n", False)
-with main_cols[5]: st.markdown("<div class='v109-pillar-shaft'></div>", unsafe_allow_html=True)
-with main_cols[6]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 4</p>", unsafe_allow_html=True); draw_v109_grid("n", False)
+# --- 6. THE SENSOR ROW (UNBREAKABLE) ---
+m_cols = st.columns([5, 1, 5, 1, 5, 1, 5])
+with m_cols[0]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 1</p>", unsafe_allow_html=True); st.markdown(draw_v110_grid("v110_r"), unsafe_allow_html=True)
+with m_cols[1]: st.markdown("<div class='v110-pillar-unit'><div class='v110-gold-pillar'></div></div>", unsafe_allow_html=True)
+with m_cols[2]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 2</p>", unsafe_allow_html=True); st.markdown(draw_v110_grid("v110_b"), unsafe_allow_html=True)
+with m_cols[3]: st.markdown("<div class='v110-pillar-unit'><div class='v110-gold-pillar' style='background:#D4AF37;'></div><p style='color:#D4AF37; font-weight:900;'>CORE</p></div>", unsafe_allow_html=True)
+with m_cols[4]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 3</p>", unsafe_allow_html=True); st.markdown(draw_v110_grid("n", False), unsafe_allow_html=True)
+with m_cols[5]: st.markdown("<div class='v110-pillar-unit'><div class='v110-gold-pillar'></div></div>", unsafe_allow_html=True)
+with m_cols[6]: st.markdown("<p style='color:#D4AF37; text-align:center; font-weight:900;'>GRID 4</p>", unsafe_allow_html=True); st.markdown(draw_v110_grid("n", False), unsafe_allow_html=True)
