@@ -1,100 +1,97 @@
 import streamlit as st
+import datetime
 
-# --- 1. IMPERIAL PAGE CONFIG ---
-st.set_page_config(
-    page_title="THE MITRAX ORACLE PIC 4",
-    page_icon="🏛️",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+# --- 1. PAGE CONFIGURATION ---
+st.set_page_config(page_title="MITRAX ORACLE PREDICTOR", layout="wide")
 
-# --- 2. THE VISUAL SHIELD (STYLING) ---
+# --- 2. IMPERIAL STYLING (MATCHING YOUR IMAGES) ---
 st.markdown("""
     <style>
-    /* Dark Imperial Theme */
-    .stApp { background-color: #050505; color: #E0E0E0; font-family: 'Courier New', monospace; }
+    .stApp { background-color: #FFFFFF; color: #333; font-family: 'Arial', sans-serif; }
     
-    /* Header & Branding */
-    .oracle-title {
-        color: #00D4FF; text-align: center; letter-spacing: 8px; 
-        font-size: 48px; font-weight: bold; margin-bottom: 0px;
-        text-shadow: 0px 0px 15px rgba(0, 212, 255, 0.5);
-    }
-    .oracle-subtitle {
-        color: #FFD700; text-align: center; font-style: italic;
-        font-size: 18px; margin-bottom: 30px; letter-spacing: 4px;
-    }
-    
-    /* Description Box */
-    .description-box {
-        background: rgba(255, 255, 255, 0.03); border: 1px solid #333;
-        padding: 20px; border-radius: 12px; margin: 20px auto;
-        max-width: 800px; text-align: center; line-height: 1.6;
+    /* Glowing Title */
+    .glow-title {
+        color: #00D4FF; text-align: center; font-size: 42px; font-weight: bold;
+        text-shadow: 0px 0px 15px rgba(0, 212, 255, 0.8); margin-bottom: 30px;
     }
 
-    /* Symmetry Grid */
-    .grid-container {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
-        max-width: 450px; margin: 40px auto; background: #111; padding: 25px;
-        border: 2px solid #00D4FF; border-radius: 20px;
-        box-shadow: 0px 0px 30px rgba(0, 212, 255, 0.2);
+    /* Main Console Box */
+    .console-box {
+        background-color: #8C8C8C; border-radius: 25px; padding: 40px;
+        color: white; text-align: center; max-width: 900px; margin: auto;
+    }
+
+    .worldwide-tag { color: #00D4FF; font-weight: bold; font-size: 20px; margin-bottom: 10px; }
+
+    /* The Grids */
+    .grid-label { color: #00D4FF; font-size: 24px; font-weight: bold; margin-bottom: 10px; text-align: left; }
+    .oracle-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+        background: white; padding: 15px; border: 3px solid #E67E22; border-radius: 10px;
     }
     .grid-cell {
-        aspect-ratio: 1; border: 1px solid #222; display: flex;
-        align-items: center; justify-content: center; color: #444;
-        font-size: 24px; border-radius: 8px; background: #080808;
-        transition: 0.3s;
+        aspect-ratio: 1; border: 1px solid #CCC; display: flex;
+        align-items: center; justify-content: center; color: #888;
+        font-size: 18px; font-weight: bold; background: #F9F9F9;
     }
-    .grid-cell:hover { border-color: #00D4FF; color: #00D4FF; background: #001a1f; }
 
-    /* Buttons & Inputs */
-    div.stButton > button {
-        width: 100%; background-color: #00D4FF !important; color: black !important;
-        font-weight: bold !important; border-radius: 10px !important; border: none !important;
-        height: 50px; letter-spacing: 2px;
+    /* Time/Date Displays */
+    .time-box {
+        background-color: #5D99A6; color: white; padding: 10px 25px;
+        border-radius: 10px; font-weight: bold; font-size: 20px; display: inline-block;
     }
-    input { background-color: #111 !important; color: white !important; border: 1px solid #333 !important; text-align: center !important; font-size: 24px !important; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- 3. THE BRANDING ---
-st.markdown("<h1 class='oracle-title'>THE MITRAX ORACLE</h1>", unsafe_allow_html=True)
-st.markdown("<p class='oracle-subtitle'>WORLDWIDE ADVANTAGE • PIC 4</p>", unsafe_allow_html=True)
+# --- 3. THE BRANDING & MISSION ---
+st.markdown("<h1 class='glow-title'>THE MITRAX ORACLE PIC 4 PREDICTOR</h1>", unsafe_allow_html=True)
 
-# --- 4. THE CORE DESCRIPTION (FROM YOUR METADATA) ---
-st.markdown("""
-<div class='description-box'>
-    "The 4-digit Prediction Calculator that can be used Globally. 
-    By entering the 4 chosen winning numbers into the calculator Grids, 
-    analyzing the symmetry patterns allows you to identify potential winning numbers. 
-    There’s now a <b>95% chance</b> of increasing your chances of winning."
+st.markdown(f"""
+<div class='console-box'>
+    <div class='worldwide-tag'>Worldwide 🌏 Globally</div>
+    <p style='font-style: italic; font-size: 18px; line-height: 1.5;'>
+        "The 4-digit Prediction Calculator that can be used Globally. By entering the 4 chosen winning numbers 
+        into the calculator Grids. When analyzing the symmetry patterns, you can find and identify 
+        potential winning numbers in the GRID’s. There’s now a 95% chance of increasing your chances of winning."
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
-# --- 5. THE INPUT VAULT ---
+# --- 4. THE CHRONOMETER (TIME & DATE) ---
 st.write("")
-st.markdown("<p style='text-align: center; color: #888; letter-spacing: 2px;'>ENTER 4-DIGIT WINNING SEQUENCE</p>", unsafe_allow_html=True)
-
-col_input = st.columns([1, 1, 1, 1])
-with col_input[0]: d1 = st.text_input("N1", max_chars=1, key="v1", label_visibility="collapsed", placeholder="0")
-with col_input[1]: d2 = st.text_input("N2", max_chars=1, key="v2", label_visibility="collapsed", placeholder="0")
-with col_input[2]: d3 = st.text_input("N3", max_chars=1, key="v3", label_visibility="collapsed", placeholder="0")
-with col_input[3]: d4 = st.text_input("N4", max_chars=1, key="v4", label_visibility="collapsed", placeholder="0")
+t_col1, t_col2, t_col3 = st.columns([1, 2, 1])
+with t_col1:
+    st.markdown(f"<div class='time-box'>{datetime.date.today().strftime('%m/%d/%Y')}</div>", unsafe_allow_html=True)
+with t_col3:
+    st.markdown(f"<div class='time-box'>{datetime.datetime.now().strftime('%H:%M:%S PM')}</div>", unsafe_allow_html=True)
 
 st.write("")
-if st.button("ANALYZE UNIVERSAL SYMMETRY"):
-    st.toast("Analyzing Symmetry Grids...", icon="📡")
 
-# --- 6. THE SYMMETRY GRID (95% PROBABILITY VISUAL) ---
-# This creates the visual 4x4 grid mentioned in your mission
-grid_html = "<div class='grid-container'>"
-for i in range(16):
-    # Mock data showing potential symmetry patterns
-    val = (i * 7) % 10 
-    grid_html += f"<div class='grid-cell'>{val}</div>"
-grid_html += "</div>"
+# --- 5. THE DUAL-GRID COMMAND CENTER ---
+# Logic to handle user input for number 1
+st.markdown("<div style='text-align: center;'><span style='background:#333; color:white; padding:10px 30px; border-radius:20px; font-size:22px;'>Enter number 1</span></div>", unsafe_allow_html=True)
 
-st.markdown(grid_html, unsafe_allow_html=True)
+st.write("")
+grid_col1, spacer, grid_col2 = st.columns([10, 1, 10])
 
-# --- 7. GLOBAL FOOTER ---
-st.markdown("<p style='text-align: center; color: #333; font-size: 11px; margin-top: 60px;'>MITRAX EMPIRE • UNIVERSAL GHOST SYNC [ACTIVE]</p>", unsafe_allow_html=True)
+# Grid 1
+with grid_col1:
+    st.markdown("<div class='grid-label'>Gr. 1</div>", unsafe_allow_html=True)
+    grid1_html = "<div class='oracle-grid'>"
+    for char in "abcdefghijklmnop":
+        grid1_html += f"<div class='grid-cell'>{char}</div>"
+    grid1_html += "</div>"
+    st.markdown(grid1_html, unsafe_allow_html=True)
+
+# Grid 2
+with grid_col2:
+    st.markdown("<div class='grid-label'>Gr. 2</div>", unsafe_allow_html=True)
+    grid2_html = "<div class='oracle-grid'>"
+    for char in "abcdefghijklmnop":
+        grid2_html += f"<div class='grid-cell'>{char}</div>"
+    grid2_html += "</div>"
+    st.markdown(grid2_html, unsafe_allow_html=True)
+
+# --- 6. INTERACTIVE LAYER ---
+st.write("---")
+st.markdown("<p style='text-align: center; color: #888;'>SYMMETRY ANALYSIS ACTIVE • WORLDWIDE USE</p>", unsafe_allow_html=True)
